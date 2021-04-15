@@ -1,8 +1,8 @@
 /**
  * File testing the itinerary model code.
  */
-import {itClearCommit, itGet, itPopCommit, itPushCommit, itSet} from "./itinerary.js";
-import {undoRedoClear} from "./undo.js";
+import {itClearCommit, itGet, itPopCommit, itPushCommit, itSet} from "../itinerary.js";
+import {undoRedoClear} from "../undo.js";
 
 // For comparison of arrays
 // This code has issues, see https://www.30secondsofcode.org/blog/s/javascript-array-comparison

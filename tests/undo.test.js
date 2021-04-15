@@ -4,8 +4,8 @@
  * Assumes that the code for the itinerary is bug-free.
  */
 
-import {itGet, itPushCommit} from "./itinerary.js";
-import {redo, undo, undoRedoClear} from "./undo.js";
+import {itGet, itPushCommit} from "../itinerary.js";
+import {redo, undo, undoRedoClear} from "../undo.js";
 
 // For comparison of arrays
 // This code has issues, see https://www.30secondsofcode.org/blog/s/javascript-array-comparison
