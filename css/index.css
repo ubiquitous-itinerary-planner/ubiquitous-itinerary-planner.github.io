@@ -1,0 +1,24 @@
+/**
+ * CSS which is universal for the entire application.
+ */
+:root{
+    width: 100%;
+    height: 100%;
+
+    /* Color palette */
+    --error-color: #CF6679;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0; /* remove default padding, so that 100% of the window is 100% of the window */
+}
+
+/*
+ * ELEMENT LEVEL DEFINITIONS
+ */
+#topBar{
+    background: transparent;
+    z-index: 2;
+}

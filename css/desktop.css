@@ -1,0 +1,35 @@
+/**
+ * CSS used to position and size elements for desktop screen sizes.
+ */
+
+body{
+    display: flex;
+}
+
+/*
+ * ELEMENT LEVEL DEFINITIONS
+ */
+#info{
+    background: green;
+    position: absolute;
+    z-index: 1;
+    height: 22%;
+    width: 27%;
+    bottom: 0;
+    left: 0;
+}
+#itinerary{
+    background: yellowgreen;
+    width: 33%;
+    height: 100%;
+}
+#map{
+    background: blue;
+    width: 67%;
+    height: 100%;
+}
+#topBar{
+    position: absolute;
+    height: 6.25%;
+    width: 67%;
+}

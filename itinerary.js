@@ -1,8 +1,13 @@
 /**
- * Code managing the model of an itinerary.
+ * Code managing an itinerary.
  */
 
 import {commit} from "./undo.js";
+
+
+/*
+ * Model code
+ */
 
 let itinerary = [];
 
@@ -76,4 +81,15 @@ export function itGet(){
  */
 export function itSet(itin){
     itinerary = itin;
+}
+
+/*
+ * View code
+ */
+
+/**
+ * Initializes the itinerary element, and its children.
+ */
+export function itInit(){
+
 }
