@@ -13,6 +13,10 @@ export function topBarInit(){
  * Initializes the button which returns the user to the most zoomed-out view of the map.
  */
 function homeBtnInit(parent){
+    let homeBtn = document.createElement("button");
+    homeBtn.innerHTML = "Home Button"
+    homeBtn.id = "homeButton";
+    parent.appendChild(homeBtn);
 }
 
 /**

@@ -4,10 +4,11 @@
 
 let language = 'en';
 let dict = {
-    'text' : ['one', 'two'],
+    'text' : ['homeButton', 'one', 'two'],
     'pics' : ['langPic'],
 
     'en' : {
+        'homeButton' : "Star system view",
         'title' : "Itinerary Planner",
         'one': "One",
         'two': "Two",
@@ -15,6 +16,7 @@ let dict = {
     },
 
     'sv' : {
+        'homeButton' : "Stjärnsystemsvy",
         'title' : "Resvägsplanerare",
         'one': "Ett",
         'two': "Två",
@@ -46,12 +48,14 @@ export function change_lang() {
 // using # for divname- and . for classname searching
 export function update_dict_view() {
     let text = dict['text'];
-    for (let key in text) {
+    for (let idx in text) {
+        let key = text[idx];
         $("#" + key).text(get_string(key));
         $("." + key).text(get_string(key));
     }
     let pics = dict['pics'];
-    for (let pic in pics) {
+    for (let idx in pics) {
+        let pic = pics[idx];
         $("#" + pic).attr('src', get_string(pic));
         $("." + pic).attr('src', get_string(pic));
     }
