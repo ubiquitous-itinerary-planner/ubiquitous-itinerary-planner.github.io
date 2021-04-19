@@ -3,7 +3,7 @@
  */
 
 :root{
-    background: var(--error-color);
+    background: var(--color-error);
 }
 
 #info{

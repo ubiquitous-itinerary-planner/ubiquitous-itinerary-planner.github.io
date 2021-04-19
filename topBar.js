@@ -16,6 +16,7 @@ function homeBtnInit(parent){
     let homeBtn = document.createElement("button");
     homeBtn.innerHTML = "Home Button"
     homeBtn.id = "homeButton";
+    homeBtn.classList.add("topBarButton");
     parent.appendChild(homeBtn);
 }
 
