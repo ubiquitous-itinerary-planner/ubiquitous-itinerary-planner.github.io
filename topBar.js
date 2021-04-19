@@ -18,6 +18,7 @@ function homeBtnInit(parent){
     homeBtn.id = "homeButton";
     homeBtn.classList.add("topBarButton");
     parent.appendChild(homeBtn);
+    /* TODO: Add click event */
 }
 
 /**

@@ -25,7 +25,6 @@
     --font-info-text: 'Roboto', sans-serif;
     --font-size-info-text: 1.125em;
 }
-
 body{
     width: 100%;
     height: 100%;
@@ -50,6 +49,7 @@ body{
 .topBarButton:hover{
     background-color: var(--color-hover);
 }
+
 /*
  * ELEMENT LEVEL DEFINITIONS
  */

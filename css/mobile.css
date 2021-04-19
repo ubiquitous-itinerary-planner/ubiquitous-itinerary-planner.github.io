@@ -6,6 +6,16 @@
     background: var(--color-error);
 }
 
+/*
+ * CLASS LEVEL DEFINITIONS
+ */
+.topBarButton{
+    width: 50%;
+}
+
+/*
+ * ELEMENT LEVEL DEFINITIONS
+ */
 #info{
     background: green;
     position: absolute;
@@ -14,19 +24,16 @@
     width: 100%;
     bottom: 0;
 }
-
 #itinerary{
     background: yellowgreen;
     width: 100%;
     height: 100%;
 }
-
 #map{
     background: blue;
     width: 100%;
     height: 100%;
 }
-
 #topBar{
     position: fixed;
     height: 8.75%;

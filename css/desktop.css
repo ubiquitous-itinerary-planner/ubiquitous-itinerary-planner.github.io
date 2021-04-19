@@ -5,12 +5,14 @@
 body{
     display: flex;
 }
+
 /*
  * CLASS LEVEL DEFINITIONS
  */
 .topBarButton{
     width: 20%;
 }
+
 /*
  * ELEMENT LEVEL DEFINITIONS
  */
