@@ -22,7 +22,7 @@ var dict = {
         'planetView': '',
         'langPic': "images/eng.png"
     },
-
+//test
     'sv' : {
         'homeButton' : "Stjärnsystemsvy",
         'title' : "Resvägsplanerare",
