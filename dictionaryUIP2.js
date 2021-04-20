@@ -4,18 +4,38 @@
 
 var language = 'en';
 var dict = {
-    'text' : ['one', 'two'],
+    'text' : ['one', 'two', 'systemJump', "tellus", 'population', 'colonyAge', 'avgTemp', 'homeButton', 'itinButton', 'helpButton', 'addButton', 'removeButton', 'clearItin', 'planetView'],
     'pics' : ['langPic'],
 
     'en' : {
         'one': "One",
         'two': "Two",
+        'systemJump': "System jump location",
+        'tellus': "Planet Earth",
+        'population': "Population",
+        'avgTemp': "Average temperature",
+        'homeButton': "Home",
+        'itinButton': 'Itinierary',
+        'helpButton': 'Help',
+        'addButton': 'Add',
+        'removeButton': 'Remove',
+        'planetView': '',
         'langPic': "images/eng.png"
     },
 
     'sv' : {
         'one': "Ett",
         'two': "Två",
+        'systemJump': "Stjärnsystemshopp",
+        'tellus': "Jorden",
+        'population': "Populationsmängd",
+        'avgTemp': "Medeltemperatur",
+        'homeButton': "Hem",
+        'itinButton': "Reseplan",
+        'helpButton': "Hjälp",
+        'addButton': 'Lägg till',
+        'removeButton': 'Ta bort',
+        'planetView': '',
         'langPic': "images/se.png"
     }
 }

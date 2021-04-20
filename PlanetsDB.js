@@ -1,17 +1,32 @@
 // ------------------------------------------------------------------------
 // Code written by Felix Lager
 // ------------------------------------------------------------------------
-
+/*
+Gravitationskraft (blir man tyngre eller lättare jämfört med tellus)
+Uspdetaljer (statue of liberty ex)
+Timmar per dygn?
+Valuta?
+Språk?
+Kostnad av genomsnittsmåltid på restaurang?
+Domestic animals? 
+Procentuell vattenyta?
+*/
 var PDB = {
     "planets" :
         [{
             "id": "0",
             "name": "Jorden",
-            "star system": "Vintergatan",
-            "size": "48km",
+            "starSystem": "Vintergatan",
+            "size": "48km", //radii size.
             "population": "7 874 965 825",
             "climate": "windy and cold",
-            "breathable": "Yes"
+            "infrastruktur": "", //Finns internet? // earth-like / mars-like / moon-like / ..
+            "breathable": "Yes",
+            "usp": "",
+            "meanTemp": "",
+            "animalSpecies": "",
+            "government": "Apple/Amazon/Selfcontrolled",
+            "": "undefined",
         }, {
             "id": "1",
             "name": "",
