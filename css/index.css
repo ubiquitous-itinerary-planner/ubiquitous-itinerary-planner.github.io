@@ -1,0 +1,59 @@
+/**
+ * CSS which is universal for the entire application.
+ */
+:root{
+    width: 100%;
+    height: 100%;
+
+    /* Color palette */
+    --color-main: #FFFFFF;
+    --color-on-main: #6B6D86;
+    --color-hover: orange; /* TODO: change this */
+    --color-error: #CF6679;
+
+    /* Fonts */
+    --font-star-system-label: 'Roboto', sans-serif;
+    --font-size-star-system-label: 1.125em;
+    --font-itinerary-text: 'Roboto', sans-serif;
+    --font-size-itinerary-text: 1.5em;
+    --font-itinerary-destinations: 'Roboto', sans-serif;
+    --font-size-itinerary-destinations: 1.125em;
+    --font-topbar-buttons: 'Roboto', sans-serif;
+    --font-size-topbar-buttons: 1.5em;
+    --font-info-title: 'Roboto', sans-serif;
+    --font-size-info-title: 1.5em;
+    --font-info-text: 'Roboto', sans-serif;
+    --font-size-info-text: 1.125em;
+}
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0; /* remove default padding, so that 100% of the window is 100% of the window */
+}
+
+/*
+ * CLASS LEVEL DEFINITIONS
+ */
+.topBarButton{
+    border: 0;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    filter: drop-shadow(0em 0.25em 0.25em #000000);
+    background-color: var(--color-main);
+    color: var(--color-on-main);
+    font-family: var(--font-topbar-buttons);
+    font-size: var(--font-size-topbar-buttons);
+    font-weight: bold;
+}
+.topBarButton:hover{
+    background-color: var(--color-hover);
+}
+
+/*
+ * ELEMENT LEVEL DEFINITIONS
+ */
+#topBar{
+    background: transparent;
+    z-index: 2;
+}

@@ -1,20 +1,20 @@
 // ------------------------------------------------------------------------
 // Code written by Felix Lager
 // ------------------------------------------------------------------------
-
 var language = 'en';
 var dict = {
     'text' : ['one', 'two', 'systemJump', "tellus", 'population', 'colonyAge', 'avgTemp', 'homeButton', 'itinButton', 'helpButton', 'addButton', 'removeButton', 'clearItin', 'planetView'],
     'pics' : ['langPic'],
 
     'en' : {
+        'homeButton' : "Star system view",
+        'title' : "Itinerary Planner",
         'one': "One",
         'two': "Two",
         'systemJump': "System jump location",
         'tellus': "Planet Earth",
         'population': "Population",
         'avgTemp': "Average temperature",
-        'homeButton': "Home",
         'itinButton': 'Itinierary',
         'helpButton': 'Help',
         'addButton': 'Add',
@@ -24,13 +24,14 @@ var dict = {
     },
 
     'sv' : {
+        'homeButton' : "Stjärnsystemsvy",
+        'title' : "Resvägsplanerare",
         'one': "Ett",
         'two': "Två",
         'systemJump': "Stjärnsystemshopp",
         'tellus': "Jorden",
         'population': "Populationsmängd",
         'avgTemp': "Medeltemperatur",
-        'homeButton': "Hem",
         'itinButton': "Reseplan",
         'helpButton': "Hjälp",
         'addButton': 'Lägg till',
@@ -46,13 +47,13 @@ function get_string(key) {
 }
 
 //handles change of language
-function change_lang() {
-    if (language == 'en') {
+export function change_lang() {
+    if (language === 'en') {
         language = 'sv';
     } 
     else {
         language = 'en'
-    };
+    }
 
     update_dict_view();
 }
@@ -62,19 +63,21 @@ function change_lang() {
 // ------------------------------------------------------------------------
 // updates the view with correct strings - depending on selected language
 // using # for divname- and . for classname searching
-function update_dict_view() {
-    text = dict['text'];
-    for (idx in text) {
-        key = text[idx];
+export function update_dict_view() {
+    let text = dict['text'];
+    for (let idx in text) {
+        let key = text[idx];
         $("#" + key).text(get_string(key));
         $("." + key).text(get_string(key));
-    };
-    pics = dict['pics'];
-    for (idx in pics) {
-        pic = pics[idx];
+    }
+    let pics = dict['pics'];
+    for (let idx in pics) {
+        let pic = pics[idx];
         $("#" + pic).attr('src', get_string(pic));
         $("." + pic).attr('src', get_string(pic));
-    };
+    }
+    // Update page title
+    $(document).attr("title", get_string("title"));
 }
 // ===========================================================================
 // END OF FILE
