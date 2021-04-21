@@ -8,6 +8,8 @@
     /* Color palette */
     --color-main: #FFFFFF;
     --color-on-main: #6B6D86;
+    --color-secondary: yellow; /* TODO: change this */
+    --color-on-secondary: red; /* TODO: change this */
     --color-hover: orange; /* TODO: change this */
     --color-error: #CF6679;
 

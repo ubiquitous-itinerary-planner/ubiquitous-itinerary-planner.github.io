@@ -1,8 +1,8 @@
 // ------------------------------------------------------------------------
 // Code written by Felix Lager
 // ------------------------------------------------------------------------
-var language = 'en';
-var dict = {
+let language = 'en';
+let dict = {
     'text' : ['one', 'two', 'systemJump', "tellus", 'population', 'colonyAge', 'avgTemp', 'homeButton', 'itinButton', 'helpButton', 'addButton', 'removeButton', 'clearItin', 'planetView'],
     'pics' : ['langPic'],
 
@@ -47,7 +47,7 @@ function get_string(key) {
 }
 
 //handles change of language
-export function change_lang() {
+function change_lang() {
     if (language === 'en') {
         language = 'sv';
     } 
@@ -63,7 +63,7 @@ export function change_lang() {
 // ------------------------------------------------------------------------
 // updates the view with correct strings - depending on selected language
 // using # for divname- and . for classname searching
-export function update_dict_view() {
+function update_dict_view() {
     let text = dict['text'];
     for (let idx in text) {
         let key = text[idx];

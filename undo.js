@@ -1,22 +1,20 @@
 /**
  * Undo-Redo manager
  */
-import {itGet, itSet} from "./itinerary.js";
-
 let undoStack = [];
 let redoStack = [];
 
 /**
  * Commit the current state to the undo-redo manager.
  */
-export function commit(){
+function commit(){
     undoStack.push(itGet());
 }
 
 /**
  * Undo the most recent action, if such action exists.
  */
-export function undo(){
+function undo(){
     let oldState = itGet();
     let newState = undoStack.pop();
     if(newState === undefined){
@@ -29,7 +27,7 @@ export function undo(){
 /**
  * Redo the most recently undone action, if such action exists.
  */
-export function redo(){
+function redo(){
     let oldState = itGet();
     let newState = redoStack.pop();
     if(newState === undefined){
@@ -42,7 +40,7 @@ export function redo(){
 /**
  * Clears the undo-redo manager. For debugging purposes.
  */
-export function undoRedoClear(){
+function undoRedoClear(){
     undoStack = [];
     redoStack = [];
 }

@@ -1,7 +1,7 @@
 /**
  * Initializes the topBar element, and its children.
  */
-export function topBarInit(){
+function topBarInit(){
     // Initialize children:
     let p = document.getElementById("topBar");
     homeBtnInit(p);

@@ -2,12 +2,6 @@
  * Javascript for initialising the application.
  */
 
-import {infoInit} from "./info.js";
-import {itInit} from "./itinerary.js";
-import {mapInit} from "./map.js";
-import {topBarInit} from "./topBar.js";
-import {update_dict_view} from "./dictionaryUIP2.js";
-
 $("document").ready(function() {
 
     /* Set CSS depending on screen size */

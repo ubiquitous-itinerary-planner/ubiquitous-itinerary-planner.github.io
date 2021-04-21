@@ -2,7 +2,6 @@
  * Code managing an itinerary.
  */
 
-import {commit} from "./undo.js";
 
 
 /*
@@ -24,7 +23,7 @@ function itPush(planet){
  * Also commits the action to the Undo-Redo manager.
  * @param planet
  */
-export function itPushCommit(planet){
+function itPushCommit(planet){
     commit();
     itPush(planet);
 }
@@ -43,7 +42,7 @@ function itPop(){
  * is already empty.
  * Also commits the action to the Undo-Redo manager.
  */
-export function itPopCommit(){
+function itPopCommit(){
     commit();
     let r = itPop();
     return r;
@@ -60,7 +59,7 @@ function itClear(){
  * Removes all planets from the itinerary.
  * Also commits the action to the Undo-Redo manager.
  */
-export function itClearCommit(){
+function itClearCommit(){
     commit();
     itClear();
 }
@@ -71,7 +70,7 @@ export function itClearCommit(){
  * will not be seen in the copy returned by this function.
  * @returns {any}
  */
-export function itGet(){
+function itGet(){
     return JSON.parse(JSON.stringify(itinerary));
 }
 
@@ -79,7 +78,7 @@ export function itGet(){
  * Sets the itinerary to the passed value.
  * @param itin
  */
-export function itSet(itin){
+function itSet(itin){
     itinerary = itin;
 }
 
@@ -90,6 +89,6 @@ export function itSet(itin){
 /**
  * Initializes the itinerary element, and its children.
  */
-export function itInit(){
+function itInit(){
 
 }
