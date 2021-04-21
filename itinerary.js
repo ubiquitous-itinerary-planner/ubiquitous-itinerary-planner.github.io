@@ -2,8 +2,6 @@
  * Code managing an itinerary.
  */
 
-
-
 /*
  * Model code
  */
