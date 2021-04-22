@@ -1,7 +1,7 @@
 /**
  * Database for the travel routes.
  * "id" has to be unique.
- * @type {{routes: [{price: string, start: string, destination: string, company: string, id: string}]}}
+ * @type {{routes: [{duration: string, price: string, start: string, destination: string, company: string, id: string}]}}
  */
 let RDB = {
     "routes" :
@@ -10,6 +10,7 @@ let RDB = {
             "start" : "",
             "destination" : "",
             "price" : "",
+            "duration" : "",
             "company" : ""
         }]
 };

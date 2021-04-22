@@ -40,16 +40,7 @@ function mapAddRoute(route){
     let target = route.destination;
     let label = undefined;
     let name = route.id;
-    // The case where the route is in the same star system
-    if(map.parent(source) === map.parent(target)){
-        map.setEdge(source, target, label, name);
-    }
-    // The case where a jump is needed
-    else{
-        map.setEdge(source, map.parent(source), label, name);
-        map.setEdge(map.parent(source), map.parent(target), label, name);
-        map.setEdge(map.parent(target), target, label, name);
-    }
+    map.setEdge(source, target, label, name);
 }
 
 /**
@@ -68,7 +59,11 @@ function mapGetSystems(){
  */
 function mapGetPlanets(system){
     if(system === undefined){
-        return map.nodes();
+        let allNodes = map.nodes();
+        // Only return the planets, so filter out the systems:
+        return allNodes.filter(function(currentValue){
+            return !(mapGetSystems().includes(currentValue));
+        });
     }
     else {
         return map.children(system);
@@ -104,6 +99,21 @@ function mapRouteCheapest(start, destination){
 }
 
 /**
+ * Returns a route from the start to the destination, using Dijkstra's algorithm.
+ * This function optimises for travel time.
+ * @param start
+ * @param destination
+ * @returns {*[]}
+ */
+function mapRouteFastest(start, destination){
+    function weight(e) {
+        return getRoute(e.name).duration;
+    }
+    let dijkstra = graphlib.alg.dijkstra(map, start, weight);
+    return findPath(dijkstra, start, destination);
+}
+
+/**
  * Function enumerating the path from start to destination, using the output from graphlib.alg.dijkstra.
  * @param dijkstra
  * @param start
@@ -114,6 +124,7 @@ function findPath(dijkstra, start, destination){
     // Find the path
     let path = [];
     let target = destination;
+    let systems = mapGetSystems();
     for(let i = 0; i < 1000; i++){ // Set an upper bound on the loop.
         path.unshift(target);
         if(target === start){
