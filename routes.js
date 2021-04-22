@@ -3,5 +3,9 @@
  * @param id
  */
 function getRoute(id){
-
+    for(let i = 0; i < RDB.routes.length; i++){
+        if(RDB.routes[i].id === id){
+            return RDB.routes[i];
+        }
+    }
 }
