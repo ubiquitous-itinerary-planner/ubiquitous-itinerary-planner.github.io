@@ -6,6 +6,14 @@
  * Initializes the map element, and its children.
  */
 function mapInit(){
+    // Initialize the model
+    for(let i = 0; i < PDB.planets.length; i++){
+        mapAddPlanet(PDB.planets[i]);
+    }
+    for(let i = 0; i < RDB.routes.length; i++){
+        mapAddRoute(RDB.routes[i]);
+    }
+    // Initialize the view
 
 }
 
