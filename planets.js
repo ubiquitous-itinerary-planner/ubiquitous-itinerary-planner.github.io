@@ -1,6 +1,6 @@
 /**
  * Returns the planet-object associated with the passed ID.
- * @param id
+ * @param id the id to search for
  */
 function getPlanet(id){
     for(let i = 0; i < PDB.planets.length; i++){

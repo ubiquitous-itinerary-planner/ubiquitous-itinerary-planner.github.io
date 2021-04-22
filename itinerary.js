@@ -10,7 +10,7 @@ let itinerary = [];
 
 /**
  * Pushes the passed planet to the itinerary, placing it last.
- * @param planet
+ * @param planet the planet to add
  */
 function itPush(planet){
     itinerary.push(planet);
@@ -19,7 +19,7 @@ function itPush(planet){
 /**
  * Pushes the passed planet to the itinerary, placing it last.
  * Also commits the action to the Undo-Redo manager.
- * @param planet
+ * @param planet the planet to add
  */
 function itPushCommit(planet){
     commit();
@@ -29,7 +29,7 @@ function itPushCommit(planet){
 /**
  * Pops the most recently added planet from the itinerary, and returns the planet. Returns undefined if the itinerary
  * is already empty.
- * @returns {*}
+ * @returns {*} the most recently added planet
  */
 function itPop(){
     return itinerary.pop();
@@ -39,11 +39,11 @@ function itPop(){
  * Pops the most recently added planet from the itinerary, and returns the planet. Returns undefined if the itinerary
  * is already empty.
  * Also commits the action to the Undo-Redo manager.
+ * @returns {*} the most recently added planet
  */
 function itPopCommit(){
     commit();
-    let r = itPop();
-    return r;
+    return itPop();
 }
 
 /**
@@ -66,7 +66,7 @@ function itClearCommit(){
  * Returns a (deep) copy of the itinerary.
  * That is, the itinerary will be a copy of the itinerary at this point in time, and future changes to the itinerary
  * will not be seen in the copy returned by this function.
- * @returns {any}
+ * @returns {any} a copy of the itinerary
  */
 function itGet(){
     return JSON.parse(JSON.stringify(itinerary));
@@ -74,7 +74,7 @@ function itGet(){
 
 /**
  * Sets the itinerary to the passed value.
- * @param itin
+ * @param itin the itinerary to change the current itinerary to
  */
 function itSet(itin){
     itinerary = itin;

@@ -11,6 +11,7 @@ function topBarInit(){
 
 /**
  * Initializes the button which returns the user to the most zoomed-out view of the map.
+ * @param parent the parent into which to add the button
  */
 function homeBtnInit(parent){
     let homeBtn = document.createElement("button");
@@ -23,6 +24,7 @@ function homeBtnInit(parent){
 
 /**
  * Initializes the help button.
+ * @param parent the parent into which to add the button
  */
 function helpBtnInit(parent){
 
@@ -30,6 +32,7 @@ function helpBtnInit(parent){
 
 /**
  * Initializes the language button.
+ * @param parent the parent into which to add the button
  */
 function languageBtnInit(parent){
 
