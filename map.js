@@ -1,5 +1,5 @@
 /*
- * View code
+ * View/Controller code
  */
 
 let currentSystem; // Which system we are browsing. undefined iff we are in the starsystem view.

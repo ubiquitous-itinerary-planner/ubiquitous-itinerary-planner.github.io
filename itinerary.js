@@ -3,6 +3,17 @@
  */
 
 /*
+ * View/Controller code
+ */
+
+/**
+ * Initializes the itinerary element, and its children.
+ */
+function itInit(){
+
+}
+
+/*
  * Model code
  */
 
@@ -78,15 +89,4 @@ function itGet(){
  */
 function itSet(itin){
     itinerary = itin;
-}
-
-/*
- * View code
- */
-
-/**
- * Initializes the itinerary element, and its children.
- */
-function itInit(){
-
 }
