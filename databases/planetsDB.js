@@ -16,7 +16,7 @@ let PDB = {
         [{
             "id": "0",
             "name": "Jorden",
-            "starsystem": "Vintergatan",
+            "starsystem": "Solar System",
             "size": "48km", //radii size.
             "population": "7 874 965 825",
             "climate": "windy and cold",
@@ -36,8 +36,8 @@ let PDB = {
             "standardmealcost": ""
         }, {
             "id": "1",
-            "name": "",
-            "starsystem": "",
+            "name": "Mars",
+            "starsystem": "Solar System",
             "size": "",
             "population": "",
             "climate": "",
@@ -57,8 +57,8 @@ let PDB = {
             "standardmealcost": ""
         }, {
             "id": "2",
-            "name": "",
-            "starsystem": "",
+            "name": "The Restaurant at the End of the Universe",
+            "starsystem": "Frogstar System",
             "size": "",
             "population": "",
             "climate": "",
@@ -78,8 +78,8 @@ let PDB = {
             "standardmealcost": ""
         }, {
             "id": "3",
-            "name": "",
-            "starsystem": "",
+            "name": "Frogstar World A",
+            "starsystem": "Frogstar System",
             "size": "",
             "population": "",
             "climate": "",
