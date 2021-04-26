@@ -3,7 +3,7 @@
 // ------------------------------------------------------------------------
 let language = 'en';
 let dict = {
-    'text' : ['one', 'two', 'systemJump', "tellus", 'population', 'colonyAge', 'avgTemp', 'homeButton', 'itinButton', 'helpButton', 'addButton', 'removeButton', 'clearItin', 'planetView'],
+    'text' : ['one', 'two', 'systemJump', "tellus", 'population', 'colonyAge', 'avgTemp', 'homeButton', 'itinButton', 'helpButton', 'addButton', 'removeButton', 'clearItin', 'planetView', 'name', 'starsystem', 'breathableAir', 'infrastructure', 'Vintergatan', 'Jorden', 'solarSystem',],
     'pics' : ['langPic'],
 
     'en' : {
@@ -13,14 +13,22 @@ let dict = {
         'two': "Two",
         'systemJump': "System jump location",
         'tellus': "Planet Earth",
-        'population': "Population",
-        'avgTemp': "Average temperature",
+        'population': "Population:",
+        'avgTemp': "Average temperature:",
         'itinButton': 'Itinierary',
         'helpButton': 'Help',
         'addButton': 'Add',
         'removeButton': 'Remove',
-        'planetView': '',
+        'planetView': 'Planet view',
+        'name': "Name:",
+        'starsystem': "Star system:",
+        'breathableAir': "Breathable air:",
+        'infrastructure': "Infrastructure:",
+        'Vintergatan': "Milkyway",
+        'Jorden': "Planet Earth",
+        'solarSystem': "Solar System",
         'langPic': "images/eng.png"
+        
     },
 
     'sv' : {
@@ -36,7 +44,14 @@ let dict = {
         'helpButton': "Hjälp",
         'addButton': 'Lägg till',
         'removeButton': 'Ta bort',
-        'planetView': '',
+        'planetView': 'Planetvy',
+        'name': "Namn:",
+        'starsystem': "Stjärnsystem:",
+        'breathableAir': "Andningsbar luft:",
+        'infrastructure': "Infrastruktur:",
+        'Vintergatan': "Vintergatan",
+        'Jorden': "Jorden",
+        'solarSystem': "Solsystemet",
         'langPic': "images/se.png"
     }
 }

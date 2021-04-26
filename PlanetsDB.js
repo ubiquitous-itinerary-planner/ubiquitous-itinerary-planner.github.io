@@ -1,29 +1,20 @@
 // ------------------------------------------------------------------------
 // Code written by Felix Lager
 // ------------------------------------------------------------------------
-/*
-Gravitationskraft (blir man tyngre eller lättare jämfört med tellus)
-Uspdetaljer (statue of liberty ex)
-Timmar per dygn?
-Valuta?
-Språk?
-Kostnad av genomsnittsmåltid på restaurang?
-Domestic animals? 
-Procentuell vattenyta?
-*/
+
 let PDB = {
     "planets" :
         [{
             "id": "0",
             "name": "Jorden",
-            "starsystem": "Vintergatan",
+            "starsystem": "solarSystem",
             "size": "48km", //radii size.
             "population": "7 874 965 825",
             "climate": "windy and cold",
-            "infrastructure": "", //Finns internet? // earth-like / mars-like / moon-like / ..
+            "infrastructure": "Earth-like", //Finns internet? // earth-like / mars-like / moon-like / ..
             "breathable": "Yes",
             "usp": "",
-            "meantemp": "",
+            "meantemp": "1°C",
             "animalspecies": "",
             "government": "Apple/Amazon/Selfcontrolled",
             "gravity": "",
@@ -36,8 +27,8 @@ let PDB = {
             "standardmealcost": ""
         }, {
             "id": "1",
-            "name": "",
-            "starsystem": "",
+            "name": "Mars",
+            "starsystem": "Solar System",
             "size": "",
             "population": "",
             "climate": "",
@@ -57,8 +48,8 @@ let PDB = {
             "standardmealcost": ""
         }, {
             "id": "2",
-            "name": "",
-            "starsystem": "",
+            "name": "The Restaurant at the End of the Universe",
+            "starsystem": "Frogstar System",
             "size": "",
             "population": "",
             "climate": "",
