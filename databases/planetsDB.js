@@ -69,8 +69,8 @@ let PDB = {
             "standardmealcost": ""
         }, {
             "id": "3",
-            "name": "",
-            "starsystem": "",
+            "name": "Frogstar World A",
+            "starsystem": "Frogstar System",
             "size": "",
             "population": "",
             "climate": "",
