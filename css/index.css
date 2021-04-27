@@ -55,7 +55,13 @@ body{
 /*
  * ELEMENT LEVEL DEFINITIONS
  */
+
+#info{
+    visibility: hidden;
+}
+
 #topBar{
     background: transparent;
     z-index: 2;
 }
+
