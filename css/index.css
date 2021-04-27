@@ -45,6 +45,7 @@ tr:nth-child(odd){
 /*
  * CLASS LEVEL DEFINITIONS
  */
+
 .topBarButton{
     border: 0;
     margin: 0;
@@ -92,6 +93,7 @@ tr:nth-child(odd){
     font-family: var(--font-info-text);
     font-size: var(--font-size-info-text);
     width: 100%;
+    border-spacing: 0;
 }
 #topBar{
     background: transparent;
