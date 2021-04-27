@@ -70,6 +70,14 @@ tr:nth-child(odd){
     background: var(--color-main-transparent);
     position: absolute;
     border-color: var(--color-border);
+    border-style: solid;
+    border-width: medium;
+    /* Places border on inside */
+    /* https://stackoverflow.com/questions/9601357/placing-border-inside-of-div-and-not-on-its-edge */
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+
 }
 #info_title{
     background-color: var(--color-main);
@@ -77,6 +85,7 @@ tr:nth-child(odd){
     font-family: var(--font-info-title);
     font-size: var(--font-size-info-title);
     width: 100%;
+    height: 27.4%;
 }
 #info_table{
     color: var(--color-on-main-transparent);
