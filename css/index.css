@@ -7,11 +7,14 @@
 
     /* Color palette */
     --color-main: #FFFFFF;
+    --color-main-transparent: rgba(255, 255, 255, 0.33);
     --color-on-main: #6B6D86;
+    --color-on-main-transparent: #000000;
     --color-secondary: yellow; /* TODO: change this */
     --color-on-secondary: red; /* TODO: change this */
     --color-hover: orange; /* TODO: change this */
     --color-error: #CF6679;
+    --color-border: #D1D1D1;
 
     /* Fonts */
     --font-star-system-label: 'Roboto', sans-serif;
@@ -32,6 +35,12 @@ body{
     height: 100%;
     margin: 0; /* remove default padding, so that 100% of the window is 100% of the window */
 }
+
+/* Colour rows of the table slightly differently, to improve visibility */
+tr:nth-child(odd){
+    background-color: var(--color-main-transparent);
+}
+
 
 /*
  * CLASS LEVEL DEFINITIONS
@@ -58,8 +67,23 @@ body{
 
 #info{
     visibility: hidden;
+    background: var(--color-main-transparent);
+    position: absolute;
+    border-color: var(--color-border);
 }
-
+#info_title{
+    background-color: var(--color-main);
+    color: var(--color-on-main);
+    font-family: var(--font-info-title);
+    font-size: var(--font-size-info-title);
+    width: 100%;
+}
+#info_table{
+    color: var(--color-on-main-transparent);
+    font-family: var(--font-info-text);
+    font-size: var(--font-size-info-text);
+    width: 100%;
+}
 #topBar{
     background: transparent;
     z-index: 2;

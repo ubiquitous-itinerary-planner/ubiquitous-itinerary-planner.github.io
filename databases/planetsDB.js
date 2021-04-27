@@ -6,7 +6,7 @@ let PDB = {
     "planets" :
         [{
             "id": "0",
-            "name": "Jorden",
+            "name": "tellus",
             "starsystem": "solarSystem",
             "size": "48km", //radii size.
             "population": "7 874 965 825",

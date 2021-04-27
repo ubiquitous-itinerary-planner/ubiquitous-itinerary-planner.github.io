@@ -17,8 +17,6 @@ body{
  * ELEMENT LEVEL DEFINITIONS
  */
 #info{
-    background: green;
-    position: absolute;
     z-index: 1;
     height: 22%;
     width: 27%;
@@ -31,7 +29,7 @@ body{
     height: 100%;
 }
 #map{
-    background: blue;
+    background: #6B6D86;
     width: 67%;
     height: 100%;
 }
