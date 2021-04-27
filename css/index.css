@@ -18,17 +18,17 @@
 
     /* Fonts */
     --font-star-system-label: 'Roboto', sans-serif;
-    --font-size-star-system-label: 1.125em;
+    --font-size-star-system-label: 1.125rem;
     --font-itinerary-text: 'Roboto', sans-serif;
-    --font-size-itinerary-text: 1.5em;
+    --font-size-itinerary-text: 1.5rem;
     --font-itinerary-destinations: 'Roboto', sans-serif;
-    --font-size-itinerary-destinations: 1.125em;
+    --font-size-itinerary-destinations: 1.125rem;
     --font-topbar-buttons: 'Roboto', sans-serif;
-    --font-size-topbar-buttons: 1.5em;
+    --font-size-topbar-buttons: 1.5rem;
     --font-info-title: 'Roboto', sans-serif;
-    --font-size-info-title: 1.5em;
+    --font-size-info-title: 1.5rem;
     --font-info-text: 'Roboto', sans-serif;
-    --font-size-info-text: 1.125em;
+    --font-size-info-text: 1.125rem;
 }
 body{
     width: 100%;
