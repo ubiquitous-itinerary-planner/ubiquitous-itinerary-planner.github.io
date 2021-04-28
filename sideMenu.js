@@ -71,6 +71,8 @@ function createSystem(parent, system){
         item.onclick = function(){
             itInit(pid);
         };
+        item.setAttribute("role", "button");
+        item.tabIndex = 0;
         list.appendChild(item);
     }
     main.appendChild(list);
