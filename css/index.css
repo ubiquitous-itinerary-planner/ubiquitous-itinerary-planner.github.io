@@ -48,6 +48,12 @@ tr:nth-child(odd){
     background-color: var(--color-main-transparent);
 }
 
+p{
+    margin-bottom: 0;
+}
+ul{
+    margin-top: 0;
+}
 
 /*
  * CLASS LEVEL DEFINITIONS

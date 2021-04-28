@@ -11,7 +11,7 @@ let dict = {
         // Others
         'systemJump', 'population', 'colonyAge', 'avgTemp', 'homeButton', 'itinButton', 'helpButton',
         'addButton', 'removeButton', 'clearItin', 'planetView', 'name', 'starsystem', 'breathableAir', 'infrastructure',
-        'Vintergatan', 'departure_title', 'departure_body_header'],
+        'Vintergatan', 'departure_title', 'departure_body_header', 'itinerary_title'],
     'pics' : ['langPic'],
 
     'en' : {
@@ -43,6 +43,7 @@ let dict = {
         'departure_title': "Departure",
         'departure_body_header': "Choose the planet from which your journey will start. Use the map or select the " +
             "planet from the list below.",
+        'itinerary_title': "Itinerary",
 
     },
 
@@ -75,6 +76,7 @@ let dict = {
         'departure_title': "Avresa",
         'departure_body_header': "Välj planeten från vilken din resa kommer att börja. Använd kartan för att göra ditt " +
             "val, eller välj en planet från listan nedan.",
+        'itinerary_title': "Resväg",
 
     }
 }

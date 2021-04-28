@@ -18,6 +18,28 @@ function depInit(){
 }
 
 /**
+ * Initializes the itinerary element, and its children.
+ * @param start the planet which the itinerary starts from
+ */
+function itInit(start){
+    // Toggle visibility of the departure and the itinerary
+    $("#departure").css("display", "none");
+    $("#itinerary").css("display", "initial");
+    itClearCommit(); // Ensure that the itinerary is clear initially
+    itPushCommit(start); // Add the starting planet to the itinerary
+    itUpdate();
+}
+
+/**
+ * Re-draws the itinerary
+ */
+function itUpdate(){
+    let path = itGet();
+    // The "departure from: " text
+    let body = document.getElementById("itinerary_body");
+}
+
+/**
  * Creates an inserts a representation of a system into a parent object. The system is inserted last into the parent.
  * @param parent the parent
  * @param system the name of the system to insert a representation of
@@ -45,6 +67,10 @@ function createSystem(parent, system){
         let pid = planets[p];
         let item = document.createElement("li");
         item.id = PDB.planets[pid].name;
+        // Clicking on the planet switches to itinerary view
+        item.onclick = function(){
+            itInit(pid);
+        };
         list.appendChild(item);
     }
     main.appendChild(list);
