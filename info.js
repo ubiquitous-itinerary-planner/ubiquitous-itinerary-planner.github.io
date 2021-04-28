@@ -22,6 +22,9 @@ function infoUpdate(i){
     // Show the panel
     document.getElementById('info').style.display = 'initial';
     update_dict_view();
+
+    // Push the sideMenu down, if we are on mobile
+    $(".sideMenu").addClass("sideMenu_withInfo");
 }
 
 /**

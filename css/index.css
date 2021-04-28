@@ -71,7 +71,9 @@ ul{
     -webkit-box-sizing: border-box;
 }
 .sideMenu_body{
-    padding: 5%;
+    padding-right: 5%;
+    padding-left: 5%;
+    overflow: scroll;
 }
 .title{
     background-color: var(--color-main);
@@ -101,6 +103,9 @@ ul{
 /*
  * ELEMENT LEVEL DEFINITIONS
  */
+#departure_body{
+    height: 90%;
+}
 #departure_title{
     font-family: var(--font-sideMenu-title);
     font-size: var(--font-size-sideMenu-title);
@@ -137,6 +142,9 @@ ul{
 
 #itinerary{
     display: none;
+}
+#itinerary_body{
+    height: 40%;
 }
 #itinerary_title{
     font-family: var(--font-sideMenu-title);
