@@ -3,7 +3,7 @@
 // ------------------------------------------------------------------------
 let language = 'en';
 let dict = {
-    'text' : ['one', 'two', 'systemJump', "tellus", 'population', 'colonyAge', 'avgTemp', 'homeButton', 'itinButton', 'helpButton', 'addButton', 'removeButton', 'clearItin', 'planetView', 'name', 'starsystem', 'breathableAir', 'infrastructure', 'Vintergatan', 'Jorden', 'solarSystem',],
+    'text' : ['one', 'two', 'systemJump', "tellus", 'population', 'colonyAge', 'avgTemp', 'homeButton', 'itinButton', 'helpButton', 'addButton', 'removeButton', 'clearItin', 'planetView', 'name', 'starsystem', 'breathableAir', 'infrastructure', 'Vintergatan', 'Jorden', 'solarSystem','departure_title'],
     'pics' : ['langPic'],
 
     'en' : {
@@ -27,7 +27,8 @@ let dict = {
         'Vintergatan': "Milkyway",
         'Jorden': "Planet Earth",
         'solarSystem': "Solar System",
-        'langPic': "images/eng.png"
+        'langPic': "images/eng.png",
+        'departure_title': "Departure"
         
     },
 
@@ -52,7 +53,8 @@ let dict = {
         'Vintergatan': "Vintergatan",
         'Jorden': "Jorden",
         'solarSystem': "Solsystemet",
-        'langPic': "images/se.png"
+        'langPic': "images/se.png",
+        'departure_title': "Avresa"
     }
 }
 

@@ -1,5 +1,5 @@
 /**
- * Code managing an itinerary.
+ * Code managing an the side-menu, consisting of the "Departure" selection, and the "Itinerary" information.
  */
 
 /*

@@ -9,6 +9,10 @@ body{
 /*
  * CLASS LEVEL DEFINITIONS
  */
+.sideMenu{
+    width: 33%;
+    height: 100%;
+}
 .topBarButton{
     width: 20%;
 }
@@ -23,13 +27,7 @@ body{
     bottom: 0;
     left: 0;
 }
-#itinerary{
-    background: yellowgreen;
-    width: 33%;
-    height: 100%;
-}
 #map{
-    background: #6B6D86;
     width: 67%;
     height: 100%;
 }

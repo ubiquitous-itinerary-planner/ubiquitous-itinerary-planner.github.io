@@ -20,7 +20,7 @@ function infoUpdate(i){
         '<tr><td id="avgTemp">' + '</td><td>' + PDB.planets[i].meantemp + '</td></tr>' +
         '<tr><td id="breathableAir">' + '</td><td>' + PDB.planets[i].breathable + '</td></tr>';
     // Show the panel
-    document.getElementById('info').style.visibility = "visible";
+    document.getElementById('info').style.display = 'initial';
     update_dict_view();
 }
 
