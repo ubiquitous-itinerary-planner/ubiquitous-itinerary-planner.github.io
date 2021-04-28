@@ -7,11 +7,50 @@
  */
 
 /**
- * Initializes the itinerary element, and its children.
+ * Initializes the departure element, and its children.
  */
-function itInit(){
-
+function depInit(){
+    let body = document.getElementById("departure_body");
+    let systems = mapGetSystems();
+    for(let s in systems){
+        createSystem(body, systems[s]);
+    }
 }
+
+/**
+ * Creates an inserts a representation of a system into a parent object. The system is inserted last into the parent.
+ * @param parent the parent
+ * @param system the name of the system to insert a representation of
+ */
+function createSystem(parent, system){
+    let planets = mapGetPlanets(system);
+    /* Overview:
+     * <div main>
+     *    <p system></p>
+     *    <ul list>
+     *       <li planet></li>
+     *    </ul list>
+     * </div main>
+     */
+    // main
+    let main = document.createElement("div");
+    // p system
+    let p = document.createElement("p");
+    p.id = system;
+    main.appendChild(p);
+    // ul list
+    let list = document.createElement("ul");
+    // li planet
+    for(p in planets){
+        let pid = planets[p];
+        let item = document.createElement("li");
+        item.id = PDB.planets[pid].name;
+        list.appendChild(item);
+    }
+    main.appendChild(list);
+    parent.appendChild(main);
+}
+
 
 /*
  * Model code

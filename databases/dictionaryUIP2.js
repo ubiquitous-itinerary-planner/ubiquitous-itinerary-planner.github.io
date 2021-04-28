@@ -3,7 +3,7 @@
 // ------------------------------------------------------------------------
 let language = 'en';
 let dict = {
-    'text' : ['systemJump', "tellus", 'population', 'colonyAge', 'avgTemp', 'homeButton', 'itinButton', 'helpButton',
+    'text' : ['tellus', 'mars', 'systemJump', 'population', 'colonyAge', 'avgTemp', 'homeButton', 'itinButton', 'helpButton',
         'addButton', 'removeButton', 'clearItin', 'planetView', 'name', 'starsystem', 'breathableAir', 'infrastructure',
         'Vintergatan', 'Jorden', 'solarSystem', 'departure_title', 'departure_body_header'],
     'pics' : ['langPic'],
@@ -12,7 +12,6 @@ let dict = {
         'homeButton' : "Star system view",
         'title' : "Itinerary Planner",
         'systemJump': "System jump location",
-        'tellus': "Planet Earth",
         'population': "Population:",
         'avgTemp': "Average temperature:",
         'itinButton': 'Itinierary',
@@ -26,18 +25,22 @@ let dict = {
         'infrastructure': "Infrastructure:",
         'Vintergatan': "Milkyway",
         'Jorden': "Planet Earth",
-        'solarSystem': "Solar System",
         'langPic': "images/eng.png",
         'departure_title': "Departure",
         'departure_body_header': "Choose the planet from which your journey will start. Use the map or select the " +
-            "planet from the list below."
+            "planet from the list below.",
+        // Planet names
+        'tellus': "Earth",
+        'mars' : "Mars",
+        // System names
+        'solarSystem': "Solar System",
+
     },
 
     'sv' : {
         'homeButton' : "Stjärnsystemsvy",
         'title' : "Resvägsplanerare",
         'systemJump': "Stjärnsystemshopp",
-        'tellus': "Jorden",
         'population': "Populationsmängd",
         'avgTemp': "Medeltemperatur",
         'itinButton': "Reseplan",
@@ -51,11 +54,16 @@ let dict = {
         'infrastructure': "Infrastruktur:",
         'Vintergatan': "Vintergatan",
         'Jorden': "Jorden",
-        'solarSystem': "Solsystemet",
         'langPic': "images/se.png",
         'departure_title': "Avresa",
         'departure_body_header': "Välj planeten från vilken din resa kommer att börja. Använd kartan för att göra ditt " +
-            "val, eller välj en planet från listan nedan."
+            "val, eller välj en planet från listan nedan.",
+        // Planet names
+        'tellus': "Jorden",
+        'mars': "Mars",
+        // System names
+        'solarSystem': "Solsystemet",
+
     }
 }
 

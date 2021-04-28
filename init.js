@@ -8,8 +8,8 @@ $("document").ready(function() {
     updateSize();
 
     /* Initialize elements */
-    itInit();
     mapInit();
+    depInit();
     topBarInit();
     update_dict_view();
 });

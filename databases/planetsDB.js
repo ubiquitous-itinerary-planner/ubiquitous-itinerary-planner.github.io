@@ -27,8 +27,8 @@ let PDB = {
             "standardmealcost": ""
         }, {
             "id": "1",
-            "name": "Mars",
-            "starsystem": "Solar System",
+            "name": "mars",
+            "starsystem": "solarSystem",
             "size": "",
             "population": "",
             "climate": "",
