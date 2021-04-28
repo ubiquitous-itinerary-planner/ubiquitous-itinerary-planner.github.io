@@ -5,7 +5,7 @@ let language = 'en';
 let dict = {
     'text' : ['tellus', 'mars', 'systemJump', 'population', 'colonyAge', 'avgTemp', 'homeButton', 'itinButton', 'helpButton',
         'addButton', 'removeButton', 'clearItin', 'planetView', 'name', 'starsystem', 'breathableAir', 'infrastructure',
-        'Vintergatan', 'Jorden', 'solarSystem', 'departure_title', 'departure_body_header'],
+        'Vintergatan', 'solarSystem', 'departure_title', 'departure_body_header'],
     'pics' : ['langPic'],
 
     'en' : {
@@ -24,7 +24,6 @@ let dict = {
         'breathableAir': "Breathable air:",
         'infrastructure': "Infrastructure:",
         'Vintergatan': "Milkyway",
-        'Jorden': "Planet Earth",
         'langPic': "images/eng.png",
         'departure_title': "Departure",
         'departure_body_header': "Choose the planet from which your journey will start. Use the map or select the " +
@@ -53,7 +52,6 @@ let dict = {
         'breathableAir': "Andningsbar luft:",
         'infrastructure': "Infrastruktur:",
         'Vintergatan': "Vintergatan",
-        'Jorden': "Jorden",
         'langPic': "images/se.png",
         'departure_title': "Avresa",
         'departure_body_header': "Välj planeten från vilken din resa kommer att börja. Använd kartan för att göra ditt " +
