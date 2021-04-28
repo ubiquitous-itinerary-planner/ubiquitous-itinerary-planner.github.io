@@ -3,14 +3,14 @@
 // ------------------------------------------------------------------------
 let language = 'en';
 let dict = {
-    'text' : ['one', 'two', 'systemJump', "tellus", 'population', 'colonyAge', 'avgTemp', 'homeButton', 'itinButton', 'helpButton', 'addButton', 'removeButton', 'clearItin', 'planetView', 'name', 'starsystem', 'breathableAir', 'infrastructure', 'Vintergatan', 'Jorden', 'solarSystem','departure_title'],
+    'text' : ['systemJump', "tellus", 'population', 'colonyAge', 'avgTemp', 'homeButton', 'itinButton', 'helpButton',
+        'addButton', 'removeButton', 'clearItin', 'planetView', 'name', 'starsystem', 'breathableAir', 'infrastructure',
+        'Vintergatan', 'Jorden', 'solarSystem', 'departure_title', 'departure_body_header'],
     'pics' : ['langPic'],
 
     'en' : {
         'homeButton' : "Star system view",
         'title' : "Itinerary Planner",
-        'one': "One",
-        'two': "Two",
         'systemJump': "System jump location",
         'tellus': "Planet Earth",
         'population': "Population:",
@@ -28,15 +28,14 @@ let dict = {
         'Jorden': "Planet Earth",
         'solarSystem': "Solar System",
         'langPic': "images/eng.png",
-        'departure_title': "Departure"
-        
+        'departure_title': "Departure",
+        'departure_body_header': "Choose the planet from which your journey will start. Use the map or select the " +
+            "planet from the list below."
     },
 
     'sv' : {
         'homeButton' : "Stjärnsystemsvy",
         'title' : "Resvägsplanerare",
-        'one': "Ett",
-        'two': "Två",
         'systemJump': "Stjärnsystemshopp",
         'tellus': "Jorden",
         'population': "Populationsmängd",
@@ -54,7 +53,9 @@ let dict = {
         'Jorden': "Jorden",
         'solarSystem': "Solsystemet",
         'langPic': "images/se.png",
-        'departure_title': "Avresa"
+        'departure_title': "Avresa",
+        'departure_body_header': "Välj planeten från vilken din resa kommer att börja. Använd kartan för att göra ditt " +
+            "val, eller välj en planet från listan nedan."
     }
 }
 

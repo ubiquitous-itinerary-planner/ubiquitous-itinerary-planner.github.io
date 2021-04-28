@@ -64,6 +64,9 @@ tr:nth-child(odd){
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 }
+.sideMenu_body{
+    padding: 5%;
+}
 .title{
     background-color: var(--color-main);
     color: var(--color-on-main);
