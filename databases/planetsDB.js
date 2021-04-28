@@ -48,8 +48,8 @@ let PDB = {
             "standardmealcost": ""
         }, {
             "id": "2",
-            "name": "The Restaurant at the End of the Universe",
-            "starsystem": "Frogstar System",
+            "name": "theRestaurantAtTheEndOfTheUniverse",
+            "starsystem": "frogstarSystem",
             "size": "",
             "population": "",
             "climate": "",
@@ -69,8 +69,8 @@ let PDB = {
             "standardmealcost": ""
         }, {
             "id": "3",
-            "name": "Frogstar World A",
-            "starsystem": "Frogstar System",
+            "name": "frogstarWorldA",
+            "starsystem": "frogstarSystem",
             "size": "",
             "population": "",
             "climate": "",

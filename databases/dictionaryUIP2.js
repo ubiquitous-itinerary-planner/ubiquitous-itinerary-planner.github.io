@@ -3,12 +3,27 @@
 // ------------------------------------------------------------------------
 let language = 'en';
 let dict = {
-    'text' : ['tellus', 'mars', 'systemJump', 'population', 'colonyAge', 'avgTemp', 'homeButton', 'itinButton', 'helpButton',
+    'text' : [
+        // Planet names
+        'tellus', 'mars', 'theRestaurantAtTheEndOfTheUniverse', 'frogstarWorldA',
+        // System names
+        'solarSystem', 'frogstarSystem',
+        // Others
+        'systemJump', 'population', 'colonyAge', 'avgTemp', 'homeButton', 'itinButton', 'helpButton',
         'addButton', 'removeButton', 'clearItin', 'planetView', 'name', 'starsystem', 'breathableAir', 'infrastructure',
-        'Vintergatan', 'solarSystem', 'departure_title', 'departure_body_header'],
+        'Vintergatan', 'departure_title', 'departure_body_header'],
     'pics' : ['langPic'],
 
     'en' : {
+        // Planet names
+        'tellus': "Earth",
+        'mars' : "Mars",
+        'theRestaurantAtTheEndOfTheUniverse': "The Restaurant at the End of the Universe",
+        'frogstarWorldA': "Frogstar World A",
+        // System names
+        'solarSystem': "Solar System",
+        'frogstarSystem': "Frogstar System",
+        // Others
         'homeButton' : "Star system view",
         'title' : "Itinerary Planner",
         'systemJump': "System jump location",
@@ -28,15 +43,19 @@ let dict = {
         'departure_title': "Departure",
         'departure_body_header': "Choose the planet from which your journey will start. Use the map or select the " +
             "planet from the list below.",
-        // Planet names
-        'tellus': "Earth",
-        'mars' : "Mars",
-        // System names
-        'solarSystem': "Solar System",
 
     },
 
     'sv' : {
+        // Planet names
+        'tellus': "Jorden",
+        'mars': "Mars",
+        'theRestaurantAtTheEndOfTheUniverse': "Restaurangen i Slutet av Universum",
+        'frogstarWorldA': "Frogstar Värld A",
+        // System names
+        'solarSystem': "Solsystemet",
+        'frogstarSystem': "Frogstarsystemet",
+        // Others
         'homeButton' : "Stjärnsystemsvy",
         'title' : "Resvägsplanerare",
         'systemJump': "Stjärnsystemshopp",
@@ -56,11 +75,6 @@ let dict = {
         'departure_title': "Avresa",
         'departure_body_header': "Välj planeten från vilken din resa kommer att börja. Använd kartan för att göra ditt " +
             "val, eller välj en planet från listan nedan.",
-        // Planet names
-        'tellus': "Jorden",
-        'mars': "Mars",
-        // System names
-        'solarSystem': "Solsystemet",
 
     }
 }
