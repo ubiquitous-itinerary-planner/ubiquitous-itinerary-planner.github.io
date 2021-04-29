@@ -41,9 +41,27 @@ function helpBtnInit(parent){
  */
 function languageBtnInit(parent){
     let languageBtn = document.createElement("button");
-    languageBtn.innerHTML = "Language Button"
-    languageBtn.id = "activeLanguageButton";
+    languageBtn.innerHTML = createPic("images/eng.png", "Faulty picture of flag") + "Language Button"
+    //languageBtn.id = "activeLanguageButton";
     languageBtn.classList.add("topBarButton");
     languageBtn.onclick=change_lang; 
     parent.appendChild(languageBtn);
 }
+
+function createPic(image_path, alt_text) {
+    var x = document.createElement("img");
+    x.setAttribute("src", image_path)
+    x.setAttribute("width", "60");
+    x.setAttribute("heigth", "30");
+    x.setAttribute("alt", alt_text);
+    return x.outerHTML;
+}
+/*
+function createPic(langPic) {
+let languagePic = document.createElement("img");
+languagePic.src = langPic;
+languagePic.width = "30"
+languagePic.height = "30"
+languagePic.alt = "Language Button"
+return languagePic.outerHTML;
+}*/
