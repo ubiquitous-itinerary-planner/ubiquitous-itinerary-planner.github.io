@@ -17,8 +17,9 @@ function infoUpdate(i){
         '<tr><td id="population">' + '</td><td>' + PDB.planets[i].population + '</td></tr>' +
         '<tr><td id="starsystem">' + '</td><td id="' + PDB.planets[i].starsystem + '">' + '</td></tr>' +
         '<tr><td id="infrastructure">' + '</td><td>' + PDB.planets[i].infrastructure + '</td></tr>' +
-        '<tr><td id="avgTemp">' + '</td><td>' + PDB.planets[i].meantemp + '</td></tr>' +
-        '<tr><td id="breathableAir">' + '</td><td>' + PDB.planets[i].breathable + '</td></tr>';
+        '<tr><td id="meantemp">' + '</td><td>' + PDB.planets[i].meantemp + '</td></tr>' +
+        '<tr><td id="breathable">' + '</td><td>' + PDB.planets[i].breathable + '</td></tr>' +
+        '<tr><td id="climate">' + '</td><td id="' + PDB.planets[1].climate + '">' + '</td></tr>';
     // Show the panel
     document.getElementById('info').style.display = 'initial';
     update_dict_view();

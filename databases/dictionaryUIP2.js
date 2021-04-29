@@ -3,81 +3,118 @@
 // ------------------------------------------------------------------------
 let language = 'en';
 let dict = {
-    'text' : [
-        // Planet names
-        'tellus', 'mars', 'theRestaurantAtTheEndOfTheUniverse', 'frogstarWorldA',
-        // System names
-        'solarSystem', 'frogstarSystem',
-        // Others
-        'systemJump', 'population', 'colonyAge', 'avgTemp', 'homeButton', 'itinButton', 'helpButton',
-        'addButton', 'removeButton', 'clearItin', 'planetView', 'name', 'starsystem', 'breathableAir', 'infrastructure',
-        'Vintergatan', 'departure_title', 'departure_body_header', 'itinerary_title'],
+
+    //top bar menu
+    'text' : ['homeButton', 'helpButton', 'activeLanguage', 'title', 'itinButton', 'addButton', 'removeButton', 'clearItin', 'planetView', 'systemJump', 
+    //Planet database variable translations
+    'name', 'starsystem', 'size', 'population', 'climate', 'infrastructure', 'breathable', 'usp', 'meantemp', 'animalspecies', 'government', 'gravity', 
+    'culturalusp', 'hoursperday', 'currency', 'language', 'domesticanimals', 'percentualwatersurface', 'standardmealcost', 
+    //Planet database answer translations
+    'earth', 'solarSystem', 'earthSummerBalanced', 'earthLike', 'yes', 'startOfCivilisation', 'selfcontrolled', 'skansen', 'spaceDollar', 'english', 
+    'mars', 'frozenDesert', 'marsLike', 'no', 'marsianAndEnglish', 'duskyAndChill', 'futuristic', 'rainAndStormy', 'volcanicLavaStreams', 'hotDaysFrozenNightsDesert', 'thirdWorld', 
+    'dry', 'flourishing', 'dryAndHot'],
+    //Pictures
     'pics' : ['langPic'],
 
     'en' : {
-        // Planet names
-        'tellus': "Earth",
-        'mars' : "Mars",
-        'theRestaurantAtTheEndOfTheUniverse': "The Restaurant at the End of the Universe",
-        'frogstarWorldA': "Frogstar World A",
-        // System names
-        'solarSystem': "Solar System",
-        'frogstarSystem': "Frogstar System",
-        // Others
+        //top bar menu
         'homeButton' : "Star system view",
+        'helpButton': "Help",
+        'activeLanguage': "English",
         'title' : "Itinerary Planner",
+        'itinButton': "Itinierary",
+        'addButton': "Add",
+        'removeButton': "Remove",
+        'clearItin': "Clear Itinerary",
+        'planetView': "Planet view",
         'systemJump': "System jump location",
-        'population': "Population:",
-        'avgTemp': "Average temperature:",
-        'itinButton': 'Itinierary',
-        'helpButton': 'Help',
-        'addButton': 'Add',
-        'removeButton': 'Remove',
-        'planetView': 'Planet view',
+        //Planet database variable translations
         'name': "Name:",
         'starsystem': "Star system:",
-        'breathableAir': "Breathable air:",
+        'size': "Size:",
+        'population': "Population:",
+        'climate': "Climate:",
         'infrastructure': "Infrastructure:",
-        'Vintergatan': "Milkyway",
-        'langPic': "images/eng.png",
-        'departure_title': "Departure",
-        'departure_body_header': "Choose the planet from which your journey will start. Use the map or select the " +
-            "planet from the list below.",
-        'itinerary_title': "Itinerary",
-
+        'breathable': "Breathable air:",
+        'usp': "Unique selling point:",
+        'meantemp': "Average temperature:",
+        'animalspecies': "Animal species:",
+        'government': "Government:",
+        'gravity': "Gravity:",
+        'culturalusp': "Cultural unique selling point:",
+        'hoursperday': "Number of hours per day:",
+        'currency': "Currency:",
+        'language': "Language:",
+        'domesticanimals': "Domestican animals:",
+        'percentualwatersurface': "Percentual water surface:",
+        'standardmealcost': "Standard cost of a meal:",
+        //Planet database answer translations
+        'earth': "Planet Earth",
+        'solarSystem': "Solar System", 
+        'earthSummerBalanced': "Earth summer balanced",
+        'earthLike': "Earth-like",
+        'yes': "Yes",
+        'startOfCivilisation': "Start of civilisation", 
+        'selfcontrolled': "Self controlled", 
+        'skansen': "Skansen", 
+        'spaceDollar': "Space dollar", 
+        'english': "English",
+        'mars': "Mars",
+        'frozenDesert': "Frozen desert",
+        'marsLike': "Mars-like",
+        'no': "No",
+        'marsianAndEnglish': "Marsian and English",
+        'duskyAndChilly': "Dusky and chilly",
+        'futuristic': "Futuristic",
+        'rainAndStormy': "Rain and stormy",
+        'volcanicLavaStreams': "Volcanic lava streams",
+        'hotDaysFrozenNightsDesert': "Hot days and frozen nights desert",
+        'thirdWorld': "Third world",
+        'dry': "Dry",
+        'flourishing': "Flourishing",
+        'dryAndHot': "Dry and hot",
+        //Pictures
+        'langPic': "images/eng.png"
     },
 
     'sv' : {
-        // Planet names
-        'tellus': "Jorden",
-        'mars': "Mars",
-        'theRestaurantAtTheEndOfTheUniverse': "Restaurangen i Slutet av Universum",
-        'frogstarWorldA': "Frogstar Värld A",
-        // System names
-        'solarSystem': "Solsystemet",
-        'frogstarSystem': "Frogstarsystemet",
-        // Others
+        //top bar menu
         'homeButton' : "Stjärnsystemsvy",
-        'title' : "Resvägsplanerare",
-        'systemJump': "Stjärnsystemshopp",
-        'population': "Populationsmängd",
-        'avgTemp': "Medeltemperatur",
-        'itinButton': "Reseplan",
         'helpButton': "Hjälp",
-        'addButton': 'Lägg till',
-        'removeButton': 'Ta bort',
-        'planetView': 'Planetvy',
+        'activeLanguage': "Svenska",
+        'title' : "Resvägsplanerare",
+        'itinButton': "Reseplan",
+        'addButton': "Lägg till",
+        'removeButton': "Ta bort",
+        'clearItin': "Rensa reseplan",
+        'planetView': "Planetvy",
+        'systemJump': "Stjärnsystemshopp",
+        //Planet database variable translations
         'name': "Namn:",
         'starsystem': "Stjärnsystem:",
-        'breathableAir': "Andningsbar luft:",
+        'size': "Size:",
+        'population': "Populationsmängd:",
+        'climate': "Climate:",
         'infrastructure': "Infrastruktur:",
-        'Vintergatan': "Vintergatan",
-        'langPic': "images/se.png",
-        'departure_title': "Avresa",
-        'departure_body_header': "Välj planeten från vilken din resa kommer att börja. Använd kartan för att göra ditt " +
-            "val, eller välj en planet från listan nedan.",
-        'itinerary_title': "Resväg",
-
+        'breathable': "Andningsbar luft:",
+        'usp': "Unique selling point:",
+        'meantemp': "Medeltemperatur:",
+        'animalspecies': "Animal species:",
+        'government': "Government:",
+        'gravity': "Gravity:",
+        'culturalusp': "Cultural unique selling point:",
+        'hoursperday': "Number of hours per day:",
+        'currency': "Currency:",
+        'language': "Language:",
+        'domesticanimals': "Domestican animals:",
+        'percentualwatersurface': "Percentual water surface:",
+        'standardmealcost': "Standard cost of a meal:",
+        //Planet database answer translations
+        'earth': "Jorden",
+        'solarSystem': "Solsystemet",
+        'mars': "Mars",
+        //Bilder
+        'langPic': "images/se.png"
     }
 }
 
