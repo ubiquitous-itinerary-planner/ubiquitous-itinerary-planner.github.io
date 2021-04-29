@@ -5,7 +5,7 @@ let language = 'en';
 let dict = {
 
     //menu and common word translations
-    'text' : ['homeButton', 'helpButton', 'activeLanguage', 'departure_title', 'itinButton', 'addButton', 'removeButton', 'clearItin', 'planetView', 'systemJump',
+    'text' : ['homeButton', 'helpButton', 'activeLanguageButton', 'departure_title', 'itinButton', 'addButton', 'removeButton', 'clearItin', 'planetView', 'systemJump',
     'yes', 'no',
     //Planet database variable translations
     'name', 'starsystem', 'size', 'population', 'climate', 'infrastructure', 'breathable', 'usp', 'meantemp', 'animalspecies', 'government', 'gravity', 
@@ -37,7 +37,7 @@ let dict = {
         //menu and common word translations
         'homeButton' : "Star system view",
         'helpButton': "Help",
-        'activeLanguage': "English",
+        'activeLanguageButton': "English",
         'departure_title' : "Itinerary planner",
         'itinButton': "Itinierary",
         'addButton': "Add",
@@ -126,7 +126,7 @@ let dict = {
         //top bar menu
         'homeButton' : "Stjärnsystemsvy",
         'helpButton': "Hjälp",
-        'activeLanguage': "Svenska",
+        'activeLanguageButton': "Svenska",
         'departure_title' : "Resvägsplanerare",
         'itinButton': "Reseplan",
         'addButton': "Lägg till",
@@ -245,7 +245,7 @@ function update_dict_view() {
     for (let idx in pics) {
         let pic = pics[idx];
         $("#" + pic).attr('src', get_string(pic));
-        //$("." + pic).attr('src', get_string(pic));
+        $("." + pic).attr('src', get_string(pic));
     }
     // Update page title
     $(document).attr("title", get_string("title"));

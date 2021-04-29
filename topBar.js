@@ -27,7 +27,12 @@ function homeBtnInit(parent){
  * @param parent the parent into which to add the button
  */
 function helpBtnInit(parent){
-
+    let helpBtn = document.createElement("button");
+    helpBtn.innerHTML = "Help Button"
+    helpBtn.id = "helpButton";
+    helpBtn.classList.add("topBarButton");
+    //helpBtn.onclick=helpTutorial;
+    parent.appendChild(helpBtn);
 }
 
 /**
@@ -35,5 +40,10 @@ function helpBtnInit(parent){
  * @param parent the parent into which to add the button
  */
 function languageBtnInit(parent){
-
+    let languageBtn = document.createElement("button");
+    languageBtn.innerHTML = "Language Button"
+    languageBtn.id = "activeLanguageButton";
+    languageBtn.classList.add("topBarButton");
+    languageBtn.onclick=change_lang; 
+    parent.appendChild(languageBtn);
 }
