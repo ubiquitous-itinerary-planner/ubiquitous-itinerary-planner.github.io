@@ -9,12 +9,13 @@
 function infoInit(){
     items_table = document.getElementById('info_table');
     items_table.innerHTML = '';
-    items_table.innerHTML += '<th id="tellus"></th>' +  
-    '<tr><td id="population">' + '</td><td>' + PDB.planets[0].population + '</td></tr>' +
-    '<tr><td id="starsystem">' + '</td><td id="' + PDB.planets[0].starsystem + '">' + '</td></tr>' +
-    '<tr><td id="infrastructure">' + '</td><td>' + PDB.planets[0].infrastructure + '</td></tr>' +
-    '<tr><td id="avgTemp">' + '</td><td>' + PDB.planets[0].meantemp + '</td></tr>' +
-    '<tr><td id="breathableAir">' + '</td><td>' + PDB.planets[0].breathable + '</td></tr>';
+    items_table.innerHTML += '<th id="' + PDB.planets[1].name + '">' + '</th>' +  
+    '<tr><td id="population">' + '</td><td>' + PDB.planets[1].population + '</td></tr>' +
+    '<tr><td id="starsystem">' + '</td><td id="' + PDB.planets[1].starsystem + '">' + '</td></tr>' +
+    '<tr><td id="infrastructure">' + '</td><td id="' + PDB.planets[1].infrastructure + '">' + '</td></tr>' +
+    '<tr><td id="meantemp">' + '</td><td>' + PDB.planets[1].meantemp + '</td></tr>' +
+    '<tr><td id="breathable">' + '</td><td id="' + PDB.planets[1].breathable + '">' + '</td></tr>' +
+    '<tr><td id="climate">' + '</td><td id="' + PDB.planets[1].climate + '">' + '</td></tr>';
 }
 
 /**
