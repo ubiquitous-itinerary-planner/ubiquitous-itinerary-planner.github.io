@@ -6,16 +6,26 @@
  * we want an input from the planet clicked upon which works as the index fetching info from database.
  */
 
-function infoInit(){
-    items_table = document.getElementById('info_table');
-    items_table.innerHTML = '';
-    items_table.innerHTML += '<th id="' + PDB.planets[1].name + '">' + '</th>' +  
-    '<tr><td id="population">' + '</td><td>' + PDB.planets[1].population + '</td></tr>' +
-    '<tr><td id="starsystem">' + '</td><td id="' + PDB.planets[1].starsystem + '">' + '</td></tr>' +
-    '<tr><td id="infrastructure">' + '</td><td id="' + PDB.planets[1].infrastructure + '">' + '</td></tr>' +
-    '<tr><td id="meantemp">' + '</td><td>' + PDB.planets[1].meantemp + '</td></tr>' +
-    '<tr><td id="breathable">' + '</td><td id="' + PDB.planets[1].breathable + '">' + '</td></tr>' +
-    '<tr><td id="climate">' + '</td><td id="' + PDB.planets[1].climate + '">' + '</td></tr>';
+function infoUpdate(i){
+    let itemsTitle = document.getElementById('info_title');
+    itemsTitle.innerHTML = '';
+    itemsTitle.innerHTML +=
+        '<th id="' + PDB.planets[i].name + '"></th>';
+    let itemsTable = document.getElementById('info_table');
+    itemsTable.innerHTML = '';
+    itemsTable.innerHTML +=
+        '<tr><td id="population">' + '</td><td>' + PDB.planets[i].population + '</td></tr>' +
+        '<tr><td id="starsystem">' + '</td><td id="' + PDB.planets[i].starsystem + '">' + '</td></tr>' +
+        '<tr><td id="infrastructure">' + '</td><td>' + PDB.planets[i].infrastructure + '</td></tr>' +
+        '<tr><td id="meantemp">' + '</td><td>' + PDB.planets[i].meantemp + '</td></tr>' +
+        '<tr><td id="breathable">' + '</td><td>' + PDB.planets[i].breathable + '</td></tr>' +
+        '<tr><td id="climate">' + '</td><td id="' + PDB.planets[1].climate + '">' + '</td></tr>';
+    // Show the panel
+    document.getElementById('info').style.display = 'initial';
+    update_dict_view();
+
+    // Push the sideMenu down, if we are on mobile
+    $(".sideMenu").addClass("sideMenu_withInfo");
 }
 
 /**

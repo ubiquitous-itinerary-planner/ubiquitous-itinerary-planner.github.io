@@ -3,6 +3,7 @@
 // ------------------------------------------------------------------------
 let language = 'en';
 let dict = {
+
     //top bar menu
     'text' : ['homeButton', 'helpButton', 'activeLanguage', 'title', 'itinButton', 'addButton', 'removeButton', 'clearItin', 'planetView', 'systemJump', 
     //Planet database variable translations

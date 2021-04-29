@@ -8,13 +8,11 @@ $("document").ready(function() {
     updateSize();
 
     /* Initialize elements */
-    infoInit();
-    itInit();
     mapInit();
+    depInit();
     topBarInit();
     update_dict_view();
 });
-
 
 // This is called whenever the screen is resized.
 $(window).resize(function(){

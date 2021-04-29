@@ -13,23 +13,9 @@ let RDB = {
             "duration" : "5", // In days
             "company" : "Solar Travels"
         },  {
-            "id" : "r1",
-            "start" : "1", //id
-            "destination" : "0", //id
-            "price" : "1000", // In SD
-            "duration" : "5", // In days
-            "company" : "Solar Travels"
-        },  {
             "id" : "r2",
             "start" : "2", //id
             "destination" : "3", //id
-            "price" : "2000", // In SD
-            "duration" : "10", // In days
-            "company" : "Frogstar Travels"
-        },  {
-            "id" : "r3",
-            "start" : "3", //id
-            "destination" : "2", //id
             "price" : "2000", // In SD
             "duration" : "10", // In days
             "company" : "Frogstar Travels"

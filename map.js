@@ -71,6 +71,7 @@ function mapAddRoute(route){
     let label = undefined;
     let name = route.id;
     map.setEdge(source, target, label, name);
+    map.setEdge(target, source, label, name);
 }
 
 /**

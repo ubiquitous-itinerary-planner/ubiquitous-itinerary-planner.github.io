@@ -7,25 +7,31 @@
 
     /* Color palette */
     --color-main: #FFFFFF;
+    --color-main-transparent: rgba(255, 255, 255, 0.33);
     --color-on-main: #6B6D86;
+    --color-on-main-transparent: #000000;
     --color-secondary: yellow; /* TODO: change this */
     --color-on-secondary: red; /* TODO: change this */
     --color-hover: orange; /* TODO: change this */
     --color-error: #CF6679;
+    --color-border: #D1D1D1;
+    --color-map-background: #6B6D86;
 
     /* Fonts */
+    --font-sideMenu-title: 'Roboto', sans-serif;
+    --font-size-sideMenu-title: 3.0rem;
     --font-star-system-label: 'Roboto', sans-serif;
-    --font-size-star-system-label: 1.125em;
+    --font-size-star-system-label: 1.125rem;
     --font-itinerary-text: 'Roboto', sans-serif;
-    --font-size-itinerary-text: 1.5em;
+    --font-size-itinerary-text: 1.5rem;
     --font-itinerary-destinations: 'Roboto', sans-serif;
-    --font-size-itinerary-destinations: 1.125em;
+    --font-size-itinerary-destinations: 1.125rem;
     --font-topbar-buttons: 'Roboto', sans-serif;
-    --font-size-topbar-buttons: 1.5em;
+    --font-size-topbar-buttons: 1.5rem;
     --font-info-title: 'Roboto', sans-serif;
-    --font-size-info-title: 1.5em;
+    --font-size-info-title: 1.5rem;
     --font-info-text: 'Roboto', sans-serif;
-    --font-size-info-text: 1.125em;
+    --font-size-info-text: 1.125rem;
 }
 body{
     width: 100%;
@@ -33,9 +39,51 @@ body{
     margin: 0; /* remove default padding, so that 100% of the window is 100% of the window */
 }
 
+html{
+    background: var(--color-map-background);
+}
+
+/* Colour rows of the table slightly differently, to improve visibility */
+tr:nth-child(odd){
+    background-color: var(--color-main-transparent);
+}
+
+p{
+    margin-bottom: 0;
+}
+ul{
+    margin-top: 0;
+}
+
 /*
  * CLASS LEVEL DEFINITIONS
  */
+
+.sideMenu{
+    background: var(--color-main-transparent);
+    border-color: var(--color-border);
+    border-style: solid;
+    border-width: medium;
+    /* Places border on inside */
+    /* https://stackoverflow.com/questions/9601357/placing-border-inside-of-div-and-not-on-its-edge */
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.sideMenu_body{
+    padding-right: 5%;
+    padding-left: 5%;
+    overflow: scroll;
+}
+.title{
+    background-color: var(--color-main);
+    color: var(--color-on-main);
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .topBarButton{
     border: 0;
     margin: 0;
@@ -55,7 +103,57 @@ body{
 /*
  * ELEMENT LEVEL DEFINITIONS
  */
+#departure_body{
+    height: 90%;
+}
+#departure_title{
+    font-family: var(--font-sideMenu-title);
+    font-size: var(--font-size-sideMenu-title);
+    font-weight: bold;
+}
+
+#info{
+    display: none;
+    background: var(--color-main-transparent);
+    position: absolute;
+    border-color: var(--color-border);
+    border-style: solid;
+    border-width: medium;
+    /* Places border on inside */
+    /* https://stackoverflow.com/questions/9601357/placing-border-inside-of-div-and-not-on-its-edge */
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+
+}
+#info_title{
+    font-family: var(--font-info-title);
+    font-size: var(--font-size-info-title);
+    width: 100%;
+    height: 27.4%;
+}
+#info_table{
+    color: var(--color-on-main-transparent);
+    font-family: var(--font-info-text);
+    font-size: var(--font-size-info-text);
+    width: 100%;
+    border-spacing: 0;
+}
+
+#itinerary{
+    display: none;
+}
+#itinerary_body{
+    height: 40%;
+}
+#itinerary_title{
+    font-family: var(--font-sideMenu-title);
+    font-size: var(--font-size-sideMenu-title);
+    font-weight: bold;
+}
+
 #topBar{
     background: transparent;
     z-index: 2;
 }
+

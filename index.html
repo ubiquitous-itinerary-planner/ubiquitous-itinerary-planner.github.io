@@ -18,7 +18,7 @@
 
   <!--Javascript code -->
   <script src="info.js"></script>
-  <script src="itinerary.js"></script>
+  <script src="sideMenu.js"></script>
   <script src="undo.js"></script>
   <script src="databases/planetsDB.js"></script>
   <script src="planets.js"></script>
@@ -28,7 +28,6 @@
   <script src="topBar.js"></script>
   <script src="databases/dictionaryUIP2.js"></script>
   <script src="init.js"></script>
-  <script src="PlanetsDB.js"></script>
 
   <!-- Scripts for testing modules, remove these before hand-in -->
   <script src="tests/itinerary.test.js"></script>
@@ -36,13 +35,26 @@
 
 </head>
 <body>
-
 <div id="topBar"></div>
+<div id="map"></div>
 <div id="info">
+  <table id="info_title" class="title"></table>
   <table id="info_table"></table>
 </div>
-<div id="map"></div>
-<div id="itinerary"></div>
-
+<div id="itinerary" class="sideMenu">
+  <div id="itinerary_title" class="title"></div>
+  <div id="itinerary_body" class="sideMenu_body"></div>
+  <div id="itinerary_body_editable" class="sideMenu_body"></div>
+  <div id="itinerary_footer">
+    <table id="itinerary_summary"></table>
+    <button id="itinerary_clear_button"></button>
+  </div>
+</div>
+<div id="departure" class="sideMenu">
+  <div id="departure_title" class="title"></div>
+  <div id="departure_body" class="sideMenu_body">
+    <div id="departure_body_header"></div>
+  </div>
+</div>
 </body>
 </html>
