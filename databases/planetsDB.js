@@ -48,15 +48,15 @@ let PDB = {
             "standardmealcost": ""
         }, {
             "id": "2",
-            "name": "The Restaurant at the End of the Universe",
+            "name": "theRestaurantAtTheEndOfTheUniverse",
             "starsystem": "frogstarSystem",
             "size": "",
-            "population": "000",
-            "climate": "",
-            "infrastructure": "",
-            "breathable": "",
+            "population": "8",
+            "climate": "indoors",
+            "infrastructure": "futuristic",
+            "breathable": "yes",
             "usp": "",
-            "meantemp": "°C",
+            "meantemp": "18°C",
             "animalspecies": "",
             "government": "",
             "gravity": "",
@@ -69,15 +69,15 @@ let PDB = {
             "standardmealcost": ""
         }, {
             "id": "3",
-            "name": "Frogstar World A",
+            "name": "frogstarWorldA",
             "starsystem": "frogstarSystem",
             "size": "",
-            "population": "",
-            "climate": "",
-            "infrastructure": "",
-            "breathable": "",
+            "population": "9500",
+            "climate": "soft",
+            "infrastructure": "earthLike",
+            "breathable": "yes",
             "usp": "",
-            "meantemp": "°C",
+            "meantemp": "14°C",
             "animalspecies": "",
             "government": "",
             "gravity": "",
@@ -90,15 +90,15 @@ let PDB = {
             "standardmealcost": ""
         }, {
             "id": "4",
-            "name": "Frogstar World B",
+            "name": "frogstarWorldB",
             "starsystem": "frogstarSystem",
             "size": "",
-            "population": "",
-            "climate": "",
-            "infrastructure": "",
-            "breathable": "",
+            "population": "1337",
+            "climate": "ruinsAndDirtyShoes",
+            "infrastructure": "marsLike",
+            "breathable": "yes",
             "usp": "",
-            "meantemp": "°C",
+            "meantemp": "12°C",
             "animalspecies": "",
             "government": "",
             "gravity": "",
@@ -111,15 +111,15 @@ let PDB = {
             "standardmealcost": ""
         }, {
             "id": "5",
-            "name": "Frogstar World C",
-            "starsystem": "Frogstar System",
+            "name": "frogstarWorldC",
+            "starsystem": "frogstarSystem",
             "size": "",
-            "population": "",
-            "climate": "",
-            "infrastructure": "",
-            "breathable": "",
+            "population": "1",
+            "climate": "beautifulForFishing",
+            "infrastructure": "earthLike",
+            "breathable": "yes",
             "usp": "",
-            "meantemp": "°C",
+            "meantemp": "13°C",
             "animalspecies": "",
             "government": "",
             "gravity": "",
@@ -132,8 +132,8 @@ let PDB = {
             "standardmealcost": ""
         }, {
             "id": "6",
-            "name": "Naboo",
-            "starsystem": "warStarSystem",
+            "name": "naboo",
+            "starsystem": "warstarSystem",
             "size": "",
             "population": "3 150 000",
             "climate": "earthSummerBalanced",
@@ -153,8 +153,8 @@ let PDB = {
             "standardmealcost": ""
         }, {
             "id": "7",
-            "name": "Coruscant",
-            "starsystem": "warStarSystem",
+            "name": "coruscant",
+            "starsystem": "warstarSystem",
             "size": "",
             "population": "950 000",
             "climate": "duskyAndChilly",
@@ -174,11 +174,11 @@ let PDB = {
             "standardmealcost": ""
         }, {
             "id": "8",
-            "name": "Kamino",
-            "starsystem": "warStarSystem",
+            "name": "kamino",
+            "starsystem": "warstarSystem",
             "size": "",
             "population": "25 000",
-            "climate": "rainAndStormy",
+            "climate": "rainyAndStormy",
             "infrastructure": "earthLike",
             "breathable": "yes",
             "usp": "",
@@ -195,8 +195,8 @@ let PDB = {
             "standardmealcost": ""
         }, {
             "id": "9",
-            "name": "Mustafar",
-            "starsystem": "warStarSystem",
+            "name": "mustafar",
+            "starsystem": "warstarSystem",
             "size": "",
             "population": "100 000",
             "climate": "volcanicLavaStreams",
@@ -216,8 +216,8 @@ let PDB = {
             "standardmealcost": ""
         }, {
             "id": "10",
-            "name": "Tatooine",
-            "starsystem": "warStarSystem",
+            "name": "tatooine",
+            "starsystem": "warstarSystem",
             "size": "",
             "population": "1 850 000",
             "climate": "hotDaysFrozenNightsDesert",
@@ -237,8 +237,8 @@ let PDB = {
             "standardmealcost": ""
         }, {
             "id": "11",
-            "name": "Shire",
-            "starsystem": "ringLordSystem",
+            "name": "shire",
+            "starsystem": "ringlordSystem",
             "size": "",
             "population": "1 500",
             "climate": "earthSummerBalanced",
@@ -258,8 +258,8 @@ let PDB = {
             "standardmealcost": ""
         }, {
             "id": "12",
-            "name": "Gondor",
-            "starsystem": "ringLordSystem",
+            "name": "gondor",
+            "starsystem": "ringlordSystem",
             "size": "",
             "population": "15 500",
             "climate": "dry",
@@ -279,8 +279,8 @@ let PDB = {
             "standardmealcost": ""
         }, {
             "id": "13",
-            "name": "Rohan",
-            "starsystem": "ringLordSystem",
+            "name": "rohan",
+            "starsystem": "ringlordSystem",
             "size": "",
             "population": "30 000",
             "climate": "flourishing",
@@ -300,8 +300,8 @@ let PDB = {
             "standardmealcost": ""
         }, {
             "id": "14",
-            "name": "Mordor",
-            "starsystem": "ringLordSystem",
+            "name": "mordor",
+            "starsystem": "ringlordSystem",
             "size": "",
             "population": "50 000",
             "climate": "dryAndHot",
