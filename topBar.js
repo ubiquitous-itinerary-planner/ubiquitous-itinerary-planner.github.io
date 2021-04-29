@@ -41,27 +41,18 @@ function helpBtnInit(parent){
  */
 function languageBtnInit(parent){
     let languageBtn = document.createElement("button");
-    languageBtn.innerHTML = createPic("images/eng.png", "Faulty picture of flag") + "Language Button"
-    //languageBtn.id = "activeLanguageButton";
+    // Create the text part
+    let language = document.createElement("div");
+    language.id = "activeLanguageButton";
+    // Create the flag part
+    let flag = document.createElement("img");
+    flag.id = 'langPic';
+    flag.setAttribute("alt", "Faulty picture of flag")
+    flag.setAttribute("height", "100%");
     languageBtn.classList.add("topBarButton");
-    languageBtn.onclick=change_lang; 
+    languageBtn.onclick=change_lang;
+    // Add the parts to the button, and add the button to the parent
+    languageBtn.appendChild(flag);
+    languageBtn.appendChild(language);
     parent.appendChild(languageBtn);
 }
-
-function createPic(image_path, alt_text) {
-    var x = document.createElement("img");
-    x.setAttribute("src", image_path)
-    x.setAttribute("width", "60");
-    x.setAttribute("heigth", "30");
-    x.setAttribute("alt", alt_text);
-    return x.outerHTML;
-}
-/*
-function createPic(langPic) {
-let languagePic = document.createElement("img");
-languagePic.src = langPic;
-languagePic.width = "30"
-languagePic.height = "30"
-languagePic.alt = "Language Button"
-return languagePic.outerHTML;
-}*/

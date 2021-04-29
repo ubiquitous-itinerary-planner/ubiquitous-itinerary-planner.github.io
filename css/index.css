@@ -85,6 +85,9 @@ ul{
     align-items: center;
 }
 .topBarButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 0;
     margin: 0;
     padding: 0;
@@ -153,6 +156,7 @@ ul{
 }
 
 #topBar{
+    display: flex;
     background: transparent;
     z-index: 2;
 }
