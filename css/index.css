@@ -64,6 +64,8 @@ ul{
     border-color: var(--color-border);
     border-style: solid;
     border-width: medium;
+    font-family: var(--font-itinerary-text);
+    font-size: var(--font-size-itinerary-text);
     /* Places border on inside */
     /* https://stackoverflow.com/questions/9601357/placing-border-inside-of-div-and-not-on-its-edge */
     box-sizing: border-box;
