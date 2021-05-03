@@ -5,7 +5,7 @@ let language = 'en';
 let dict = {
 
     //menu and common word translations
-    'text' : ['homeButton', 'helpButton', 'activeLanguageButton', 'departure_title', 'itinButton', 'addButton', 'removeButton', 'clearItin', 'planetView', 'systemJump',
+    'text' : ['homeButton', 'helpButton', 'activeLanguageButton', 'departure_title', 'itinerary_title', 'itinButton', 'addButton', 'removeButton', 'clearItin', 'planetView', 'systemJump',
     'yes', 'no',
     //Planet database variable translations
     'name', 'starsystem', 'size', 'population', 'climate', 'infrastructure', 'breathable', 'usp', 'meantemp', 'animalspecies', 'government', 'gravity', 
@@ -38,7 +38,8 @@ let dict = {
         'homeButton' : "Star system view",
         'helpButton': "Help",
         'activeLanguageButton': "English",
-        'departure_title' : "Itinerary planner",
+        'departure_title' : "Departures",
+        'itinerary_title': "Itinerary Planner",
         'itinButton': "Itinierary",
         'addButton': "Add",
         'removeButton': "Remove",
