@@ -27,7 +27,12 @@ function homeBtnInit(parent){
  * @param parent the parent into which to add the button
  */
 function helpBtnInit(parent){
-
+    let helpBtn = document.createElement("button");
+    helpBtn.innerHTML = "Help Button"
+    helpBtn.id = "helpButton";
+    helpBtn.classList.add("topBarButton");
+    //helpBtn.onclick=helpTutorial;
+    parent.appendChild(helpBtn);
 }
 
 /**
@@ -35,5 +40,19 @@ function helpBtnInit(parent){
  * @param parent the parent into which to add the button
  */
 function languageBtnInit(parent){
-
+    let languageBtn = document.createElement("button");
+    // Create the text part
+    let language = document.createElement("div");
+    language.id = "activeLanguageButton";
+    // Create the flag part
+    let flag = document.createElement("img");
+    flag.id = 'langPic';
+    flag.setAttribute("alt", "Faulty picture of flag")
+    flag.setAttribute("height", "100%");
+    languageBtn.classList.add("topBarButton");
+    languageBtn.onclick=change_lang;
+    // Add the parts to the button, and add the button to the parent
+    languageBtn.appendChild(flag);
+    languageBtn.appendChild(language);
+    parent.appendChild(languageBtn);
 }
