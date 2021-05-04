@@ -54,12 +54,6 @@ function itUpdate(){
     let footer = document.getElementById("itinerary_footer");
     footer.innerHTML = "";
 
-    /* The text "Departure from: ... */
-    /*let depFrom = document.createElement("div");
-    depFrom.innerHTML = "<span id='depFrom'></span><span>: </span><span>" + get_string(getPlanet(path[0]).name) + "</span>" +
-        "<br><span id='date'></span><span>: </span><span> " + new Intl.DateTimeFormat(language).format(date) + "</span>";
-    body.appendChild(depFrom);*/
-
     /* Available destinations */
     let outRoutes = mapGetRoutes(path[path.length-1].id);
     for(let i = 0; i < outRoutes.length; i++){
@@ -76,11 +70,11 @@ function itUpdate(){
         }
         itAddArrow(body);
         /* Add the first planet */
-        itAddPlanet(body, path[0], dates[0]);
+        itAddFirstPlanet(body, path[0], dates[0]);
     }
     else{
         /* Add the first planet */
-        itAddPlanet(editable, path[0], dates[0]);
+        itAddFirstPlanet(editable, path[0], dates[0]);
     }
 
 }
@@ -173,6 +167,15 @@ function itAddPlanet(parent, planet, date){
         "<span class='date'></span><span>: " + new Intl.DateTimeFormat(language).format(date) + "</span><br>" +
         "<span>" + planet.company + "</span><br>" +
         "<span>" + planet.price + "</span>";
+    parent.insertBefore(div, parent.firstChild);
+}
+
+function itAddFirstPlanet(parent, planet, date){
+    let p = getPlanet(planet.id);
+    let div = document.createElement("div");
+    div.innerHTML = "<span class='depFrom'></span><span>: " + get_string(p.name) +
+        "<span> (</span>" + get_string(p.starsystem) + ")</span><br>" +
+        "<span class='date'></span><span>: " + new Intl.DateTimeFormat(language).format(date) + "</span>"
     parent.insertBefore(div, parent.firstChild);
 }
 
