@@ -76,7 +76,17 @@ ul{
     padding-right: 5%;
     padding-left: 5%;
     overflow: scroll;
+    /* https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp */
+    /* IE, Edge, and Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none; /* This line works, despite your IDE possibly giving warnings */
 }
+/* https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp */
+/* Chrome, Safari, Opera */
+.sideMenu_body::-webkit-scrollbar{
+    display: none;
+}
+
 .title{
     background-color: var(--color-main);
     color: var(--color-on-main);
