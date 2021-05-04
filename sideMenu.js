@@ -57,7 +57,11 @@ function itUpdate(){
     /* Available destinations */
     let outRoutes = mapGetRoutes(path[path.length-1].id);
     for(let i = 0; i < outRoutes.length; i++){
-        itAddAvailableDestination(editable, getRoute(outRoutes[i].name));
+        let inReverse;
+        let route = getRoute(outRoutes[i].name);
+        // Check if the route is taken in reverse direction
+        inReverse = path[path.length-1].id === route.destination;
+        itAddAvailableDestination(editable, route, inReverse);
     }
     /* Add planets */
     if(path.length > 1){
@@ -134,11 +138,16 @@ function depCreateSystem(parent, system){
  * Adds the destination of the passed route as an available destination into the parent object
  * @param parent the object where to insert the available destination
  * @param route the route object
+ * @param inReverse true iff the route is traversed in the reverse direction
  */
-function itAddAvailableDestination(parent, route){
+function itAddAvailableDestination(parent, route, inReverse){
+    let destination = route.destination;
+    if(inReverse){
+        destination = route.start;
+    }
     /* Text box with info */
     let text = document.createElement("div");
-    text.innerHTML = "<span class='to'></span><span>: </span>" + get_string(getPlanet(route.destination).name) + "<span> (</span>" + get_string(getPlanet(route.destination).starsystem) + "<span>)</span>" + "<br>" +
+    text.innerHTML = "<span class='to'></span><span>: </span>" + get_string(getPlanet(destination).name) + "<span> (</span>" + get_string(getPlanet(destination).starsystem) + "<span>)</span>" + "<br>" +
         "<span class='spaceline'></span><span>: " + route.company + "</span><br>" +
         "<span class='duration'></span><span>: " + route.duration + "</span><br>" +
         "<span class='price'></span><span>: " + route.price + "</span>";
@@ -146,6 +155,11 @@ function itAddAvailableDestination(parent, route){
     /* Button to add the route */
     let btn = document.createElement("button");
     btn.classList.add("addButton");
+    btn.onclick = function (){
+        itPush({id: destination, price: route.price, duration: route.duration, company: route.company});
+        itUpdate();
+        update_dict_view();
+    };
     /* Div containing the above */
     let div = document.createElement("div");
     div.appendChild(text);
@@ -170,6 +184,13 @@ function itAddPlanet(parent, planet, date){
     parent.insertBefore(div, parent.firstChild);
 }
 
+/**
+ * Adds the planet with passed id into the first position of the passed parent object.
+ * The output is formatted as though the planet is the first planet of the itinerary.
+ * @param parent
+ * @param planet
+ * @param date
+ */
 function itAddFirstPlanet(parent, planet, date){
     let p = getPlanet(planet.id);
     let div = document.createElement("div");

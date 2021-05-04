@@ -268,6 +268,10 @@ function update_dict_view() {
     }
     // Update page title
     $(document).attr("title", get_string("title"));
+    // Update itinerary - needed to redraw date formats
+    if($("itinerary").css("display") === "initial"){
+        itUpdate();
+    }
 }
 // ===========================================================================
 // END OF FILE
