@@ -27,7 +27,7 @@ function itInit(start){
     $("#departure").css("display", "none");
     $("#itinerary").css("display", "initial");
     itClearCommit(); // Ensure that the itinerary is clear initially
-    itPushCommit(start); // Add the starting planet to the itinerary
+    itPushCommit({id: start, price: 0, duration: 0, company: ""}); // Add the start planet to the itinerary
     itUpdate();
 }
 
@@ -35,14 +35,17 @@ function itInit(start){
  * Re-draws the itinerary
  */
 function itUpdate(){
+    /* Path = [{id: num, price: num, duration: num, company: string}] */
     let path = itGet();
-    /* Find the time taken to travel through the itinerary */
+    /* Find arrival times for the planets of the path */
     let dates = [];
     dates[0] = START_DATE;
     for(let i = 1; i < path.length; i++){
-        dates[i] = new Date(dates[i-1].getTime());
-        dates[i].setDate(dates[i].getDate() + parseInt(getRoute(mapGetRoutes(path[i-1], path[i])[0].name).duration));
+        let d = new Date(dates[i-1]);
+        d.setDate(d.getDate() + path[i].duration);
+        dates.push(d);
     }
+    console.log(dates);
     /* Elements to write to */
     let body = document.getElementById("itinerary_body");
     body.innerHTML = "";
@@ -58,10 +61,11 @@ function itUpdate(){
     body.appendChild(depFrom);*/
 
     /* Available destinations */
-    let outRoutes = mapGetRoutes(path[path.length-1]);
+    let outRoutes = mapGetRoutes(path[path.length-1].id);
     for(let i = 0; i < outRoutes.length; i++){
         itAddAvailableDestination(editable, getRoute(outRoutes[i].name));
     }
+    /* Add planets */
     if(path.length > 1){
         /* Add the last planet to the "editable" element */
         itAddPlanet(editable, path[path.length-1], dates[path.length-1]);
@@ -159,16 +163,16 @@ function itAddAvailableDestination(parent, route){
 /**
  * Adds the planet with passed id into the first position of the passed parent object
  * @param parent the object where to insert the planet
- * @param id the id of the planet to insert
- * @param date the date of arrival to the planet
+ * @param planet the planet to insert
+ * @param date the date of arrival
  */
-function itAddPlanet(parent, id, date){
-    let planet = getPlanet(id);
+function itAddPlanet(parent, planet, date){
+    let p = getPlanet(planet.id);
     let div = document.createElement("div");
-    div.innerHTML = "<span>" + get_string(planet.name) + "</span><br>" +
+    div.innerHTML = "<span>" + get_string(p.name) + "</span><br>" +
         "<span class='date'></span><span>: " + new Intl.DateTimeFormat(language).format(date) + "</span><br>" +
-        "<span>" + "PLACEHOLDER: SPACELINE" + "</span><br>" +
-        "<span>" + "PLACEHOLDER: PRICE" + "</span>";
+        "<span>" + planet.company + "</span><br>" +
+        "<span>" + planet.price + "</span>";
     parent.insertBefore(div, parent.firstChild);
 }
 
