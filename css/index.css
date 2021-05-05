@@ -73,9 +73,14 @@ ul{
     -webkit-box-sizing: border-box;
 }
 .sideMenu_body{
-    padding-right: 5%;
-    padding-left: 5%;
+    margin-right: 5%;
+    margin-left: 5%;
 
+}
+
+.centered{
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .hiddenScroll{
@@ -104,6 +109,19 @@ ul{
     justify-content: center;
     align-items: center;
 }
+
+.itinerary_destination{
+    position: relative;
+}
+
+.addButton{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-family: var(--font-topbar-buttons);
+    font-size: var(--font-size-topbar-buttons);
+}
+
 .topBarButton{
     display: flex;
     justify-content: center;
@@ -160,22 +178,40 @@ ul{
 
 #itinerary{
     display: none;
+    position: relative;
 }
 #itinerary_body{
-    max-height: calc(79.5% - 20*var(--font-size-itinerary-text));
+    max-height: 50%;
+    /*max-height: calc(79.5% - 20*var(--font-size-itinerary-text));*/
 }
 
 #itinerary_body_editable{
-    overflow: hidden;
+    border-style: solid;
+    border-color: var(--color-main);
+    border-width: thin;
 }
 
 #itinerary_body_editable_destinations{
-    height: calc(89.5% - 3*var(--font-size-itinerary-text));
+    max-height: calc(100% - 3*var(--font-size-itinerary-text));
+}
+
+#itinerary_content{
+    height: 79.5%;
+    width: 100%;
 }
 
 #itinerary_footer{
     height: 10.5%;
-    bottom: 0;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#itinClearBtn{
+    height: 50%;
+    font-family: var(--font-topbar-buttons);
+    font-size: var(--font-size-topbar-buttons);
+
 }
 
 #topBar{

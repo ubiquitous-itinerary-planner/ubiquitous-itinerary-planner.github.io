@@ -96,12 +96,15 @@ function itUpdate(){
 
     /* Footer */
     let footerText = document.createElement("div");
+    footerText.id = "itinerary_footer_text";
+    footerText.classList.add("centered");
     let sumDays = Math.floor((dates[path.length-1]-dates[0]) / (1000*60*60*24));
 
     footerText.innerHTML = "<span class='totalTravelTime'></span><span> " + sumDays + " </span><span class='days'></span><br>" +
         "<span class='totalTravelCost'></span><span> " + sumPrice + " </span><span class='spaceDollar'></span>";
     let clearBtn = document.createElement("button");
-    clearBtn.classList.add('itinClearBtn');
+    clearBtn.id = 'itinClearBtn';
+    clearBtn.classList.add("centered");
     clearBtn.onclick = function (){
         itClearCommit();
         update_dict_view();
@@ -113,12 +116,8 @@ function itUpdate(){
     footer.appendChild(clearBtn);
 
     /* Do some dynamic styling */
-    let b =  $("#itinerary_body");
-    let e = $("#itinerary_body_editable");
-    let bodyH = b.outerHeight();
-    e.css("height", "calc(79.5% - " + bodyH + "px)");
-
-    // Move the scrollbar
+    let bodyH = $("#itinerary_body").css("height");
+    document.getElementById("itinerary_body_editable").style.maxHeight = "calc(100% - " + bodyH +")";
     body.scrollTo(0, body.scrollHeight);
 }
 
