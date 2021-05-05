@@ -176,7 +176,7 @@ function itAddAvailableDestination(parent, route, inReverse){
     let text = document.createElement("div");
     text.innerHTML = "<span class='to'></span><span>: </span>" + get_string(getPlanet(destination).name) + "<span> (</span>" + get_string(getPlanet(destination).starsystem) + "<span>)</span>" + "<br>" +
         "<span class='spaceline'></span><span>: " + route.company + "</span><br>" +
-        "<span class='duration'></span><span>: " + route.duration + "</span><br>" +
+        "<span class='duration'></span><span>: " + route.duration + " " + "<span class='days'></span></span><br>" +
         "<span class='price'></span><span>: " + route.price + " " + "<span class='spaceDollar'></span></span>";
 
     /* Button to add the route */
