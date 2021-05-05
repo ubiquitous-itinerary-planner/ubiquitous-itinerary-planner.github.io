@@ -2,6 +2,8 @@
  * Javascript for initialising the application.
  */
 
+START_DATE = new Date();
+
 $("document").ready(function() {
 
     /* Set CSS depending on screen size */
