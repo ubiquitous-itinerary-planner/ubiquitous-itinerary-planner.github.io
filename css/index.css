@@ -72,13 +72,12 @@ ul{
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 }
-.sideMenu_body{
+.centered-horizontal{
     margin-right: 5%;
     margin-left: 5%;
-
 }
 
-.centered{
+.centered-vertical{
     margin-top: auto;
     margin-bottom: auto;
 }
@@ -112,14 +111,23 @@ ul{
 
 .itinerary_destination{
     position: relative;
+    font-family: var(--font-itinerary-destinations);
+    font-size: var(--font-size-itinerary-destinations);
+    margin-top: var(--font-size-itinerary-destinations);
+    margin-bottom: var(--font-size-itinerary-destinations);
 }
 
 .addButton{
+    height: 75%;
+    width: 30%;
+    background-color: var(--color-main);
+    color: var(--color-on-main);
     position: absolute;
     bottom: 0;
     right: 0;
     font-family: var(--font-topbar-buttons);
     font-size: var(--font-size-topbar-buttons);
+    font-weight: bold;
 }
 
 .topBarButton{
@@ -189,6 +197,9 @@ ul{
     border-style: solid;
     border-color: var(--color-main);
     border-width: thin;
+    padding: 2.5%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
 }
 
 #itinerary_body_editable_destinations{
@@ -207,11 +218,18 @@ ul{
     justify-content: space-between;
 }
 
+#availDest{
+    margin-top: var(--font-size-itinerary-text);
+    margin-bottom: var(--font-size-itinerary-text);
+}
+
 #itinClearBtn{
     height: 50%;
     font-family: var(--font-topbar-buttons);
     font-size: var(--font-size-topbar-buttons);
-
+    font-weight: bold;
+    background-color: var(--color-main);
+    color: var(--color-on-main);
 }
 
 #topBar{

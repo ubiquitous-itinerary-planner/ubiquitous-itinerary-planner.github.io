@@ -59,7 +59,7 @@ function itUpdate(){
     /* Available destinations */
     // The "Available destinations:" text
     let availDest = document.createElement("div");
-    availDest.classList.add('availDest');
+    availDest.id=('availDest');
     editable.appendChild(availDest);
     editable.appendChild(destinations);
 
@@ -97,14 +97,14 @@ function itUpdate(){
     /* Footer */
     let footerText = document.createElement("div");
     footerText.id = "itinerary_footer_text";
-    footerText.classList.add("centered");
+    footerText.classList.add("centered-vertical");
     let sumDays = Math.floor((dates[path.length-1]-dates[0]) / (1000*60*60*24));
 
     footerText.innerHTML = "<span class='totalTravelTime'></span><span> " + sumDays + " </span><span class='days'></span><br>" +
         "<span class='totalTravelCost'></span><span> " + sumPrice + " </span><span class='spaceDollar'></span>";
     let clearBtn = document.createElement("button");
     clearBtn.id = 'itinClearBtn';
-    clearBtn.classList.add("centered");
+    clearBtn.classList.add("centered-vertical");
     clearBtn.onclick = function (){
         itClearCommit();
         update_dict_view();
@@ -117,7 +117,7 @@ function itUpdate(){
 
     /* Do some dynamic styling */
     let bodyH = $("#itinerary_body").css("height");
-    document.getElementById("itinerary_body_editable").style.maxHeight = "calc(100% - " + bodyH +")";
+    document.getElementById("itinerary_body_editable").style.maxHeight = "calc(95% - " + bodyH +")";
     body.scrollTo(0, body.scrollHeight);
 }
 
@@ -201,6 +201,7 @@ function itAddAvailableDestination(parent, route, inReverse){
     /* Div containing the above */
     let div = document.createElement("div");
     div.classList.add("itinerary_destination");
+    div.classList.add("centered-horizontal");
     div.appendChild(text);
     div.appendChild(btn);
     /* Append to parent */
