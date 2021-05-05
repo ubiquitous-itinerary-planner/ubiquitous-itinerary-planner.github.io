@@ -180,7 +180,7 @@ function itAddPlanet(parent, planet, date){
     div.innerHTML = "<span>" + get_string(p.name) + "</span><br>" +
         "<span class='date'></span><span>: " + new Intl.DateTimeFormat(language).format(date) + "</span><br>" +
         "<span>" + planet.company + "</span><br>" +
-        "<span>" + planet.price + "</span>";
+        "<span>" + planet.price + " " +"</span>" + "<span class='spaceDollar'></span>";
     parent.insertBefore(div, parent.firstChild);
 }
 
