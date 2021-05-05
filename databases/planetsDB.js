@@ -24,7 +24,8 @@ let PDB = {
             "language": "english",
             "domesticanimals": "yes",
             "percentualwatersurface": "70%",
-            "standardmealcost": "3"
+            "standardmealcost": "3",
+            "img": "images/earth.png"
         }, {
             "id": "1",
             "name": "mars",
@@ -45,7 +46,8 @@ let PDB = {
             "language": "marsianAndEnglish",
             "domesticanimals": "no",
             "percentualwatersurface": "30%",
-            "standardmealcost": ""
+            "standardmealcost": "",
+            "img": "images/mars.png"
         }, {
             "id": "2",
             "name": "theRestaurantAtTheEndOfTheUniverse",
@@ -66,7 +68,8 @@ let PDB = {
             "language": "",
             "domesticanimals": "",
             "percentualwatersurface": "",
-            "standardmealcost": ""
+            "standardmealcost": "",
+            "img": "images/theRestaurantAtTheEndOfTheUniverse.png"
         }, {
             "id": "3",
             "name": "frogstarWorldA",
@@ -87,7 +90,8 @@ let PDB = {
             "language": "",
             "domesticanimals": "",
             "percentualwatersurface": "",
-            "standardmealcost": ""
+            "standardmealcost": "",
+            "img": "images/frogstarWorldA.png"
         }, {
             "id": "4",
             "name": "frogstarWorldB",
@@ -108,7 +112,8 @@ let PDB = {
             "language": "",
             "domesticanimals": "",
             "percentualwatersurface": "",
-            "standardmealcost": ""
+            "standardmealcost": "",
+            "img": "images/frogstarWorldB.png"
         }, {
             "id": "5",
             "name": "frogstarWorldC",
@@ -129,7 +134,8 @@ let PDB = {
             "language": "",
             "domesticanimals": "",
             "percentualwatersurface": "",
-            "standardmealcost": ""
+            "standardmealcost": "",
+            "img": "images/frogstarWorldC.png"
         }, {
             "id": "6",
             "name": "naboo",
@@ -150,7 +156,8 @@ let PDB = {
             "language": "",
             "domesticanimals": "",
             "percentualwatersurface": "",
-            "standardmealcost": ""
+            "standardmealcost": "",
+            "img": "images/naboo.png"
         }, {
             "id": "7",
             "name": "coruscant",
@@ -171,7 +178,8 @@ let PDB = {
             "language": "",
             "domesticanimals": "",
             "percentualwatersurface": "",
-            "standardmealcost": ""
+            "standardmealcost": "",
+            "img": "images/coruscant.png"
         }, {
             "id": "8",
             "name": "kamino",
@@ -192,7 +200,8 @@ let PDB = {
             "language": "",
             "domesticanimals": "",
             "percentualwatersurface": "100%",
-            "standardmealcost": ""
+            "standardmealcost": "",
+            "img": "images/kamino.png"
         }, {
             "id": "9",
             "name": "mustafar",
@@ -213,7 +222,8 @@ let PDB = {
             "language": "",
             "domesticanimals": "",
             "percentualwatersurface": "",
-            "standardmealcost": ""
+            "standardmealcost": "",
+            "img": "images/mustafar.png"
         }, {
             "id": "10",
             "name": "tatooine",
@@ -234,7 +244,8 @@ let PDB = {
             "language": "",
             "domesticanimals": "",
             "percentualwatersurface": "",
-            "standardmealcost": ""
+            "standardmealcost": "",
+            "img": "images/tatooine.png"
         }, {
             "id": "11",
             "name": "shire",
@@ -255,7 +266,8 @@ let PDB = {
             "language": "",
             "domesticanimals": "",
             "percentualwatersurface": "",
-            "standardmealcost": ""
+            "standardmealcost": "",
+            "img": "images/shire.png"
         }, {
             "id": "12",
             "name": "gondor",
@@ -276,7 +288,8 @@ let PDB = {
             "language": "",
             "domesticanimals": "",
             "percentualwatersurface": "",
-            "standardmealcost": ""
+            "standardmealcost": "",
+            "img": "images/gondor.png"
         }, {
             "id": "13",
             "name": "rohan",
@@ -297,7 +310,8 @@ let PDB = {
             "language": "",
             "domesticanimals": "",
             "percentualwatersurface": "",
-            "standardmealcost": ""
+            "standardmealcost": "",
+            "img": "images/rohan.png"
         }, {
             "id": "14",
             "name": "mordor",
@@ -318,7 +332,8 @@ let PDB = {
             "language": "",
             "domesticanimals": "",
             "percentualwatersurface": "",
-            "standardmealcost": ""
+            "standardmealcost": "",
+            "img": "images/mordor.png"
         }]
 };
 
