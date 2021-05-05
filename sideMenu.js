@@ -42,7 +42,7 @@ function itUpdate(){
     dates[0] = START_DATE;
     for(let i = 1; i < path.length; i++){
         let d = new Date(dates[i-1]);
-        d.setDate(d.getDate() + path[i].duration);
+        d.setDate(parseInt(d.getDate()) + parseInt(path[i].duration));
         dates.push(d);
     }
     console.log(dates);
