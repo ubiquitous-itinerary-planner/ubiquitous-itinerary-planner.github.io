@@ -59,9 +59,45 @@ function itUpdate(){
     /* Available destinations */
     // The "Available destinations:" text
     let availDest = document.createElement("div");
-    availDest.id=('availDest');
+    availDest.id = 'availDest';
     editable.appendChild(availDest);
     editable.appendChild(destinations);
+
+    // The "X"
+    let xBtn = document.createElement("canvas");
+    // 1:1 aspect ratio
+    xBtn.width = 32;
+    xBtn.height = 32;
+    editable.appendChild(xBtn);
+    xBtn.id = 'xBtn';
+    let ctx = xBtn.getContext("2d");
+    ctx.lineWidth = 1;
+    // Draw the path
+    ctx.beginPath();
+    ctx.moveTo(0,0);
+    ctx.lineTo(xBtn.width, xBtn.height);
+    ctx.moveTo(xBtn.width, 0);
+    ctx.lineTo(0, xBtn.height);
+    // Commit the path
+    ctx.strokeStyle = $("#xBtn").css("color");
+    ctx.stroke();
+    // Add click functionality
+    xBtn.onclick =function (){
+        // If there is only one last element, return to departures
+        if(itGet().length === 1){
+            itClearCommit();
+            update_dict_view();
+            // Toggle visibility of the departure and the itinerary
+            $("#departure").css("display", "initial");
+            $("#itinerary").css("display", "none");
+        }
+        // Otherwise remove the last element
+        else{
+            itPop();
+            itUpdate();
+            update_dict_view();
+        }
+    };
 
     let outRoutes = mapGetRoutes(path[path.length-1].id);
     for(let i = 0; i < outRoutes.length; i++){

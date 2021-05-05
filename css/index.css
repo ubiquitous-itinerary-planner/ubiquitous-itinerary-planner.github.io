@@ -194,6 +194,7 @@ ul{
 }
 
 #itinerary_body_editable{
+    position: relative;
     border-style: solid;
     border-color: var(--color-main);
     border-width: thin;
@@ -230,6 +231,19 @@ ul{
     font-weight: bold;
     background-color: var(--color-main);
     color: var(--color-on-main);
+}
+
+#xBtn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 7.5%;
+    color: var(--color-on-main);
+    background-color: var(--color-main);
+}
+/* 1:1 aspect ratio, see: https://mademyday.de/height-equals-width-with-pure-css/ */
+#xBtn:after{
+    padding-top: 100%;
 }
 
 #topBar{
