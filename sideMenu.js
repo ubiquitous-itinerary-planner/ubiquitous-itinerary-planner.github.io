@@ -55,6 +55,11 @@ function itUpdate(){
     footer.innerHTML = "";
 
     /* Available destinations */
+    // The "Available destinations:" text
+    let availDest = document.createElement("div");
+    availDest.classList.add('availDest');
+    editable.appendChild(availDest);
+
     let outRoutes = mapGetRoutes(path[path.length-1].id);
     for(let i = 0; i < outRoutes.length; i++){
         let inReverse;
