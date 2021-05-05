@@ -42,7 +42,7 @@ function itUpdate(){
     dates[0] = START_DATE;
     for(let i = 1; i < path.length; i++){
         let d = new Date(dates[i-1]);
-        d.setDate(parseInt(d.getDate()) + parseInt(path[i].duration));
+        d.setDate(d.getDate() + parseInt(path[i].duration));
         dates.push(d);
     }
     /* Elements to write to */
@@ -50,6 +50,9 @@ function itUpdate(){
     body.innerHTML = "";
     let editable = document.getElementById("itinerary_body_editable");
     editable.innerHTML = "";
+    let destinations = document.createElement("div");
+    destinations.id = "itinerary_body_editable_destinations";
+    destinations.classList.add("hiddenScroll");
     let footer = document.getElementById("itinerary_footer");
     footer.innerHTML = "";
 
@@ -58,6 +61,7 @@ function itUpdate(){
     let availDest = document.createElement("div");
     availDest.classList.add('availDest');
     editable.appendChild(availDest);
+    editable.appendChild(destinations);
 
     let outRoutes = mapGetRoutes(path[path.length-1].id);
     for(let i = 0; i < outRoutes.length; i++){
@@ -65,7 +69,7 @@ function itUpdate(){
         let route = getRoute(outRoutes[i].name);
         // Check if the route is taken in reverse direction
         inReverse = path[path.length-1].id === route.destination;
-        itAddAvailableDestination(editable, route, inReverse);
+        itAddAvailableDestination(destinations, route, inReverse);
     }
     /* Add planets */
     let sumPrice = 0;
@@ -108,6 +112,14 @@ function itUpdate(){
     footer.appendChild(footerText);
     footer.appendChild(clearBtn);
 
+    /* Do some dynamic styling */
+    let b =  $("#itinerary_body");
+    let e = $("#itinerary_body_editable");
+    let bodyH = b.outerHeight();
+    e.css("height", "calc(79.5% - " + bodyH + "px)");
+
+    // Move the scrollbar
+    body.scrollTo(0, body.scrollHeight);
 }
 
 /**
@@ -189,6 +201,7 @@ function itAddAvailableDestination(parent, route, inReverse){
     };
     /* Div containing the above */
     let div = document.createElement("div");
+    div.classList.add("itinerary_destination");
     div.appendChild(text);
     div.appendChild(btn);
     /* Append to parent */
