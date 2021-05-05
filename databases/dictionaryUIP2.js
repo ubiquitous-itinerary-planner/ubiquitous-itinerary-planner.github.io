@@ -6,7 +6,7 @@ let dict = {
 
     //menu and common word translations
     'text' : ['homeButton', 'helpButton', 'activeLanguageButton', 'departure_title', 'itinerary_title', 'itinButton', 'addButton', 'removeButton', 'clearItin', 'planetView', 'systemJump',
-    'departurePreamble', 'depFrom', 'date', 'to', 'spaceline', 'duration', 'price', 'availDest', 'yes', 'no',
+    'departurePreamble', 'depFrom', 'date', 'to', 'spaceline', 'duration', 'price', 'availDest', 'totalTravelTime', 'days', 'itinClearBtn', 'totalTravelCost', 'yes', 'no',
     //Planet database variable translations
     'name', 'starsystem', 'size', 'population', 'climate', 'infrastructure', 'breathable', 'usp', 'meantemp', 'animalspecies', 'government', 'gravity', 
     'culturalusp', 'hoursperday', 'currency', 'language', 'domesticanimals', 'percentualwatersurface', 'standardmealcost', 
@@ -54,6 +54,10 @@ let dict = {
         'duration': "Duration",
         'price': "Price",
         'availDest': "Available destinations:",
+        'totalTravelTime': "Total travel time:",
+        'days': "days",
+        'itinClearBtn': "Clear itinerary",
+        'totalTravelCost': "Total cost:",
         'yes': "Yes",
         'no': "No",
         //Planet database variable translations
@@ -151,6 +155,10 @@ let dict = {
         'duration': "Varaktighet",
         'price': "Pris",
         'availDest': "Tillgängliga destinationer:",
+        'totalTravelTime': "Sammanlagd restid:",
+        'days': "dagar",
+        'itinClearBtn': "Rensa resväg",
+        'totalTravelCost': "Summa pris:",
         'yes': "Ja",
         'no': "Nej",
         //Planet database variable translations

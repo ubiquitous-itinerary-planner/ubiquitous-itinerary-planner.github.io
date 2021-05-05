@@ -45,7 +45,6 @@ function itUpdate(){
         d.setDate(parseInt(d.getDate()) + parseInt(path[i].duration));
         dates.push(d);
     }
-    console.log(dates);
     /* Elements to write to */
     let body = document.getElementById("itinerary_body");
     body.innerHTML = "";
@@ -69,22 +68,45 @@ function itUpdate(){
         itAddAvailableDestination(editable, route, inReverse);
     }
     /* Add planets */
+    let sumPrice = 0;
     if(path.length > 1){
         /* Add the last planet to the "editable" element */
         itAddPlanet(editable, path[path.length-1], dates[path.length-1]);
+        sumPrice += parseInt(path[path.length-1].price);
         /* Add the rest of the planets of the path */
         for(let i = path.length-2; i >= 1; i--){
             itAddArrow(body);
             itAddPlanet(body, path[i], dates[i]);
+            sumPrice += parseInt(path[i].price);
         }
         itAddArrow(body);
         /* Add the first planet */
         itAddFirstPlanet(body, path[0], dates[0]);
+        sumPrice += parseInt(path[0].price);
     }
     else{
         /* Add the first planet */
         itAddFirstPlanet(editable, path[0], dates[0]);
+        sumPrice += parseInt(path[0].price);
     }
+
+    /* Footer */
+    let footerText = document.createElement("div");
+    let sumDays = Math.floor((dates[path.length-1]-dates[0]) / (1000*60*60*24));
+
+    footerText.innerHTML = "<span class='totalTravelTime'></span><span> " + sumDays + " </span><span class='days'></span><br>" +
+        "<span class='totalTravelCost'></span><span> " + sumPrice + " </span><span class='spaceDollar'></span>";
+    let clearBtn = document.createElement("button");
+    clearBtn.classList.add('itinClearBtn');
+    clearBtn.onclick = function (){
+        itClearCommit();
+        update_dict_view();
+        // Toggle visibility of the departure and the itinerary
+        $("#departure").css("display", "initial");
+        $("#itinerary").css("display", "none");
+    };
+    footer.appendChild(footerText);
+    footer.appendChild(clearBtn);
 
 }
 
@@ -155,7 +177,7 @@ function itAddAvailableDestination(parent, route, inReverse){
     text.innerHTML = "<span class='to'></span><span>: </span>" + get_string(getPlanet(destination).name) + "<span> (</span>" + get_string(getPlanet(destination).starsystem) + "<span>)</span>" + "<br>" +
         "<span class='spaceline'></span><span>: " + route.company + "</span><br>" +
         "<span class='duration'></span><span>: " + route.duration + "</span><br>" +
-        "<span class='price'></span><span>: " + route.price + "</span>";
+        "<span class='price'></span><span>: " + route.price + " " + "<span class='spaceDollar'></span></span>";
 
     /* Button to add the route */
     let btn = document.createElement("button");
