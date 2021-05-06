@@ -82,7 +82,7 @@ function itUpdate(){
     ctx.strokeStyle = $("#xBtn").css("color");
     ctx.stroke();
     // Add click functionality
-    xBtn.onclick =function (){
+    xBtn.onclick = function (){
         // If there is only one last element, return to departures
         if(itGet().length === 1){
             itClearCommit();
@@ -98,6 +98,10 @@ function itUpdate(){
             update_dict_view();
         }
     };
+    // Accessibility
+    xBtn.tabIndex = 0;
+    xBtn.setAttribute("role", "button");
+    xBtn.innerText = "Button to remove planet from itinerary.";
 
     let outRoutes = mapGetRoutes(path[path.length-1].id);
     for(let i = 0; i < outRoutes.length; i++){
