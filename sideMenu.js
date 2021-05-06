@@ -101,7 +101,6 @@ function itUpdate(){
     // Accessibility
     xBtn.tabIndex = 0;
     xBtn.setAttribute("role", "button");
-    xBtn.innerText = "Button to remove planet from itinerary.";
 
     let outRoutes = mapGetRoutes(path[path.length-1].id);
     for(let i = 0; i < outRoutes.length; i++){
@@ -286,7 +285,7 @@ function itAddFirstPlanet(parent, planet, date){
  */
 function itAddArrow(parent){
     let arrow = document.createElement("img");
-    arrow.setAttribute("alt", "Arrow pointing down");
+    arrow.setAttribute("alt", "arrowAltText");
     arrow.setAttribute("src", "images/arrow.png");
     parent.insertBefore(arrow, parent.firstChild);
 }

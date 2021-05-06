@@ -27,7 +27,9 @@ let dict = {
     // Currency translations
     'spaceDollar',
     // Language translations
-    'english', 'marsianAndEnglish'],
+    'english', 'marsianAndEnglish',
+    // Accessibility labels
+    'xBtn', 'flagAltText', 'arrowAltText'],
     
     //Pictures
     'pics' : ['langPic'],
@@ -131,6 +133,10 @@ let dict = {
         // Language translations
         'english': "English", 
         'marsianAndEnglish': "Marsian and English",
+        // Accessibility labels
+        'xBtn': "Remove the most recently added destination.",
+        'flagAltText': "Picture of British flag.",
+        'arrowAltText': "Arrow pointing down.",
         //Pictures
         'langPic': "images/eng.png"
     },
@@ -233,6 +239,10 @@ let dict = {
         // Language translations
         'english': "Engelska", 
         'marsianAndEnglish': "Marsianska och engelska",
+        // Tillgänglighets-text
+        'xBtn' : "Ta bort senaste resmålet.",
+        'flagAltText': "Bild av svenska flaggan.",
+        'arrowAltText': "Pil som pekar nedåt.",
         //Bilder
         'langPic': "images/se.png"
     }
@@ -261,6 +271,17 @@ function change_lang() {
 // updates the view with correct strings - depending on selected language
 // using # for divname- and . for classname searching
 function update_dict_view() {
+
+    // Update page title
+    $(document).attr("title", get_string("title"));
+    // Update itinerary - needed to redraw date formats
+    if($("itinerary").css("display") === "initial"){
+        itUpdate();
+    }
+    // Update top bar - needed to update alt text
+    topBarInit();
+
+    // Update the rest
     let text = dict['text'];
     for (let idx in text) {
         let key = text[idx];
@@ -276,12 +297,6 @@ function update_dict_view() {
         $("." + pic).each(function(){
             $(this).attr('src', get_string(pic));
         })
-    }
-    // Update page title
-    $(document).attr("title", get_string("title"));
-    // Update itinerary - needed to redraw date formats
-    if($("itinerary").css("display") === "initial"){
-        itUpdate();
     }
 }
 // ===========================================================================
