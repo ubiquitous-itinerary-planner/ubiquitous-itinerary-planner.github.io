@@ -6,7 +6,7 @@ let dict = {
 
     //menu and common word translations
     'text' : ['homeButton', 'helpButton', 'activeLanguageButton', 'departure_title', 'itinerary_title', 'itinButton', 'addButton', 'removeButton', 'clearItin', 'planetView', 'systemJump',
-    'yes', 'no',
+    'departurePreamble', 'depFrom', 'date', 'to', 'spaceline', 'duration', 'price', 'yes', 'no',
     //Planet database variable translations
     'name', 'starsystem', 'size', 'population', 'climate', 'infrastructure', 'breathable', 'usp', 'meantemp', 'animalspecies', 'government', 'gravity', 
     'culturalusp', 'hoursperday', 'currency', 'language', 'domesticanimals', 'percentualwatersurface', 'standardmealcost', 
@@ -46,6 +46,13 @@ let dict = {
         'clearItin': "Clear Itinerary",
         'planetView': "Planet view",
         'systemJump': "System jump location",
+        'departurePreamble': "Choose the planet from which your journey will start. Use the map or select the planet from the list below.",
+        'depFrom': "Departure from",
+        'date': "Date",
+        'to': "To",
+        'spaceline': "Spaceline",
+        'duration': "Duration",
+        'price': "Price",
         'yes': "Yes",
         'no': "No",
         //Planet database variable translations
@@ -135,6 +142,13 @@ let dict = {
         'clearItin': "Rensa reseplan",
         'planetView': "Planetvy",
         'systemJump': "Stjärnsystemshopp",
+        'departurePreamble': "Välj din avreseplanet. Använd kartan eller välj planet från listan nedan.",
+        'depFrom': "Avresa från",
+        'date': "Datum",
+        'to': "Till",
+        'spaceline': "Rymdbolag",
+        'duration': "Varaktighet",
+        'price': "Pris",
         'yes': "Ja",
         'no': "Nej",
         //Planet database variable translations
@@ -240,16 +254,24 @@ function update_dict_view() {
     for (let idx in text) {
         let key = text[idx];
         $("#" + key).text(get_string(key));
-        //$("." + key).text(get_string(key));
+        $("." + key).each(function(){
+            $(this).text(get_string(key));
+        })
     }
     let pics = dict['pics'];
     for (let idx in pics) {
         let pic = pics[idx];
         $("#" + pic).attr('src', get_string(pic));
-        $("." + pic).attr('src', get_string(pic));
+        $("." + pic).each(function(){
+            $(this).attr('src', get_string(pic));
+        })
     }
     // Update page title
     $(document).attr("title", get_string("title"));
+    // Update itinerary - needed to redraw date formats
+    if($("itinerary").css("display") === "initial"){
+        itUpdate();
+    }
 }
 // ===========================================================================
 // END OF FILE
