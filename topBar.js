@@ -4,6 +4,7 @@
 function topBarInit(){
     // Initialize children:
     let p = document.getElementById("topBar");
+    p.textContent = "";
     homeBtnInit(p);
     helpBtnInit(p);
     languageBtnInit(p);
@@ -47,7 +48,7 @@ function languageBtnInit(parent){
     // Create the flag part
     let flag = document.createElement("img");
     flag.id = 'langPic';
-    flag.setAttribute("alt", "Faulty picture of flag")
+    flag.setAttribute("alt", get_string("flagAltText"));
     flag.setAttribute("height", "100%");
     languageBtn.classList.add("topBarButton");
     languageBtn.onclick=change_lang;
