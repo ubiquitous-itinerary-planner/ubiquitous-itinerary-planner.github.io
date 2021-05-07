@@ -201,6 +201,7 @@ function depCreateSystem(parent, system){
         // Clicking on the planet switches to itinerary view
         item.onclick = function(){
             itInit(pid);
+            infoUpdate(pid);
             update_dict_view();
         };
         item.setAttribute("role", "button");

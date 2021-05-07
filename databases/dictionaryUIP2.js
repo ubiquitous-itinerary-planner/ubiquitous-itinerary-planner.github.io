@@ -16,7 +16,7 @@ let dict = {
     // Starsystem name translations
     'solarSystem', 'frogstarSystem', 'warstarSystem', 'ringlordSystem',
     // Climate translations
-    'earthBalanced', 'frozenDesert', 'restaurantclimate', 'frogstarAclim', 'frogBclim', 'frogCclim', 'earthSummerBalanced', 'duskyAndChilly', 'rainyAndStormy', 
+    'earthBalanced', 'frozenDesert', 'indoors', 'frogstarAclim', 'frogBclim', 'frogCclim', 'earthSummerBalanced', 'duskyAndChilly', 'rainyAndStormy',
     'volcanicLavaStreams', 'hotDaysFrozenNightsDesert', 'dry', 'flourishing', 'dryAndHot',
     // Infrastructure translations
     'earthLike', 'thirdWorld', 'marsLike', 'futuristic',
