@@ -235,6 +235,7 @@ function itAddAvailableDestination(parent, route, inReverse){
     btn.onclick = function (){
         itPush({id: destination, price: route.price, duration: route.duration, company: route.company});
         itUpdate();
+        infoUpdate(getPlanet(destination).id);
         update_dict_view();
     };
     /* Div containing the above */
