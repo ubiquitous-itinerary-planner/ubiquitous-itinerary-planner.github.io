@@ -42,45 +42,122 @@ function itUpdate(){
     dates[0] = START_DATE;
     for(let i = 1; i < path.length; i++){
         let d = new Date(dates[i-1]);
-        d.setDate(parseInt(d.getDate()) + parseInt(path[i].duration));
+        d.setDate(d.getDate() + parseInt(path[i].duration));
         dates.push(d);
     }
-    console.log(dates);
     /* Elements to write to */
     let body = document.getElementById("itinerary_body");
     body.innerHTML = "";
     let editable = document.getElementById("itinerary_body_editable");
     editable.innerHTML = "";
+    let destinations = document.createElement("div");
+    destinations.id = "itinerary_body_editable_destinations";
+    destinations.classList.add("hiddenScroll");
     let footer = document.getElementById("itinerary_footer");
     footer.innerHTML = "";
 
     /* Available destinations */
+    // The "Available destinations:" text
+    let availDest = document.createElement("div");
+    availDest.id = 'availDest';
+    editable.appendChild(availDest);
+    editable.appendChild(destinations);
+
+    // The "X"
+    let xBtn = document.createElement("canvas");
+    // 1:1 aspect ratio
+    xBtn.width = 32;
+    xBtn.height = 32;
+    editable.appendChild(xBtn);
+    xBtn.id = 'xBtn';
+    let ctx = xBtn.getContext("2d");
+    ctx.lineWidth = 1;
+    // Draw the path
+    ctx.beginPath();
+    ctx.moveTo(0,0);
+    ctx.lineTo(xBtn.width, xBtn.height);
+    ctx.moveTo(xBtn.width, 0);
+    ctx.lineTo(0, xBtn.height);
+    // Commit the path
+    ctx.strokeStyle = $("#xBtn").css("color");
+    ctx.stroke();
+    // Add click functionality
+    xBtn.onclick = function (){
+        // If there is only one last element, return to departures
+        if(itGet().length === 1){
+            itClearCommit();
+            update_dict_view();
+            // Toggle visibility of the departure and the itinerary
+            $("#departure").css("display", "initial");
+            $("#itinerary").css("display", "none");
+        }
+        // Otherwise remove the last element
+        else{
+            itPop();
+            itUpdate();
+            update_dict_view();
+        }
+    };
+    // Accessibility
+    xBtn.tabIndex = 0;
+    xBtn.setAttribute("role", "button");
+
     let outRoutes = mapGetRoutes(path[path.length-1].id);
     for(let i = 0; i < outRoutes.length; i++){
         let inReverse;
         let route = getRoute(outRoutes[i].name);
         // Check if the route is taken in reverse direction
         inReverse = path[path.length-1].id === route.destination;
-        itAddAvailableDestination(editable, route, inReverse);
+        itAddAvailableDestination(destinations, route, inReverse);
     }
     /* Add planets */
+    let sumPrice = 0;
     if(path.length > 1){
         /* Add the last planet to the "editable" element */
         itAddPlanet(editable, path[path.length-1], dates[path.length-1]);
+        sumPrice += parseInt(path[path.length-1].price);
         /* Add the rest of the planets of the path */
         for(let i = path.length-2; i >= 1; i--){
             itAddArrow(body);
             itAddPlanet(body, path[i], dates[i]);
+            sumPrice += parseInt(path[i].price);
         }
         itAddArrow(body);
         /* Add the first planet */
         itAddFirstPlanet(body, path[0], dates[0]);
+        sumPrice += parseInt(path[0].price);
     }
     else{
         /* Add the first planet */
         itAddFirstPlanet(editable, path[0], dates[0]);
+        sumPrice += parseInt(path[0].price);
     }
 
+    /* Footer */
+    let footerText = document.createElement("div");
+    footerText.id = "itinerary_footer_text";
+    footerText.classList.add("centered-vertical");
+    let sumDays = Math.floor((dates[path.length-1]-dates[0]) / (1000*60*60*24));
+
+    footerText.innerHTML = "<span class='totalTravelTime'></span><span> " + sumDays + " </span><span class='days'></span><br>" +
+        "<span class='totalTravelCost'></span><span> " + sumPrice + " </span><span class='spaceDollar'></span>";
+    let clearBtn = document.createElement("button");
+    clearBtn.id = 'itinClearBtn';
+    clearBtn.classList.add("centered-vertical");
+    clearBtn.onclick = function (){
+        itClearCommit();
+        update_dict_view();
+        // Toggle visibility of the departure and the itinerary
+        $("#departure").css("display", "initial");
+        $("#itinerary").css("display", "none");
+    };
+    footer.appendChild(footerText);
+    footer.appendChild(clearBtn);
+
+    /* Do some dynamic styling */
+    let bodyH = $("#itinerary_body").css("height");
+    document.getElementById("itinerary_body_editable").style.maxHeight = "calc(95% - " + bodyH +")";
+    body.scrollTo(0, body.scrollHeight);
 }
 
 /**
@@ -124,6 +201,7 @@ function depCreateSystem(parent, system){
         // Clicking on the planet switches to itinerary view
         item.onclick = function(){
             itInit(pid);
+            infoUpdate(pid);
             update_dict_view();
         };
         item.setAttribute("role", "button");
@@ -149,8 +227,8 @@ function itAddAvailableDestination(parent, route, inReverse){
     let text = document.createElement("div");
     text.innerHTML = "<span class='to'></span><span>: </span>" + get_string(getPlanet(destination).name) + "<span> (</span>" + get_string(getPlanet(destination).starsystem) + "<span>)</span>" + "<br>" +
         "<span class='spaceline'></span><span>: " + route.company + "</span><br>" +
-        "<span class='duration'></span><span>: " + route.duration + "</span><br>" +
-        "<span class='price'></span><span>: " + route.price + "</span>";
+        "<span class='duration'></span><span>: " + route.duration + " " + "<span class='days'></span></span><br>" +
+        "<span class='price'></span><span>: " + route.price + " " + "<span class='spaceDollar'></span></span>";
 
     /* Button to add the route */
     let btn = document.createElement("button");
@@ -158,10 +236,13 @@ function itAddAvailableDestination(parent, route, inReverse){
     btn.onclick = function (){
         itPush({id: destination, price: route.price, duration: route.duration, company: route.company});
         itUpdate();
+        infoUpdate(getPlanet(destination).id);
         update_dict_view();
     };
     /* Div containing the above */
     let div = document.createElement("div");
+    div.classList.add("itinerary_destination");
+    div.classList.add("centered-horizontal");
     div.appendChild(text);
     div.appendChild(btn);
     /* Append to parent */
@@ -180,7 +261,7 @@ function itAddPlanet(parent, planet, date){
     div.innerHTML = "<span>" + get_string(p.name) + "</span><br>" +
         "<span class='date'></span><span>: " + new Intl.DateTimeFormat(language).format(date) + "</span><br>" +
         "<span>" + planet.company + "</span><br>" +
-        "<span>" + planet.price + "</span>";
+        "<span>" + planet.price + " " +"</span>" + "<span class='spaceDollar'></span>";
     parent.insertBefore(div, parent.firstChild);
 }
 
@@ -206,7 +287,7 @@ function itAddFirstPlanet(parent, planet, date){
  */
 function itAddArrow(parent){
     let arrow = document.createElement("img");
-    arrow.setAttribute("alt", "Arrow pointing down");
+    arrow.setAttribute("alt", "arrowAltText");
     arrow.setAttribute("src", "images/arrow.png");
     parent.insertBefore(arrow, parent.firstChild);
 }
