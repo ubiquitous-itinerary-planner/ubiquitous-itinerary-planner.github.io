@@ -72,22 +72,34 @@ ul{
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 }
-.sideMenu_body{
-    padding-right: 5%;
-    padding-left: 5%;
+.centered-horizontal{
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.centered-vertical{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.hiddenScroll{
     overflow: scroll;
     /* https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp */
     /* Hide scrollbar for IE, Edge, and Firefox */
     -ms-overflow-style: none;
     scrollbar-width: none; /* This line works, despite your IDE possibly giving warnings */
 }
-/* https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp */
-/* Hide scrollbar for Chrome, Safari, and Opera */
-.sideMenu_body::-webkit-scrollbar{
+
+.hiddenScroll::-webkit-scrollbar{
+    /* https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp */
+    /* Hide scrollbar for Chrome, Safari, and Opera */
     display: none;
 }
 
 .title{
+    font-family: var(--font-sideMenu-title);
+    font-size: var(--font-size-sideMenu-title);
+    font-weight: bold;
     background-color: var(--color-main);
     color: var(--color-on-main);
     height: 10%;
@@ -96,6 +108,28 @@ ul{
     justify-content: center;
     align-items: center;
 }
+
+.itinerary_destination{
+    position: relative;
+    font-family: var(--font-itinerary-destinations);
+    font-size: var(--font-size-itinerary-destinations);
+    margin-top: var(--font-size-itinerary-destinations);
+    margin-bottom: var(--font-size-itinerary-destinations);
+}
+
+.addButton{
+    height: 75%;
+    width: 30%;
+    background-color: var(--color-main);
+    color: var(--color-on-main);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-family: var(--font-topbar-buttons);
+    font-size: var(--font-size-topbar-buttons);
+    font-weight: bold;
+}
+
 .topBarButton{
     display: flex;
     justify-content: center;
@@ -120,11 +154,6 @@ ul{
  */
 #departure_body{
     height: 90%;
-}
-#departure_title{
-    font-family: var(--font-sideMenu-title);
-    font-size: var(--font-size-sideMenu-title);
-    font-weight: bold;
 }
 
 #info{
@@ -157,14 +186,64 @@ ul{
 
 #itinerary{
     display: none;
+    position: relative;
 }
 #itinerary_body{
-    height: 40%;
+    max-height: 50%;
+    /*max-height: calc(79.5% - 20*var(--font-size-itinerary-text));*/
 }
-#itinerary_title{
-    font-family: var(--font-sideMenu-title);
-    font-size: var(--font-size-sideMenu-title);
+
+#itinerary_body_editable{
+    position: relative;
+    border-style: solid;
+    border-color: var(--color-main);
+    border-width: thin;
+    padding: 2.5%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+#itinerary_body_editable_destinations{
+    max-height: calc(100% - 3*var(--font-size-itinerary-text));
+}
+
+#itinerary_content{
+    height: 79.5%;
+    width: 100%;
+}
+
+#itinerary_footer{
+    height: 10.5%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#availDest{
+    margin-top: var(--font-size-itinerary-text);
+    margin-bottom: var(--font-size-itinerary-text);
+}
+
+#itinClearBtn{
+    height: 50%;
+    font-family: var(--font-topbar-buttons);
+    font-size: var(--font-size-topbar-buttons);
     font-weight: bold;
+    background-color: var(--color-main);
+    color: var(--color-on-main);
+}
+
+#xBtn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 7.5%;
+    color: var(--color-on-main);
+    background-color: var(--color-main);
+}
+/* 1:1 aspect ratio, see: https://mademyday.de/height-equals-width-with-pure-css/ */
+#xBtn:after{
+    padding-top: 100%;
 }
 
 #topBar{

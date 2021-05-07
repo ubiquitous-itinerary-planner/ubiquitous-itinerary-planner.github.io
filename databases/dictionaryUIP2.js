@@ -6,7 +6,7 @@ let dict = {
 
     //menu and common word translations
     'text' : ['homeButton', 'helpButton', 'activeLanguageButton', 'departure_title', 'itinerary_title', 'itinButton', 'addButton', 'removeButton', 'clearItin', 'planetView', 'systemJump',
-    'departurePreamble', 'depFrom', 'date', 'to', 'spaceline', 'duration', 'price', 'yes', 'no',
+    'departurePreamble', 'depFrom', 'date', 'to', 'spaceline', 'duration', 'price', 'availDest', 'totalTravelTime', 'days', 'itinClearBtn', 'totalTravelCost', 'yes', 'no',
     //Planet database variable translations
     'name', 'starsystem', 'size', 'population', 'climate', 'infrastructure', 'breathable', 'usp', 'meantemp', 'animalspecies', 'government', 'gravity', 
     'culturalusp', 'hoursperday', 'currency', 'language', 'domesticanimals', 'percentualwatersurface', 'standardmealcost', 
@@ -16,7 +16,7 @@ let dict = {
     // Starsystem name translations
     'solarSystem', 'frogstarSystem', 'warstarSystem', 'ringlordSystem',
     // Climate translations
-    'earthBalanced', 'frozenDesert', 'restaurantclimate', 'frogstarAclim', 'frogBclim', 'frogCclim', 'earthSummerBalanced', 'duskyAndChilly', 'rainyAndStormy', 
+    'earthBalanced', 'frozenDesert', 'indoors', 'frogstarAclim', 'frogBclim', 'frogCclim', 'earthSummerBalanced', 'duskyAndChilly', 'rainyAndStormy',
     'volcanicLavaStreams', 'hotDaysFrozenNightsDesert', 'dry', 'flourishing', 'dryAndHot',
     // Infrastructure translations
     'earthLike', 'thirdWorld', 'marsLike', 'futuristic',
@@ -27,7 +27,9 @@ let dict = {
     // Currency translations
     'spaceDollar',
     // Language translations
-    'english', 'marsianAndEnglish'],
+    'english', 'marsianAndEnglish',
+    // Accessibility labels
+    'xBtn', 'flagAltText', 'arrowAltText'],
     
     //Pictures
     'pics' : ['langPic'],
@@ -53,6 +55,11 @@ let dict = {
         'spaceline': "Spaceline",
         'duration': "Duration",
         'price': "Price",
+        'availDest': "Available destinations:",
+        'totalTravelTime': "Total travel time:",
+        'days': "days",
+        'itinClearBtn': "Clear itinerary",
+        'totalTravelCost': "Total cost:",
         'yes': "Yes",
         'no': "No",
         //Planet database variable translations
@@ -126,6 +133,10 @@ let dict = {
         // Language translations
         'english': "English", 
         'marsianAndEnglish': "Marsian and English",
+        // Accessibility labels
+        'xBtn': "Remove the most recently added destination.",
+        'flagAltText': "Picture of British flag.",
+        'arrowAltText': "Arrow pointing down.",
         //Pictures
         'langPic': "images/eng.png"
     },
@@ -135,7 +146,8 @@ let dict = {
         'homeButton' : "Stjärnsystemsvy",
         'helpButton': "Hjälp",
         'activeLanguageButton': "Svenska",
-        'departure_title' : "Resvägsplanerare",
+        'departure_title' : "Avgångar",
+        'itinerary_title': "Resvägsplanerare",
         'itinButton': "Reseplan",
         'addButton': "Lägg till",
         'removeButton': "Ta bort",
@@ -149,6 +161,11 @@ let dict = {
         'spaceline': "Rymdbolag",
         'duration': "Varaktighet",
         'price': "Pris",
+        'availDest': "Tillgängliga destinationer:",
+        'totalTravelTime': "Sammanlagd restid:",
+        'days': "dagar",
+        'itinClearBtn': "Rensa resväg",
+        'totalTravelCost': "Summa pris:",
         'yes': "Ja",
         'no': "Nej",
         //Planet database variable translations
@@ -222,6 +239,10 @@ let dict = {
         // Language translations
         'english': "Engelska", 
         'marsianAndEnglish': "Marsianska och engelska",
+        // Tillgänglighets-text
+        'xBtn' : "Ta bort senaste resmålet.",
+        'flagAltText': "Bild av svenska flaggan.",
+        'arrowAltText': "Pil som pekar nedåt.",
         //Bilder
         'langPic': "images/se.png"
     }
@@ -250,6 +271,17 @@ function change_lang() {
 // updates the view with correct strings - depending on selected language
 // using # for divname- and . for classname searching
 function update_dict_view() {
+
+    // Update page title
+    $(document).attr("title", get_string("title"));
+    // Update itinerary - needed to redraw date formats
+    if($("itinerary").css("display") === "initial"){
+        itUpdate();
+    }
+    // Update top bar - needed to update alt text
+    topBarInit();
+
+    // Update the rest
     let text = dict['text'];
     for (let idx in text) {
         let key = text[idx];
@@ -265,12 +297,6 @@ function update_dict_view() {
         $("." + pic).each(function(){
             $(this).attr('src', get_string(pic));
         })
-    }
-    // Update page title
-    $(document).attr("title", get_string("title"));
-    // Update itinerary - needed to redraw date formats
-    if($("itinerary").css("display") === "initial"){
-        itUpdate();
     }
 }
 // ===========================================================================
