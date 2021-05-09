@@ -35,14 +35,14 @@
 
 </head>
 <body>
-<div id="topBar"></div>
-<div id="map"></div>
-<div id="info">
+<div id="topBar" role="navigation"></div>
+<div id="map" role="main"></div>
+<div id="info" role="complementary">
   <table id="info_title" class="title"></table>
   <table id="info_table"></table>
 </div>
-<div id="itinerary" class="sideMenu">
-  <div id="itinerary_title" class="title"></div>
+<div id="itinerary" class="sideMenu" role="navigation">
+  <h1 id="itinerary_title" class="title"></h1>
   <div id="itinerary_content">
     <div id="itinerary_body" class="centered-horizontal hiddenScroll"></div>
     <div id="itinerary_body_editable" class="hiddenScroll">
@@ -51,8 +51,8 @@
   <div id="itinerary_footer" class="centered-horizontal">
   </div>
 </div>
-<div id="departure" class="sideMenu">
-  <div id="departure_title" class="title"></div>
+<div id="departure" class="sideMenu" role="navigation">
+  <h1 id="departure_title" class="title"></h1>
   <div id="departure_body" class="centered-horizontal hiddenScroll">
     <div id="departure_body_header"></div>
   </div>
