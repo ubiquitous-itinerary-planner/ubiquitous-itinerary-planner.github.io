@@ -6,7 +6,7 @@ let dict = {
 
     //menu and common word translations
     'text' : ['homeButton', 'helpButton', 'activeLanguageButton', 'departure_title', 'itinerary_title', 'itinButton', 'addButton', 'removeButton', 'clearItin', 'planetView', 'systemJump',
-    'departurePreamble', 'depFrom', 'date', 'to', 'spaceline', 'duration', 'price', 'availDest', 'totalTravelTime', 'days', 'itinClearBtn', 'totalTravelCost', 'yes', 'no',
+    'departurePreamble', 'depFrom', 'date', 'to', 'spaceline', 'duration', 'price', 'availDest', 'totalTravelTime', 'days', 'itinClearBtn', 'totalTravelCost', 'pageTitle', 'yes', 'no',
     //Planet database variable translations
     'name', 'starsystem', 'size', 'population', 'climate', 'infrastructure', 'breathable', 'usp', 'meantemp', 'animalspecies', 'government', 'gravity', 
     'culturalusp', 'hoursperday', 'currency', 'language', 'domesticanimals', 'percentualwatersurface', 'standardmealcost', 
@@ -60,6 +60,7 @@ let dict = {
         'days': "days",
         'itinClearBtn': "Clear itinerary",
         'totalTravelCost': "Total cost:",
+        'pageTitle': "Itinerary Planner",
         'yes': "Yes",
         'no': "No",
         //Planet database variable translations
@@ -166,6 +167,7 @@ let dict = {
         'days': "dagar",
         'itinClearBtn': "Rensa resväg",
         'totalTravelCost': "Summa pris:",
+        'pageTitle': "Resvägsplanerare",
         'yes': "Ja",
         'no': "Nej",
         //Planet database variable translations
@@ -262,6 +264,9 @@ function change_lang() {
         language = 'en'
     }
 
+    // Set the "lang" attribute, for accessibility
+    document.documentElement.setAttribute("lang", language);
+
     update_dict_view();
 }
 
@@ -273,7 +278,7 @@ function change_lang() {
 function update_dict_view() {
 
     // Update page title
-    $(document).attr("title", get_string("title"));
+    $(document).attr("title", get_string("pageTitle"));
     // Update itinerary - needed to redraw date formats
     if($("itinerary").css("display") === "initial"){
         itUpdate();

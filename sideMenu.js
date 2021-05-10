@@ -188,7 +188,7 @@ function depCreateSystem(parent, system){
     // main
     let main = document.createElement("div");
     // p system
-    let p = document.createElement("p");
+    let p = document.createElement("h3");
     p.id = system;
     main.appendChild(p);
     // ul list
