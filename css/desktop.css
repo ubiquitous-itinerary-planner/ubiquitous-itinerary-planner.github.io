@@ -30,7 +30,9 @@ body{
 }
 #map{
     width: 67%;
-    height: 100%;
+    height: 93.75%;
+    margin-top: 6.25%;
+    
 }
 #topBar{
     position: absolute;

@@ -15,11 +15,23 @@ function mapInit(){
     for(let i = 0; i < RDB.routes.length; i++){
         mapAddRoute(RDB.routes[i]);
     }
+
     // Initialize the view
     // Create the html-objects for showing all systems
     // Draw only the current system
-    mapDraw();
+    //mapDraw();
+    createImg("images/planet_blue.png", "planetblueue")
 }
+
+function createImg(image_path, alt_text) {
+    var x = document.createElement("img");
+    x.setAttribute("class", "planetBlue")
+    x.setAttribute("src", image_path);
+    x.setAttribute("width", "5");
+    x.setAttribute("height", "5");
+    x.setAttribute("alt", alt_text);
+    return x.outerHTML;
+    }
 
 /**
  * Draws the map of the currently selected system.
@@ -27,6 +39,26 @@ function mapInit(){
 function mapDraw(){
     // Hide all map objects
     // Show the map objects corresponding to the current system
+    // https://www.nashvail.me/blog/canvas-image 
+    var canvas = document.getElementById("map");
+    var ctx = canvas.getContext("2d")
+    var earth = new Image();
+    var blue = new Image();
+    var moon = new Image();
+    moon.src = "images/planet_moon.png";
+    blue.src = "images/planet_blue.png";
+    earth.src = "images/planet_earth.png";
+    blue.onload = () => {
+        // (src, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight) 
+        ctx.drawImage(blue, 0, 0, 282, 267, 150, 10, 120.4, 60.2) // Planet blue
+    }
+    earth.onload = () => {
+        ctx.drawImage(earth, 0, 0, 150, 137, 25, 5, 600, 548) //Planet earth
+    }
+    moon.onload = () => {
+        ctx.drawImage(moon, 0, 0, 50, 50, 200, 80, 50, 50) // Planet moon
+    }
+    //ctx.drawImage(img, 10,);
 }
 
 /**
@@ -182,3 +214,4 @@ function findPath(dijkstra, start, destination){
     }
     return path;
 }
+

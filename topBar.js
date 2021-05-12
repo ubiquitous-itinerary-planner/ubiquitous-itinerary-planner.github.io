@@ -36,6 +36,28 @@ function helpBtnInit(parent){
     parent.appendChild(helpBtn);
 }
 
+/*
+function helpBtnInit(parent){
+    let helpBtn = document.createElement("button");
+    helpBtn.id = "asd";
+    let help = document.createElement("div");
+    help.id = "helpButton";
+    let modalDiv = document.createElement("div");
+    let modalSpan = document.createElement("span");
+    modalDiv.id = "helpModal";
+    modalDiv.classList = "modal";
+    modalSpan.className = "modal_close";
+    helpBtn.appendChild(help);
+    modalDiv.appendChild(modalSpan);
+    helpBtn.appendChild(modalDiv);
+    parent.appendChild(helpBtn);
+    //modalDiv.innerHTML = modalSpan.outerHTML;
+    //modalDiv.outerHTML; 
+    helpBtn.onclick=display_modal('asd', 'helpModal');
+    //"display_modal('helpButton', 'helpModal')"
+    helpBtn.classList.add("topBarButton");
+    */
+
 /**
  * Initializes the language button.
  * @param parent the parent into which to add the button
