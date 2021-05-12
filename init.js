@@ -2,7 +2,9 @@
  * Javascript for initialising the application.
  */
 
-START_DATE = new Date();
+import {depInit} from "./sideMenu.js";
+
+export const START_DATE = new Date();
 
 $("document").ready(function() {
 
