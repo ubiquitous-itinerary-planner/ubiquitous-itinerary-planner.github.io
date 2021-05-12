@@ -49,7 +49,6 @@ function languageBtnInit(parent){
     let flag = document.createElement("img");
     flag.id = 'langPic';
     flag.setAttribute("alt", get_string("flagAltText"));
-    flag.setAttribute("height", "100%");
     languageBtn.classList.add("topBarButton");
     languageBtn.onclick=change_lang;
     // Add the parts to the button, and add the button to the parent

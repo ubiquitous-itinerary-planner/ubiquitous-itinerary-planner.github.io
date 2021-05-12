@@ -29,7 +29,7 @@ let dict = {
     // Language translations
     'english', 'marsianAndEnglish',
     // Accessibility labels
-    'xBtn', 'flagAltText', 'arrowAltText'],
+    'xBtn', 'flagAltText', 'arrowAltText', 'backgroundAltText'],
     
     //Pictures
     'pics' : ['langPic'],
@@ -138,6 +138,7 @@ let dict = {
         'xBtn': "Remove the most recently added destination.",
         'flagAltText': "Picture of British flag.",
         'arrowAltText': "Arrow pointing down.",
+        'backgroundAltText': "A galaxy in the background",
         //Pictures
         'langPic': "images/eng.png"
     },
@@ -245,6 +246,7 @@ let dict = {
         'xBtn' : "Ta bort senaste resmålet.",
         'flagAltText': "Bild av svenska flaggan.",
         'arrowAltText': "Pil som pekar nedåt.",
+        'backgroundAltText': "En galax i bakgrunden",
         //Bilder
         'langPic': "images/se.png"
     }

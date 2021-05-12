@@ -53,10 +53,12 @@ function itUpdate(){
     let body = document.getElementById("itinerary_body");
     body.innerHTML = "";
     let editable = document.getElementById("itinerary_body_editable");
-    editable.innerHTML = "";
+    editable.innerHTML = "<div id=\"itinerary_body_editable_scrollable\" class=\"hiddenScroll\"></div>";
+    let editableScrollable = document.getElementById("itinerary_body_editable_scrollable");
+    editableScrollable.innerHTML = "";
     let destinations = document.createElement("div");
     destinations.id = "itinerary_body_editable_destinations";
-    destinations.classList.add("hiddenScroll");
+    //destinations.classList.add("hiddenScroll");
     let footer = document.getElementById("itinerary_footer");
     footer.innerHTML = "";
 
@@ -64,14 +66,15 @@ function itUpdate(){
     // The "Available destinations:" text
     let availDest = document.createElement("div");
     availDest.id = 'availDest';
-    editable.appendChild(availDest);
-    editable.appendChild(destinations);
+    editableScrollable.appendChild(availDest);
+    editableScrollable.appendChild(destinations);
 
     // The "X"
     let xBtn = document.createElement("canvas");
     // 1:1 aspect ratio
     xBtn.width = 32;
     xBtn.height = 32;
+    // Add the button to the document
     editable.appendChild(xBtn);
     xBtn.id = 'xBtn';
     let ctx = xBtn.getContext("2d");
@@ -117,8 +120,8 @@ function itUpdate(){
     /* Add planets */
     let sumPrice = 0;
     if(path.length > 1){
-        /* Add the last planet to the "editable" element */
-        itAddPlanet(editable, path[path.length-1], dates[path.length-1]);
+        /* Add the last planet */
+        itAddLastPlanet(editable, editableScrollable, path[path.length-1], dates[path.length-1]);
         sumPrice += parseInt(path[path.length-1].price);
         /* Add the rest of the planets of the path */
         for(let i = path.length-2; i >= 1; i--){
@@ -160,8 +163,12 @@ function itUpdate(){
 
     /* Do some dynamic styling */
     let bodyH = $("#itinerary_body").css("height");
-    document.getElementById("itinerary_body_editable").style.maxHeight = "calc(95% - " + bodyH +")";
+    let editableH = $("#itinerary_body_editable").css("height");
+    console.log(editableH + bodyH);
+    document.getElementById("itinerary_body_editable").style.height = "min(calc(" + editableH + " + 10%), calc(90% - " + bodyH +"))";
     body.scrollTo(0, body.scrollHeight);
+    let planetNameH = $("#lastPlanetName").css("height");
+    editableScrollable.style.height = "calc(100% - " + planetNameH + ")";
 }
 
 /**
@@ -268,7 +275,8 @@ function itAddAvailableDestination(parent, route, inReverse){
 function itAddPlanet(parent, planet, date){
     let p = getPlanet(planet.id);
     let div = document.createElement("div");
-    div.innerHTML = "<span>" + get_string(p.name) + "</span><br>" +
+    div.innerHTML = "<span>" + get_string(p.name) +
+        "<span> (</span>" + get_string(p.starsystem) + ")</span><br>" +
         "<span class='date'></span><span>: " + new Intl.DateTimeFormat(language).format(date) + "</span><br>" +
         "<span>" + planet.company + "</span><br>" +
         "<span>" + planet.price + " " +"</span>" + "<span class='spaceDollar'></span>";
@@ -289,6 +297,23 @@ function itAddFirstPlanet(parent, planet, date){
         "<span> (</span>" + get_string(p.starsystem) + ")</span><br>" +
         "<span class='date'></span><span>: " + new Intl.DateTimeFormat(language).format(date) + "</span>"
     parent.insertBefore(div, parent.firstChild);
+}
+
+function itAddLastPlanet(parent, scrollableParent, planet, date){
+
+    let p = getPlanet(planet.id);
+    let div = document.createElement("div");
+    div.innerHTML = "<span>" + get_string(p.name) +
+        "<span> (</span>" + get_string(p.starsystem) + ")</span><br>";
+    div.id = "lastPlanetName";
+    let div2 = document.createElement("div");
+    div2.innerHTML = "<span class='date'></span><span>: " + new Intl.DateTimeFormat(language).format(date) + "</span><br>" +
+        "<span>" + planet.company + "</span><br>" +
+        "<span>" + planet.price + " " +"</span>" + "<span class='spaceDollar'></span>";
+    // Insert the divs
+    parent.insertBefore(div, parent.firstChild);
+    scrollableParent.insertBefore(div2, scrollableParent.firstChild);
+
 }
 
 /**

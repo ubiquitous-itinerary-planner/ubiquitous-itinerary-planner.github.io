@@ -25,6 +25,8 @@ function hyperspaceSetup(){
     clockJump = new THREE.Clock(false);
     // Find the canvas
     const canvas = document.getElementById("background");
+    // Label the canvas
+    canvas.setAttribute("alt", get_string("backgroundAltText"));
     // Create the renderer
     renderer = new THREE.WebGLRenderer({canvas});
     // Create the scene

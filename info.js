@@ -14,12 +14,12 @@ function infoUpdate(i){
     let itemsTable = document.getElementById('info_table');
     itemsTable.innerHTML = '';
     itemsTable.innerHTML +=
-        '<tr><td id="starsystem">' + '</td><td id="' + PDB.planets[i].starsystem + '">' + '</td></tr>' +
-        '<tr><td id="population">' + '</td><td>' + PDB.planets[i].population + '</td></tr>' +
-        '<tr><td id="climate">' + '</td><td id="' + PDB.planets[i].climate + '">' + '</td></tr>' +
-        '<tr><td id="infrastructure">' + '</td><td id="' + PDB.planets[i].infrastructure + '">' + '</td></tr>' +
-        '<tr><td id="breathable">' + '</td><td id="' + PDB.planets[i].breathable + '">' + '</td></tr>' +
-        '<tr><td id="meantemp">' + '</td><td>' + PDB.planets[i].meantemp + '</td></tr>';
+        '<tr class="infoTable"><td id="starsystem">' + '</td><td id="' + PDB.planets[i].starsystem + '">' + '</td></tr>' +
+        '<tr class="infoTable"><td id="population">' + '</td><td>' + PDB.planets[i].population + '</td></tr>' +
+        '<tr class="infoTable"><td id="climate">' + '</td><td id="' + PDB.planets[i].climate + '">' + '</td></tr>' +
+        '<tr class="infoTable"><td id="infrastructure">' + '</td><td id="' + PDB.planets[i].infrastructure + '">' + '</td></tr>' +
+        '<tr class="infoTable"><td id="breathable">' + '</td><td id="' + PDB.planets[i].breathable + '">' + '</td></tr>' +
+        '<tr class="infoTable"><td id="meantemp">' + '</td><td>' + PDB.planets[i].meantemp + '</td></tr>';
         
     // Show the panel
     document.getElementById('info').style.display = 'initial';
