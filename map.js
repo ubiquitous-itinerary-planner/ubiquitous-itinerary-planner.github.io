@@ -19,12 +19,12 @@ function mapInit(){
     // Initialize the view
     // Create the html-objects for showing all systems
     // Draw only the current system
-    //mapDraw();
-    createImg("images/planet_blue.png", "planetblueue")
+    mapDraw();
+    //createImg("images/planet_blue.png", "planetblueue")
 }
 
 function createImg(image_path, alt_text) {
-    var x = document.createElement("img");
+    let x = document.createElement("img");
     x.setAttribute("class", "planetBlue")
     x.setAttribute("src", image_path);
     x.setAttribute("width", "5");
@@ -40,25 +40,38 @@ function mapDraw(){
     // Hide all map objects
     // Show the map objects corresponding to the current system
     // https://www.nashvail.me/blog/canvas-image 
-    var canvas = document.getElementById("map");
-    var ctx = canvas.getContext("2d")
-    var earth = new Image();
-    var blue = new Image();
-    var moon = new Image();
-    moon.src = "images/planet_moon.png";
-    blue.src = "images/planet_blue.png";
-    earth.src = "images/planet_earth.png";
-    blue.onload = () => {
-        // (src, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight) 
-        ctx.drawImage(blue, 0, 0, 282, 267, 150, 10, 120.4, 60.2) // Planet blue
-    }
+    let canvas = document.getElementById("map");
+    let ctx = canvas.getContext("2d")
+    let earth = new Image();
+    let mars = new Image();
+    let moon = new Image();
+    let blue = new Image();
+    let green = new Image();
+
+    earth.src = PDB.planets[0].img;
+    mars.src = PDB.planets[1].img;
+    moon.src = PDB.planets[2].img; // The restaurant at the end of the U
+    blue.src = PDB.planets[3].img; // Frogstar world A
+    green.src = PDB.planets[4].img; // Frogstar World B
+
+    // (src, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
     earth.onload = () => {
-        ctx.drawImage(earth, 0, 0, 150, 137, 25, 5, 600, 548) //Planet earth
+        ctx.drawImage(earth, ...PDB.planets[0].placement)
+    }
+    mars.onload = () => {
+        ctx.drawImage(mars, ...PDB.planets[1].placement)
     }
     moon.onload = () => {
-        ctx.drawImage(moon, 0, 0, 50, 50, 200, 80, 50, 50) // Planet moon
+        ctx.drawImage(moon, ...PDB.planets[2].placement)
     }
-    //ctx.drawImage(img, 10,);
+    blue.onload = () => {
+        ctx.drawImage(blue, ...PDB.planets[3].placement)
+    }
+    green.onload = () => {
+        ctx.drawImage(green, ...PDB.planets[4].placement)
+    }
+
+
 }
 
 /**
