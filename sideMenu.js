@@ -6,10 +6,14 @@
  * View/Controller code
  */
 
+import {hyperjump} from "./hyperspace.js";
+import {commit} from "./undo.js";
+import {START_DATE} from "./init.js";
+
 /**
  * Initializes the departure element, and its children.
  */
-function depInit(){
+export function depInit(){
     let body = document.getElementById("departure_body");
     depCreatePreamble(body);
     let systems = mapGetSystems();
@@ -93,7 +97,7 @@ function itUpdate(){
         }
         // Otherwise remove the last element
         else{
-            itPop();
+            itPopCommit();
             itUpdate();
             update_dict_view();
         }
@@ -188,7 +192,7 @@ function depCreateSystem(parent, system){
     // main
     let main = document.createElement("div");
     // p system
-    let p = document.createElement("p");
+    let p = document.createElement("h3");
     p.id = system;
     main.appendChild(p);
     // ul list
@@ -200,6 +204,7 @@ function depCreateSystem(parent, system){
         item.id = PDB.planets[pid].name;
         // Clicking on the planet switches to itinerary view
         item.onclick = function(){
+            hyperjump();
             itInit(pid);
             infoUpdate(pid);
             update_dict_view();
@@ -234,6 +239,11 @@ function itAddAvailableDestination(parent, route, inReverse){
     let btn = document.createElement("button");
     btn.classList.add("addButton");
     btn.onclick = function (){
+        // Do a jump if we jump between systems
+        // TODO: Move the responsibility of calling this animation to the map function which moves between views
+        if(getPlanet(route.start).starsystem !== getPlanet(route.destination).starsystem){
+            hyperjump();
+        }
         itPush({id: destination, price: route.price, duration: route.duration, company: route.company});
         itUpdate();
         infoUpdate(getPlanet(destination).id);
@@ -311,7 +321,7 @@ function itPush(planet){
  * Also commits the action to the Undo-Redo manager.
  * @param planet the planet to add
  */
-function itPushCommit(planet){
+export function itPushCommit(planet){
     commit();
     itPush(planet);
 }
@@ -331,7 +341,7 @@ function itPop(){
  * Also commits the action to the Undo-Redo manager.
  * @returns {*} the most recently added planet
  */
-function itPopCommit(){
+export function itPopCommit(){
     commit();
     return itPop();
 }
@@ -347,7 +357,7 @@ function itClear(){
  * Removes all planets from the itinerary.
  * Also commits the action to the Undo-Redo manager.
  */
-function itClearCommit(){
+export function itClearCommit(){
     commit();
     itClear();
 }
@@ -358,7 +368,7 @@ function itClearCommit(){
  * will not be seen in the copy returned by this function.
  * @returns {any} a copy of the itinerary
  */
-function itGet(){
+export function itGet(){
     return JSON.parse(JSON.stringify(itinerary));
 }
 
@@ -366,6 +376,6 @@ function itGet(){
  * Sets the itinerary to the passed value.
  * @param itin the itinerary to change the current itinerary to
  */
-function itSet(itin){
+export function itSet(itin){
     itinerary = itin;
 }

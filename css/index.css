@@ -51,8 +51,17 @@ tr:nth-child(odd){
 p{
     margin-bottom: 0;
 }
+
 ul{
     margin-top: 0;
+}
+
+h1{
+    margin: 0;
+}
+
+h3{
+    margin: 0;
 }
 
 /*
@@ -152,6 +161,14 @@ ul{
 /*
  * ELEMENT LEVEL DEFINITIONS
  */
+
+#background{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
 #departure_body{
     height: 90%;
 }
@@ -225,7 +242,7 @@ ul{
 }
 
 #itinClearBtn{
-    height: 50%;
+    height: 75%;
     font-family: var(--font-topbar-buttons);
     font-size: var(--font-size-topbar-buttons);
     font-weight: bold;

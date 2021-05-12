@@ -1,20 +1,22 @@
 /**
  * Undo-Redo manager
  */
+import {itGet, itSet} from "./sideMenu.js";
+
 let undoStack = [];
 let redoStack = [];
 
 /**
  * Commit the current state to the undo-redo manager.
  */
-function commit(){
+export function commit(){
     undoStack.push(itGet());
 }
 
 /**
  * Undo the most recent action, if such action exists.
  */
-function undo(){
+export function undo(){
     let oldState = itGet();
     let newState = undoStack.pop();
     if(newState === undefined){
@@ -27,7 +29,7 @@ function undo(){
 /**
  * Redo the most recently undone action, if such action exists.
  */
-function redo(){
+export function redo(){
     let oldState = itGet();
     let newState = redoStack.pop();
     if(newState === undefined){
@@ -40,7 +42,7 @@ function redo(){
 /**
  * Clears the undo-redo manager. For debugging purposes.
  */
-function undoRedoClear(){
+export function undoRedoClear(){
     undoStack = [];
     redoStack = [];
 }
