@@ -6,7 +6,7 @@ let dict = {
 
     //menu and common word translations
     'text' : ['homeButton', 'helpButton', 'activeLanguageButton', 'departure_title', 'itinerary_title', 'itinButton', 'addButton', 'removeButton', 'clearItin', 'planetView', 'systemJump',
-    'departurePreamble', 'depFrom', 'date', 'to', 'spaceline', 'duration', 'price', 'availDest', 'totalTravelTime', 'days', 'itinClearBtn', 'totalTravelCost', 'pageTitle', 'yes', 'no',
+    'departurePreamble', 'depFrom', 'date', 'to', 'spaceline', 'duration', 'price', 'availDest', 'totalTravelTime', 'days', 'itinClearBtn', 'totalTravelCost', 'pageTitle', 'info_travel_button', 'yes', 'no',
     //Planet database variable translations
     'name', 'starsystem', 'size', 'population', 'climate', 'infrastructure', 'breathable', 'usp', 'meantemp', 'animalspecies', 'government', 'gravity', 
     'culturalusp', 'hoursperday', 'currency', 'language', 'domesticanimals', 'percentualwatersurface', 'standardmealcost', 
@@ -61,6 +61,7 @@ let dict = {
         'itinClearBtn': "Clear itinerary",
         'totalTravelCost': "Total cost:",
         'pageTitle': "Itinerary Planner",
+        'info_travel_button': "Travel here",
         'yes': "Yes",
         'no': "No",
         //Planet database variable translations
@@ -169,6 +170,7 @@ let dict = {
         'itinClearBtn': "Rensa resväg",
         'totalTravelCost': "Summa pris:",
         'pageTitle': "Resvägsplanerare",
+        'info_travel_button': "Res hit",
         'yes': "Ja",
         'no': "Nej",
         //Planet database variable translations

@@ -20,7 +20,12 @@ function infoUpdate(i){
         '<tr class="infoTable"><td id="infrastructure">' + '</td><td id="' + PDB.planets[i].infrastructure + '">' + '</td></tr>' +
         '<tr class="infoTable"><td id="breathable">' + '</td><td id="' + PDB.planets[i].breathable + '">' + '</td></tr>' +
         '<tr class="infoTable"><td id="meantemp">' + '</td><td>' + PDB.planets[i].meantemp + '</td></tr>';
-        
+
+    // The "travel here" - button
+    let travelButton = document.getElementById("info_travel_button");
+    travelButton.onclick = function (){
+
+    };
     // Show the panel
     document.getElementById('info').style.display = 'initial';
     update_dict_view();

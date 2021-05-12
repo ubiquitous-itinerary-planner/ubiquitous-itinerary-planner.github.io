@@ -61,6 +61,9 @@ h3{
 button{
     background-color: var(--color-secondary);
     color: var(--color-on-secondary);
+    font-family: var(--font-topbar-buttons);
+    font-size: var(--font-size-topbar-buttons);
+    font-weight: bold;
 }
 
 button:hover{
@@ -143,9 +146,6 @@ button:hover{
     position: absolute;
     bottom: 0;
     right: 0;
-    font-family: var(--font-topbar-buttons);
-    font-size: var(--font-size-topbar-buttons);
-    font-weight: bold;
 }
 
 .topBarButton{
@@ -156,9 +156,6 @@ button:hover{
     padding: 0;
     height: 100%;
     filter: drop-shadow(0em 0.25em 0.25em #000000);
-    font-family: var(--font-topbar-buttons);
-    font-size: var(--font-size-topbar-buttons);
-    font-weight: bold;
     margin: 0 0.25em 0 0;
 }
 
@@ -205,6 +202,10 @@ button:hover{
     font-size: var(--font-size-info-text);
     width: 100%;
     border-spacing: 0;
+}
+#info_travel_button{
+    width: 95%;
+    margin: 1.5vh 2.5%;
 }
 
 #itinerary{
@@ -253,9 +254,6 @@ button:hover{
 
 #itinClearBtn{
     height: 75%;
-    font-family: var(--font-topbar-buttons);
-    font-size: var(--font-size-topbar-buttons);
-    font-weight: bold;
 }
 
 #xBtn{
