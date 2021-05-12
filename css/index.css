@@ -161,6 +161,14 @@ h3{
 /*
  * ELEMENT LEVEL DEFINITIONS
  */
+
+#background{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
 #departure_body{
     height: 90%;
 }
