@@ -5,8 +5,9 @@
  * it is used for the dictionary to convert the names in the table.
  * we want an input from the planet clicked upon which works as the index fetching info from database.
  */
+import {itPeek, itPushCommit, itUpdate} from "./sideMenu.js";
 
-function infoUpdate(i){
+export function infoUpdate(i){
     let itemsTitle = document.getElementById('info_title');
     itemsTitle.innerHTML = '';
     itemsTitle.innerHTML +=
@@ -22,10 +23,20 @@ function infoUpdate(i){
         '<tr class="infoTable"><td id="meantemp">' + '</td><td>' + PDB.planets[i].meantemp + '</td></tr>';
 
     // The "travel here" - button
-    let travelButton = document.getElementById("info_travel_button");
+    let travelButton = document.createElement("button");
+    if(i !== itPeek().id){
+        travelButton.id = "info_travel_button";
+        travelButton.disabled = false;
+    }
+    else{
+        travelButton.id = "info_travel_button_here";
+        travelButton.disabled = true;
+    }
     travelButton.onclick = function (){
-
+        itPushCommit(getPlanet(i));
+        itUpdate();
     };
+    document.getElementById("info").appendChild(travelButton);
     // Show the panel
     document.getElementById('info').style.display = 'initial';
     update_dict_view();

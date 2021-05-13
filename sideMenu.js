@@ -9,6 +9,7 @@
 import {hyperjump} from "./hyperspace.js";
 import {commit} from "./undo.js";
 import {START_DATE} from "./init.js";
+import {infoUpdate} from "./info.js";
 
 /**
  * Initializes the departure element, and its children.
@@ -38,7 +39,7 @@ function itInit(start){
 /**
  * Re-draws the itinerary
  */
-function itUpdate(){
+export function itUpdate(){
     /* Path = [{id: num, price: num, duration: num, company: string}] */
     let path = itGet();
     /* Find arrival times for the planets of the path */
@@ -197,7 +198,10 @@ function depCreateSystem(parent, system){
     let planets = mapGetPlanets(system);
     /* Overview:
      * <div main>
-     *    <p system></p>
+     *    <div title>
+     *      <img arrow>
+     *      <h3 system></h3>
+     *    </div title>
      *    <ul list>
      *       <li planet></li>
      *    </ul list>
@@ -205,17 +209,42 @@ function depCreateSystem(parent, system){
      */
     // main
     let main = document.createElement("div");
+    main.classList.add("depMain");
+    // title
+    let title = document.createElement("div");
+    title.style.display = "flex";
+    title.style.cursor = "pointer";
+    // elements used by title's onclick function
+    let list = document.createElement("ul");
+    let arrow = document.createElement("img");
+    title.onclick = function (e){
+        if(list.style.display !== "none"){
+            list.style.display = "none";
+            arrow.style.transform = "rotate(0)";
+        }
+        else {
+            list.style.display = "block";
+            arrow.style.transform = "rotate(90deg)";
+        }
+    };
+    main.appendChild(title);
+    // img arrow
+    arrow.classList.add("departuresArrowPic");
+    arrow.setAttribute("alt", get_string("depArrowAltText"));
+    title.appendChild(arrow);
     // p system
     let p = document.createElement("h3");
     p.id = system;
-    main.appendChild(p);
+    title.appendChild(p);
     // ul list
-    let list = document.createElement("ul");
+    list.classList.add("departures_list");
+    list.style.display = "none";
     // li planet
     for(p in planets){
         let pid = planets[p];
         let item = document.createElement("li");
         item.id = PDB.planets[pid].name;
+        item.classList.add("departures_list");
         // Clicking on the planet switches to itinerary view
         item.onclick = function(){
             hyperjump();
@@ -376,6 +405,14 @@ function itPop(){
 export function itPopCommit(){
     commit();
     return itPop();
+}
+
+/**
+ * Returns the last planet of the itinerary, without popping it
+ * @returns {*} the last planet
+ */
+export function itPeek(){
+    return itinerary[itinerary.length-1];
 }
 
 /**

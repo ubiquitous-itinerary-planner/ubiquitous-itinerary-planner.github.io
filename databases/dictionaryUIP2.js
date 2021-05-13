@@ -6,7 +6,8 @@ let dict = {
 
     //menu and common word translations
     'text' : ['homeButton', 'helpButton', 'activeLanguageButton', 'departure_title', 'itinerary_title', 'itinButton', 'addButton', 'removeButton', 'clearItin', 'planetView', 'systemJump',
-    'departurePreamble', 'depFrom', 'date', 'to', 'spaceline', 'duration', 'price', 'availDest', 'totalTravelTime', 'days', 'itinClearBtn', 'totalTravelCost', 'pageTitle', 'info_travel_button', 'yes', 'no',
+    'departurePreamble', 'depFrom', 'date', 'to', 'spaceline', 'duration', 'price', 'availDest', 'totalTravelTime', 'days', 'itinClearBtn', 'totalTravelCost', 'pageTitle', 'info_travel_button',
+    'info_travel_button_here', 'yes', 'no',
     //Planet database variable translations
     'name', 'starsystem', 'size', 'population', 'climate', 'infrastructure', 'breathable', 'usp', 'meantemp', 'animalspecies', 'government', 'gravity', 
     'culturalusp', 'hoursperday', 'currency', 'language', 'domesticanimals', 'percentualwatersurface', 'standardmealcost', 
@@ -29,10 +30,10 @@ let dict = {
     // Language translations
     'english', 'marsianAndEnglish',
     // Accessibility labels
-    'xBtn', 'flagAltText', 'arrowAltText', 'backgroundAltText'],
+    'xBtn', 'flagAltText', 'arrowAltText', 'backgroundAltText', 'depArrowAltText'],
     
     //Pictures
-    'pics' : ['langPic'],
+    'pics' : ['langPic', 'departuresArrowPic'],
 
     // English translations visible on the applications view.
     'en' : {
@@ -62,6 +63,7 @@ let dict = {
         'totalTravelCost': "Total cost:",
         'pageTitle': "Itinerary Planner",
         'info_travel_button': "Travel here",
+        'info_travel_button_here': "Travel here (already at destination)",
         'yes': "Yes",
         'no': "No",
         //Planet database variable translations
@@ -140,8 +142,10 @@ let dict = {
         'flagAltText': "Picture of British flag.",
         'arrowAltText': "Arrow pointing down.",
         'backgroundAltText': "A galaxy in the background",
+        'depArrowAltText': "An arrow",
         //Pictures
-        'langPic': "images/eng.png"
+        'langPic': "images/eng.png",
+        'departuresArrowPic': "images/expand_arrow.png",
     },
 
     'sv' : {
@@ -171,6 +175,7 @@ let dict = {
         'totalTravelCost': "Summa pris:",
         'pageTitle': "Resvägsplanerare",
         'info_travel_button': "Res hit",
+        'info_travel_button_here': "Res hit (redan här)",
         'yes': "Ja",
         'no': "Nej",
         //Planet database variable translations
@@ -249,8 +254,10 @@ let dict = {
         'flagAltText': "Bild av svenska flaggan.",
         'arrowAltText': "Pil som pekar nedåt.",
         'backgroundAltText': "En galax i bakgrunden",
+        'depArrowAltText': "En pil",
         //Bilder
-        'langPic': "images/se.png"
+        'langPic': "images/se.png",
+        'departuresArrowPic': "images/expand_arrow.png",
     }
 }
 
