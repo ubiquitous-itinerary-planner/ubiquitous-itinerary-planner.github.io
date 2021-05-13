@@ -230,10 +230,6 @@ button:hover{
     margin-right: 2.5%;
 }
 
-#itinerary_body_editable_scrollable{
-    max-height: calc(100% - 1 * var(--font-size-itinerary-text));
-}
-
 #itinerary_body_editable_destinations{
     max-height: calc(100% - 6*var(--font-size-itinerary-text));
 }
@@ -241,6 +237,10 @@ button:hover{
 #itinerary_content{
     height: 77.5%;
     width: 100%;
+}
+
+#lastPlanetName{
+    margin-right: 6.5%;
 }
 
 #itinerary_footer{

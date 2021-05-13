@@ -135,8 +135,9 @@ function itUpdate(){
         sumPrice += parseInt(path[0].price);
     }
     else{
-        /* Add the first planet */
+        /* Add the first and last planet */
         itAddFirstPlanet(editable, path[0], dates[0]);
+        editable.firstChild.id = "lastPlanetName";
         sumPrice += parseInt(path[0].price);
     }
 
@@ -163,11 +164,18 @@ function itUpdate(){
 
     /* Do some dynamic styling */
     let bodyH = $("#itinerary_body").css("height");
-    let editableH = $("#itinerary_body_editable").css("height");
-    document.getElementById("itinerary_body_editable").style.height = "min(calc(" + editableH + " + 10%), calc(90% - " + bodyH +"))";
+    let itH = $("#itinerary_content").css("height");
+    let editableJQ = $("#itinerary_body_editable");
+    editableJQ.css("height", "auto");
+    let editableH = editableJQ.css("height");
+    // See https://stackoverflow.com/questions/6060992/element-with-the-max-height-from-a-set-of-elements
+    let destinationOH = Math.max.apply(null, $(".itinerary_destination").map(function (){
+        return $(this).outerHeight(true);
+    }).get());
+    editable.style.height = "calc(min(calc(" + editableH + " + " + destinationOH + "px), calc(" + itH + " - " + bodyH +")) - 6%)";
     body.scrollTo(0, body.scrollHeight);
     let planetNameH = $("#lastPlanetName").css("height");
-    editableScrollable.style.height = "calc(100% - " + planetNameH + ")";
+    editableScrollable.style.height = "calc("+ editableJQ.height() + "px - " + planetNameH + ")";
 }
 
 /**
