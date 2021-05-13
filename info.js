@@ -23,7 +23,12 @@ export function infoUpdate(i){
         '<tr class="infoTable"><td id="meantemp">' + '</td><td>' + PDB.planets[i].meantemp + '</td></tr>';
 
     // The "travel here" - button
+    // Remove previous buttons
+    $("#info_travel_button").remove();
+    $("#info_travel_button_here").remove();
+    // Create the new button
     let travelButton = document.createElement("button");
+    // Check if we are in the system the button points to
     if(i !== itPeek().id){
         travelButton.id = "info_travel_button";
         travelButton.disabled = false;
