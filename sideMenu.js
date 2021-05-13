@@ -274,8 +274,8 @@ function itAddAvailableDestination(parent, route, inReverse){
 function itAddPlanet(parent, planet, date){
     let p = getPlanet(planet.id);
     let div = document.createElement("div");
-    div.innerHTML = "<span>" + get_string(p.name) +
-        "<span> (</span>" + get_string(p.starsystem) + ")</span><br>" +
+    div.innerHTML = "<span><b>" + get_string(p.name) +
+        "</b><span> (</span>" + get_string(p.starsystem) + ")</span><br>" +
         "<span class='date'></span><span>: " + new Intl.DateTimeFormat(language).format(date) + "</span><br>" +
         "<span>" + planet.company + "</span><br>" +
         "<span>" + planet.price + " " +"</span>" + "<span class='spaceDollar'></span>";
@@ -292,8 +292,8 @@ function itAddPlanet(parent, planet, date){
 function itAddFirstPlanet(parent, planet, date){
     let p = getPlanet(planet.id);
     let div = document.createElement("div");
-    div.innerHTML = "<span class='depFrom'></span><span>: " + get_string(p.name) +
-        "<span> (</span>" + get_string(p.starsystem) + ")</span><br>" +
+    div.innerHTML = "<span class='depFrom'></span><span><b>: " + get_string(p.name) +
+        "</b><span> (</span>" + get_string(p.starsystem) + ")</span><br>" +
         "<span class='date'></span><span>: " + new Intl.DateTimeFormat(language).format(date) + "</span>"
     parent.insertBefore(div, parent.firstChild);
 }
@@ -302,8 +302,8 @@ function itAddLastPlanet(parent, scrollableParent, planet, date){
 
     let p = getPlanet(planet.id);
     let div = document.createElement("div");
-    div.innerHTML = "<span>" + get_string(p.name) +
-        "<span> (</span>" + get_string(p.starsystem) + ")</span><br>";
+    div.innerHTML = "<span><b>" + get_string(p.name) +
+        "</b><span> (</span>" + get_string(p.starsystem) + ")</span><br>";
     div.id = "lastPlanetName";
     let div2 = document.createElement("div");
     div2.innerHTML = "<span class='date'></span><span>: " + new Intl.DateTimeFormat(language).format(date) + "</span><br>" +
