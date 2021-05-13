@@ -164,7 +164,6 @@ function itUpdate(){
     /* Do some dynamic styling */
     let bodyH = $("#itinerary_body").css("height");
     let editableH = $("#itinerary_body_editable").css("height");
-    console.log(editableH + bodyH);
     document.getElementById("itinerary_body_editable").style.height = "min(calc(" + editableH + " + 10%), calc(90% - " + bodyH +"))";
     body.scrollTo(0, body.scrollHeight);
     let planetNameH = $("#lastPlanetName").css("height");
