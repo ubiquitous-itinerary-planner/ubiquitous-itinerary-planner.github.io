@@ -6,6 +6,7 @@
  * we want an input from the planet clicked upon which works as the index fetching info from database.
  */
 import {itPeek, itPushCommit, itUpdate} from "./sideMenu.js";
+import {update_dict_view} from "./databases/dictionaryUIP2.js";
 
 export function infoUpdate(i){
     let itemsTitle = document.getElementById('info_title');

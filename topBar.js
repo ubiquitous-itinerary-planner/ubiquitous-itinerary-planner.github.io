@@ -1,7 +1,10 @@
 /**
  * Initializes the topBar element, and its children.
  */
-function topBarInit(){
+import {mapMove} from "./map.js";
+import {change_lang, get_string} from "./databases/dictionaryUIP2.js";
+
+export function topBarInit(){
     // Initialize children:
     let p = document.getElementById("topBar");
     p.textContent = "";
@@ -20,7 +23,9 @@ function homeBtnInit(parent){
     homeBtn.id = "homeButton";
     homeBtn.classList.add("topBarButton");
     parent.appendChild(homeBtn);
-    /* TODO: Add click event */
+    homeBtn.onclick = function (){
+        mapMove();
+    }
 }
 
 /**

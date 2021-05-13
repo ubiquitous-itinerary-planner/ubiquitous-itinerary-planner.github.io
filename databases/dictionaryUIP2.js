@@ -1,7 +1,10 @@
 // ------------------------------------------------------------------------
 // Code written by Felix Lager
 // ------------------------------------------------------------------------
-let language = 'en';
+import {topBarInit} from "../topBar.js";
+import {itUpdate} from "../sideMenu.js";
+
+export let language = 'en';
 let dict = {
 
     //menu and common word translations
@@ -262,12 +265,12 @@ let dict = {
 }
 
 // returns the string for each key 
-function get_string(key) {
+export function get_string(key) {
     return dict[language][key];
 }
 
 //handles change of language
-function change_lang() {
+export function change_lang() {
     if (language === 'en') {
         language = 'sv';
     } 
@@ -286,7 +289,7 @@ function change_lang() {
 // ------------------------------------------------------------------------
 // updates the view with correct strings - depending on selected language
 // using # for divname- and . for classname searching
-function update_dict_view() {
+export function update_dict_view() {
 
     // Update page title
     $(document).attr("title", get_string("pageTitle"));

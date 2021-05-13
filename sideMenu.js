@@ -10,6 +10,8 @@ import {hyperjump} from "./hyperspace.js";
 import {commit} from "./undo.js";
 import {START_DATE} from "./init.js";
 import {infoUpdate} from "./info.js";
+import {mapGetPlanets, mapGetRoutes, mapGetSystems, mapMove} from "./map.js";
+import {get_string, language, update_dict_view} from "./databases/dictionaryUIP2.js";
 
 /**
  * Initializes the departure element, and its children.
@@ -217,7 +219,7 @@ function depCreateSystem(parent, system){
     // elements used by title's onclick function
     let list = document.createElement("ul");
     let arrow = document.createElement("img");
-    title.onclick = function (e){
+    title.onclick = function (){
         if(list.style.display !== "none"){
             list.style.display = "none";
             arrow.style.transform = "rotate(0)";
@@ -247,7 +249,7 @@ function depCreateSystem(parent, system){
         item.classList.add("departures_list");
         // Clicking on the planet switches to itinerary view
         item.onclick = function(){
-            hyperjump();
+            mapMove(system);
             itInit(pid);
             infoUpdate(pid);
             update_dict_view();
@@ -283,9 +285,8 @@ function itAddAvailableDestination(parent, route, inReverse){
     btn.classList.add("addButton");
     btn.onclick = function (){
         // Do a jump if we jump between systems
-        // TODO: Move the responsibility of calling this animation to the map function which moves between views
         if(getPlanet(route.start).starsystem !== getPlanet(route.destination).starsystem){
-            hyperjump();
+            mapMove(getPlanet(destination).starsystem);
         }
         itPush({id: destination, price: route.price, duration: route.duration, company: route.company});
         itUpdate();

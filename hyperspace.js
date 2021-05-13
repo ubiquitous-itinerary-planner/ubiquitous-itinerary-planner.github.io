@@ -9,6 +9,7 @@ import * as THREE from './libraries/three.module.js'
 import {UnrealBloomPass} from "./libraries/UnrealBloomPass.js";
 import {RenderPass} from "./libraries/RenderPass.js";
 import {EffectComposer} from "./libraries/EffectComposer.js";
+import {get_string} from "./databases/dictionaryUIP2.js";
 
 let renderer, composer, scene, camera, clock, clockJump;
 let starSystem, uniforms;
