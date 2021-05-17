@@ -2,12 +2,15 @@
  * View/Controller code
  */
 
+import {hyperjump} from "./hyperspace.js";
+import "./libraries/graphlib.js";
+
 let currentSystem; // Which system we are browsing. undefined iff we are in the starsystem view.
 
 /**
  * Initializes the map element, and its children.
  */
-function mapInit(){
+export function mapInit(){
     // Initialize the model
     for(let i = 0; i < PDB.planets.length; i++){
         mapAddPlanet(PDB.planets[i]);
@@ -30,11 +33,31 @@ function mapDraw(){
 }
 
 /**
+ * Sleeps for the passed number of ms.
+ * See https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
+ * @param ms the time to sleep
+ * @returns {Promise}
+ */
+function sleep(ms){
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+/**
  * Move the current system to the passed system.
  * @param system id of the system to move to
  */
-function mapMove(system){
+export async function mapMove(system){
+    // No need to do anything if we're already there
+    if(currentSystem === system){
+        return;
+    }
+    // Update model
     currentSystem = system;
+    // Play animation
+    hyperjump();
+    // Wait for the animation to happen
+    await sleep(3000);
     // After moving, redraw the screen:
     mapDraw();
 }
@@ -80,7 +103,7 @@ function mapAddRoute(route){
  * @param target (optional) if given, only routes from planet to target will be returned
  * @returns {[string]} array of the ids of all routes
  */
-function mapGetRoutes(planet, target){
+export function mapGetRoutes(planet, target){
     if(planet === undefined){
         return map.edges();
     }
@@ -93,7 +116,7 @@ function mapGetRoutes(planet, target){
  * Gets the names of all star systems in the map.
  * @returns {[string]} array of the names of all star systems
  */
-function mapGetSystems(){
+export function mapGetSystems(){
     return map.children();
 }
 
@@ -102,7 +125,7 @@ function mapGetSystems(){
  * @param system (optional) if given, only planets of this system will be returned
  * @returns {[string]} an array of the ids of all planets
  */
-function mapGetPlanets(system){
+export function mapGetPlanets(system){
     if(system === undefined){
         let allNodes = map.nodes();
         // Only return the planets, so filter out the systems:
@@ -123,7 +146,7 @@ function mapGetPlanets(system){
  * @returns {[string]} an array of ids of planets visited, in order of visit, starting at the start planet,
  * and ending at the destination planet
  */
-function mapRouteShortest(start, destination){
+export function mapRouteShortest(start, destination){
     let dijkstra = graphlib.alg.dijkstra(map, start);
     return findPath(dijkstra, start, destination);
 }
@@ -136,7 +159,7 @@ function mapRouteShortest(start, destination){
  * @returns {[string]} an array of ids of planets visited, in order of visit, starting at the start planet,
  * and ending at the destination planet
  */
-function mapRouteCheapest(start, destination){
+export function mapRouteCheapest(start, destination){
     function weight(e) {
         return getRoute(e.name).price;
     }
@@ -152,7 +175,7 @@ function mapRouteCheapest(start, destination){
  * @returns {[string]} an array of ids of planets visited, in order of visit, starting at the start planet,
  * and ending at the destination planet
  */
-function mapRouteFastest(start, destination){
+export function mapRouteFastest(start, destination){
     function weight(e) {
         return getRoute(e.name).duration;
     }

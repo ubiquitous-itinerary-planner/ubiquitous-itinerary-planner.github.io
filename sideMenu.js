@@ -9,6 +9,9 @@
 import {hyperjump} from "./hyperspace.js";
 import {commit} from "./undo.js";
 import {START_DATE} from "./init.js";
+import {infoUpdate} from "./info.js";
+import {mapGetPlanets, mapGetRoutes, mapGetSystems, mapMove} from "./map.js";
+import {get_string, language, update_dict_view} from "./databases/dictionaryUIP2.js";
 
 /**
  * Initializes the departure element, and its children.
@@ -38,7 +41,7 @@ function itInit(start){
 /**
  * Re-draws the itinerary
  */
-function itUpdate(){
+export function itUpdate(){
     /* Path = [{id: num, price: num, duration: num, company: string}] */
     let path = itGet();
     /* Find arrival times for the planets of the path */
@@ -53,10 +56,12 @@ function itUpdate(){
     let body = document.getElementById("itinerary_body");
     body.innerHTML = "";
     let editable = document.getElementById("itinerary_body_editable");
-    editable.innerHTML = "";
+    editable.innerHTML = "<div id=\"itinerary_body_editable_scrollable\" class=\"hiddenScroll\"></div>";
+    let editableScrollable = document.getElementById("itinerary_body_editable_scrollable");
+    editableScrollable.innerHTML = "";
     let destinations = document.createElement("div");
     destinations.id = "itinerary_body_editable_destinations";
-    destinations.classList.add("hiddenScroll");
+    //destinations.classList.add("hiddenScroll");
     let footer = document.getElementById("itinerary_footer");
     footer.innerHTML = "";
 
@@ -64,14 +69,15 @@ function itUpdate(){
     // The "Available destinations:" text
     let availDest = document.createElement("div");
     availDest.id = 'availDest';
-    editable.appendChild(availDest);
-    editable.appendChild(destinations);
+    editableScrollable.appendChild(availDest);
+    editableScrollable.appendChild(destinations);
 
     // The "X"
     let xBtn = document.createElement("canvas");
     // 1:1 aspect ratio
     xBtn.width = 32;
     xBtn.height = 32;
+    // Add the button to the document
     editable.appendChild(xBtn);
     xBtn.id = 'xBtn';
     let ctx = xBtn.getContext("2d");
@@ -117,8 +123,8 @@ function itUpdate(){
     /* Add planets */
     let sumPrice = 0;
     if(path.length > 1){
-        /* Add the last planet to the "editable" element */
-        itAddPlanet(editable, path[path.length-1], dates[path.length-1]);
+        /* Add the last planet */
+        itAddLastPlanet(editable, editableScrollable, path[path.length-1], dates[path.length-1]);
         sumPrice += parseInt(path[path.length-1].price);
         /* Add the rest of the planets of the path */
         for(let i = path.length-2; i >= 1; i--){
@@ -132,8 +138,9 @@ function itUpdate(){
         sumPrice += parseInt(path[0].price);
     }
     else{
-        /* Add the first planet */
+        /* Add the first and last planet */
         itAddFirstPlanet(editable, path[0], dates[0]);
+        editable.firstChild.id = "lastPlanetName";
         sumPrice += parseInt(path[0].price);
     }
 
@@ -160,8 +167,18 @@ function itUpdate(){
 
     /* Do some dynamic styling */
     let bodyH = $("#itinerary_body").css("height");
-    document.getElementById("itinerary_body_editable").style.maxHeight = "calc(95% - " + bodyH +")";
+    let itH = $("#itinerary_content").css("height");
+    let editableJQ = $("#itinerary_body_editable");
+    editableJQ.css("height", "auto");
+    let editableH = editableJQ.css("height");
+    // See https://stackoverflow.com/questions/6060992/element-with-the-max-height-from-a-set-of-elements
+    let destinationOH = Math.max.apply(null, $(".itinerary_destination").map(function (){
+        return $(this).outerHeight(true);
+    }).get());
+    editable.style.height = "calc(min(calc(" + editableH + " + " + destinationOH + "px), calc(" + itH + " - " + bodyH +")) - 6%)";
     body.scrollTo(0, body.scrollHeight);
+    let planetNameH = $("#lastPlanetName").css("height");
+    editableScrollable.style.height = "calc("+ editableJQ.height() + "px - " + planetNameH + ")";
 }
 
 /**
@@ -183,7 +200,10 @@ function depCreateSystem(parent, system){
     let planets = mapGetPlanets(system);
     /* Overview:
      * <div main>
-     *    <p system></p>
+     *    <div title>
+     *      <img arrow>
+     *      <h3 system></h3>
+     *    </div title>
      *    <ul list>
      *       <li planet></li>
      *    </ul list>
@@ -191,20 +211,45 @@ function depCreateSystem(parent, system){
      */
     // main
     let main = document.createElement("div");
+    main.classList.add("depMain");
+    // title
+    let title = document.createElement("div");
+    title.style.display = "flex";
+    title.style.cursor = "pointer";
+    // elements used by title's onclick function
+    let list = document.createElement("ul");
+    let arrow = document.createElement("img");
+    title.onclick = function (){
+        if(list.style.display !== "none"){
+            list.style.display = "none";
+            arrow.style.transform = "rotate(0)";
+        }
+        else {
+            list.style.display = "block";
+            arrow.style.transform = "rotate(90deg)";
+        }
+    };
+    main.appendChild(title);
+    // img arrow
+    arrow.classList.add("departuresArrowPic");
+    arrow.setAttribute("alt", get_string("depArrowAltText"));
+    title.appendChild(arrow);
     // p system
     let p = document.createElement("h3");
     p.id = system;
-    main.appendChild(p);
+    title.appendChild(p);
     // ul list
-    let list = document.createElement("ul");
+    list.classList.add("departures_list");
+    list.style.display = "none";
     // li planet
     for(p in planets){
         let pid = planets[p];
         let item = document.createElement("li");
         item.id = PDB.planets[pid].name;
+        item.classList.add("departures_list");
         // Clicking on the planet switches to itinerary view
         item.onclick = function(){
-            hyperjump();
+            mapMove(system);
             itInit(pid);
             infoUpdate(pid);
             update_dict_view();
@@ -240,9 +285,8 @@ function itAddAvailableDestination(parent, route, inReverse){
     btn.classList.add("addButton");
     btn.onclick = function (){
         // Do a jump if we jump between systems
-        // TODO: Move the responsibility of calling this animation to the map function which moves between views
         if(getPlanet(route.start).starsystem !== getPlanet(route.destination).starsystem){
-            hyperjump();
+            mapMove(getPlanet(destination).starsystem);
         }
         itPush({id: destination, price: route.price, duration: route.duration, company: route.company});
         itUpdate();
@@ -268,7 +312,8 @@ function itAddAvailableDestination(parent, route, inReverse){
 function itAddPlanet(parent, planet, date){
     let p = getPlanet(planet.id);
     let div = document.createElement("div");
-    div.innerHTML = "<span>" + get_string(p.name) + "</span><br>" +
+    div.innerHTML = "<span><b>" + get_string(p.name) +
+        "</b><span> (</span>" + get_string(p.starsystem) + ")</span><br>" +
         "<span class='date'></span><span>: " + new Intl.DateTimeFormat(language).format(date) + "</span><br>" +
         "<span>" + planet.company + "</span><br>" +
         "<span>" + planet.price + " " +"</span>" + "<span class='spaceDollar'></span>";
@@ -285,10 +330,27 @@ function itAddPlanet(parent, planet, date){
 function itAddFirstPlanet(parent, planet, date){
     let p = getPlanet(planet.id);
     let div = document.createElement("div");
-    div.innerHTML = "<span class='depFrom'></span><span>: " + get_string(p.name) +
-        "<span> (</span>" + get_string(p.starsystem) + ")</span><br>" +
+    div.innerHTML = "<span class='depFrom'></span><span><b>: " + get_string(p.name) +
+        "</b><span> (</span>" + get_string(p.starsystem) + ")</span><br>" +
         "<span class='date'></span><span>: " + new Intl.DateTimeFormat(language).format(date) + "</span>"
     parent.insertBefore(div, parent.firstChild);
+}
+
+function itAddLastPlanet(parent, scrollableParent, planet, date){
+
+    let p = getPlanet(planet.id);
+    let div = document.createElement("div");
+    div.innerHTML = "<span><b>" + get_string(p.name) +
+        "</b><span> (</span>" + get_string(p.starsystem) + ")</span><br>";
+    div.id = "lastPlanetName";
+    let div2 = document.createElement("div");
+    div2.innerHTML = "<span class='date'></span><span>: " + new Intl.DateTimeFormat(language).format(date) + "</span><br>" +
+        "<span>" + planet.company + "</span><br>" +
+        "<span>" + planet.price + " " +"</span>" + "<span class='spaceDollar'></span>";
+    // Insert the divs
+    parent.insertBefore(div, parent.firstChild);
+    scrollableParent.insertBefore(div2, scrollableParent.firstChild);
+
 }
 
 /**
@@ -344,6 +406,14 @@ function itPop(){
 export function itPopCommit(){
     commit();
     return itPop();
+}
+
+/**
+ * Returns the last planet of the itinerary, without popping it
+ * @returns {*} the last planet
+ */
+export function itPeek(){
+    return itinerary[itinerary.length-1];
 }
 
 /**
