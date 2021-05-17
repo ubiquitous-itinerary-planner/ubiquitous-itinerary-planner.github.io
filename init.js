@@ -3,6 +3,10 @@
  */
 
 import {depInit} from "./sideMenu.js";
+import {mapInit} from "./map.js";
+import {topBarInit} from "./topBar.js";
+import {update_dict_view} from "./databases/dictionaryUIP2.js";
+
 
 export const START_DATE = new Date();
 

@@ -12,6 +12,30 @@
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" id="mediaSize">
 
+  <!--Libraries -->
+  <script src="libraries/jquery-3.6.0.min.js"></script>
+  <script src="libraries/graphlib.js"></script>
+
+  <!--Javascript code -->
+  <!-- You can comment this line, or test the server by running "python -m http.server" in the terminal/cmd prompt,
+    and access it through http://localhost:8000 -->
+  <script type=module src="hyperspace.js"></script>
+  <script type=module src="info.js"></script>
+  <script type=module src="sideMenu.js"></script>
+  <script type=module src="undo.js"></script>
+  <script src="databases/planetsDB.js"></script>
+  <script src="planets.js"></script>
+  <script src="databases/routesDB.js"></script>
+  <script src="routes.js"></script>
+  <script type=module src="map.js"></script>
+  <script type=module src="topBar.js"></script>
+  <script type=module src="databases/dictionaryUIP2.js"></script>
+  <script type="module" src="init.js"></script>
+
+  <!-- Scripts for testing modules, remove these before hand-in -->
+  <script type=module src="tests/itinerary.test.js"></script>
+  <script type=module src="tests/undo.test.js"></script>
+
 </head>
 <body>
 
@@ -20,13 +44,13 @@
   <canvas id="map" width="800" height="1200"></canvas>
 <div id="info" role="complementary">
   <table id="info_title" class="title"></table>
-  <table id="info_table"></table>
+  <table id="info_table" class="centered-horizontal"></table>
 </div>
 <div id="itinerary" class="sideMenu" role="navigation">
   <h1 id="itinerary_title" class="title"></h1>
   <div id="itinerary_content">
     <div id="itinerary_body" class="centered-horizontal hiddenScroll"></div>
-    <div id="itinerary_body_editable" class="hiddenScroll">
+    <div id="itinerary_body_editable">
     </div>
   </div>
   <div id="itinerary_footer" class="centered-horizontal">
@@ -39,29 +63,4 @@
   </div>
 </div>
 </body>
-
-<!--Libraries -->
-<script src="libraries/jquery-3.6.0.min.js"></script>
-<script src="libraries/graphlib.js"></script>
-
-<!--Javascript code -->
-<!-- You can comment this line, or test the server by running "python -m http.server" in the terminal/cmd prompt,
-  and access it through http://localhost:8000 -->
-<script type=module src="hyperspace.js"></script>
-<script src="info.js"></script>
-<script type=module src="sideMenu.js"></script>
-<script type=module src="undo.js"></script>
-<script src="databases/planetsDB.js"></script>
-<script src="planets.js"></script>
-<script src="databases/routesDB.js"></script>
-<script src="routes.js"></script>
-<script src="map.js"></script>
-<script src="topBar.js"></script>
-<script src="databases/dictionaryUIP2.js"></script>
-<script type="module" src="init.js"></script>
-
-<!-- Scripts for testing modules, remove these before hand-in -->
-<script type=module src="tests/itinerary.test.js"></script>
-<script type=module src="tests/undo.test.js"></script>
-
 </html>
