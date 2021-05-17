@@ -29,47 +29,32 @@ export function mapInit(){
  * Draws the map of the currently selected system.
  */
 function mapDraw(){
-    // Hide all map objects
-    // Show the map objects corresponding to the current system
+
+
     // https://www.nashvail.me/blog/canvas-image
     // https://www.samanthaming.com/tidbits/48-passing-arrays-as-function-arguments/
     let canvas = document.getElementById("map");
     let ctx = canvas.getContext("2d")
+    // Hide all map objects
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    let earth = new Image();
-    let mars = new Image();
-    let moon = new Image();
-    let blue = new Image();
-    let green = new Image();
-    earth.src = PDB.planets[0].img;
-    mars.src = PDB.planets[1].img;
-    moon.src = PDB.planets[2].img; // The restaurant at the end of the U
-    blue.src = PDB.planets[3].img; // Frogstar world A
-    green.src = PDB.planets[4].img; // Frogstar World B
-
-    if (currentSystem === 'solarSystem') {
-        // (src, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
-        earth.onload = () => {
-            ctx.drawImage(earth, ...PDB.planets[0].placement)
-        }
-        mars.onload = () => {
-            ctx.drawImage(mars, ...PDB.planets[1].placement)
+    let planets = mapGetPlanets(currentSystem)
+    let planetImages = [];
+    // Checking if we are in the starsystem view
+    if (currentSystem === undefined) {
+        // TODO: Insert star system view on canvas
+        return;
+    }
+    // Show the map objects corresponding to the current system
+    for (let i = 0; i<planets.length; i++) {
+        let img = new Image();
+        img.src = getPlanet(planets[i]).img;
+        planetImages = planetImages + img.src;
+        img.onload = function() {
+            ctx.drawImage(img, ...getPlanet(planets[i]).placement);
         }
     }
+    console.log(planetImages);
 
-    else if (currentSystem === 'frogstarSystem') {
-        moon.onload = () => {
-            ctx.drawImage(moon, ...PDB.planets[2].placement)
-        }
-        blue.onload = () => {
-            ctx.drawImage(blue, ...PDB.planets[3].placement)
-        }
-        green.onload = () => {
-            ctx.drawImage(green, ...PDB.planets[4].placement)
-        }
-    }
-    // Star system view
-    else {}
 }
 
 /**
