@@ -20,18 +20,7 @@ function mapInit(){
     // Create the html-objects for showing all systems
     // Draw only the current system
     mapDraw();
-    //createImg("images/planet_blue.png", "planetblueue")
 }
-
-function createImg(image_path, alt_text) {
-    let x = document.createElement("img");
-    x.setAttribute("class", "planetBlue")
-    x.setAttribute("src", image_path);
-    x.setAttribute("width", "5");
-    x.setAttribute("height", "5");
-    x.setAttribute("alt", alt_text);
-    return x.outerHTML;
-    }
 
 /**
  * Draws the map of the currently selected system.
@@ -39,39 +28,45 @@ function createImg(image_path, alt_text) {
 function mapDraw(){
     // Hide all map objects
     // Show the map objects corresponding to the current system
-    // https://www.nashvail.me/blog/canvas-image 
+    // https://www.nashvail.me/blog/canvas-image
+    // https://www.samanthaming.com/tidbits/48-passing-arrays-as-function-arguments/
     let canvas = document.getElementById("map");
     let ctx = canvas.getContext("2d")
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     let earth = new Image();
     let mars = new Image();
     let moon = new Image();
     let blue = new Image();
     let green = new Image();
-
     earth.src = PDB.planets[0].img;
     mars.src = PDB.planets[1].img;
     moon.src = PDB.planets[2].img; // The restaurant at the end of the U
     blue.src = PDB.planets[3].img; // Frogstar world A
     green.src = PDB.planets[4].img; // Frogstar World B
 
-    // (src, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
-    earth.onload = () => {
-        ctx.drawImage(earth, ...PDB.planets[0].placement)
-    }
-    mars.onload = () => {
-        ctx.drawImage(mars, ...PDB.planets[1].placement)
-    }
-    moon.onload = () => {
-        ctx.drawImage(moon, ...PDB.planets[2].placement)
-    }
-    blue.onload = () => {
-        ctx.drawImage(blue, ...PDB.planets[3].placement)
-    }
-    green.onload = () => {
-        ctx.drawImage(green, ...PDB.planets[4].placement)
+    if (currentSystem === 'solarSystem') {
+        // (src, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
+        earth.onload = () => {
+            ctx.drawImage(earth, ...PDB.planets[0].placement)
+        }
+        mars.onload = () => {
+            ctx.drawImage(mars, ...PDB.planets[1].placement)
+        }
     }
 
-
+    else if (currentSystem === 'frogstarSystem') {
+        moon.onload = () => {
+            ctx.drawImage(moon, ...PDB.planets[2].placement)
+        }
+        blue.onload = () => {
+            ctx.drawImage(blue, ...PDB.planets[3].placement)
+        }
+        green.onload = () => {
+            ctx.drawImage(green, ...PDB.planets[4].placement)
+        }
+    }
+    // Star system view
+    else {}
 }
 
 /**
