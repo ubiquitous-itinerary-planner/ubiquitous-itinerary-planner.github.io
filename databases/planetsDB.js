@@ -26,7 +26,7 @@ let PDB = {
             "percentualwatersurface": "70%",
             "standardmealcost": "3",
             "img": "images/planet_earth.png",
-            "placement": [0, 0, 150, 137, 500, 650, 300, 274]
+            "placement": [0, 0, 150, 137, 300, 274]
         }, {
             "id": "1",
             "name": "mars",
@@ -49,7 +49,7 @@ let PDB = {
             "percentualwatersurface": "30%",
             "standardmealcost": "",
             "img": "images/planet_mars.png",
-            "placement": [0, 0, 126, 113, 400, 300, 252, 226]
+            "placement": [0, 0, 126, 113, 252, 226]
         }, {
             "id": "2",
             "name": "theRestaurantAtTheEndOfTheUniverse",
@@ -73,7 +73,7 @@ let PDB = {
             "standardmealcost": "",
             //"img": "images/theRestaurantAtTheEndOfTheUniverse.png"
             "img": "images/planet_moon.png",
-            "placement": [0, 0, 50, 50, 200, 400, 50, 50]
+            "placement": [0, 0, 50, 50, 50, 50]
         }, {
             "id": "3",
             "name": "frogstarWorldA",
@@ -97,7 +97,7 @@ let PDB = {
             "standardmealcost": "",
             //"img": "images/frogstarWorldA.png"
             "img": "images/planet_blue.png",
-            "placement": [0, 0, 282, 267, 350, 10, 282, 267]
+            "placement": [0, 0, 282, 267, 282, 267]
         }, {
             "id": "4",
             "name": "frogstarWorldB",
@@ -121,7 +121,7 @@ let PDB = {
             "standardmealcost": "",
             //"img": "images/frogstarWorldB.png"
             "img": "images/planet_green.png",
-            "placement": [0, 0, 471, 357, 0, 500, 314, 238]
+            "placement": [0, 0, 471, 357, 314, 238]
         }, {
             "id": "5",
             "name": "frogstarWorldC",
@@ -167,7 +167,8 @@ let PDB = {
             "domesticanimals": "",
             "percentualwatersurface": "",
             "standardmealcost": "",
-            "img": "images/naboo.png"
+            "img": "images/naboo.png",
+            "placement": [0, 0, 0, 0, 0, 0]
         }, {
             "id": "7",
             "name": "coruscant",

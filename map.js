@@ -4,6 +4,7 @@
 
 import {hyperjump} from "./hyperspace.js";
 import "./libraries/graphlib.js";
+import {coordinates} from "./databases/coordinatesDB.js";
 
 let currentSystem; // Which system we are browsing. undefined iff we are in the starsystem view.
 
@@ -39,6 +40,10 @@ function mapDraw(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     let planets = mapGetPlanets(currentSystem)
     let planetImages = [];
+    const cWidth = canvas.width;
+    const cHeight = canvas.height;
+    const coords = coordinates[planets.length];
+
     // Checking if we are in the starsystem view
     if (currentSystem === undefined) {
         // TODO: Insert star system view on canvas
@@ -50,11 +55,30 @@ function mapDraw(){
         img.src = getPlanet(planets[i]).img;
         planetImages = planetImages + img.src;
         img.onload = function() {
-            ctx.drawImage(img, ...getPlanet(planets[i]).placement);
+            let p = getPlanet(planets[i]).placement;
+            let args = [img, p[0], p[1], p[2], p[3], coords[i].x*cWidth, coords[i].y*cHeight, p[4], p[5]];
+            ctx.drawImage(...args);
+        }
+        let routes = mapGetRoutes(i.toString());
+        console.log(routes);
+        for (let j = 0; j<routes.length; j++) {
+            let start = getPlanet(getRoute(routes[j].name).start);
+            let destination = getPlanet(getRoute(routes[j].name).destination);
+            // Checking whether a planet is in the system or not
+            if (destination.starsystem === currentSystem) {
+                ctx.beginPath();
+                ctx.moveTo(coords[i].x*cWidth, coords[i].y*cHeight);
+                let dIndex = planets.indexOf(destination.id);
+                console.log(dIndex);
+                console.log(planets[dIndex]);
+                console.log(destination);
+                ctx.lineTo(coords[dIndex].x*cWidth, coords[dIndex].y*cHeight);
+                ctx.stroke();
+            }
         }
     }
-    console.log(planetImages);
 
+    console.log(planetImages);
 }
 
 /**
