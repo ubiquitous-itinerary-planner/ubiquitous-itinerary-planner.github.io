@@ -31,14 +31,13 @@ export function mapInit(){
  */
 function mapDraw(){
 
-
     // https://www.nashvail.me/blog/canvas-image
     // https://www.samanthaming.com/tidbits/48-passing-arrays-as-function-arguments/
-    let canvas = document.getElementById("map");
-    let ctx = canvas.getContext("2d")
+    const canvas = document.getElementById("map");
+    const ctx = canvas.getContext("2d")
     // Hide all map objects
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    let planets = mapGetPlanets(currentSystem)
+    const planets = mapGetPlanets(currentSystem)
     let planetImages = [];
     const cWidth = canvas.width;
     const cHeight = canvas.height;
@@ -51,7 +50,7 @@ function mapDraw(){
     }
     // Show the map objects corresponding to the current system
     for (let i = 0; i<planets.length; i++) {
-        let img = new Image();
+        const img = new Image();
         img.src = getPlanet(planets[i]).img;
         planetImages = planetImages + img.src;
         img.onload = function() {
@@ -62,24 +61,26 @@ function mapDraw(){
         let routes = mapGetRoutes(planets[i]);
         // Using canvas to draw lines between planets where routes exist
         for (let j = 0; j<routes.length; j++) {
-            let start = getPlanet(getRoute(routes[j].name).start);
-            let startOffSetX = start.placement[4]*0.5;
-            let startOffSetY = start.placement[5]*0.5;
-            let destination = getPlanet(getRoute(routes[j].name).destination);
-            let destOffSetX = destination.placement[4]*0.5;
-            let destOffSetY = destination.placement[5]*0.5;
+            const start = getPlanet(getRoute(routes[j].name).start);
+            const destination = getPlanet(getRoute(routes[j].name).destination);
             // Checking whether a planet is in the system or not
-            if (destination.starsystem === currentSystem) {
+            if (destination.starsystem === start.starsystem) {
+                // Compute offsets and indices
+                const startOffSetX = start.placement[4]*0.5;
+                const startOffSetY = start.placement[5]*0.5;
+                const destOffSetX = destination.placement[4]*0.5;
+                const destOffSetY = destination.placement[5]*0.5;
+                const sIndex = planets.indexOf(start.id);
+                const dIndex = planets.indexOf(destination.id);
+                // Draw the path
                 ctx.beginPath();
-                ctx.moveTo(startOffSetX + coords[i].x*cWidth, startOffSetY + coords[i].y*cHeight);
-                let dIndex = planets.indexOf(destination.id);
+                ctx.moveTo(startOffSetX + coords[sIndex].x*cWidth, startOffSetY + coords[sIndex].y*cHeight);
                 ctx.lineTo(destOffSetX + coords[dIndex].x*cWidth, destOffSetY + coords[dIndex].y*cHeight);
                 ctx.stroke();
             }
         }
     }
 
-    console.log(planetImages);
 }
 
 /**
@@ -91,7 +92,6 @@ function mapDraw(){
 function sleep(ms){
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-
 
 /**
  * Move the current system to the passed system.
