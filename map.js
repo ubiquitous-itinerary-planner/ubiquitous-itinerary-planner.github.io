@@ -59,20 +59,21 @@ function mapDraw(){
             let args = [img, p[0], p[1], p[2], p[3], coords[i].x*cWidth, coords[i].y*cHeight, p[4], p[5]];
             ctx.drawImage(...args);
         }
-        let routes = mapGetRoutes(i.toString());
-        console.log(routes);
+        let routes = mapGetRoutes(planets[i]);
+        // Using canvas to draw lines between planets where routes exist
         for (let j = 0; j<routes.length; j++) {
             let start = getPlanet(getRoute(routes[j].name).start);
+            let startOffSetX = start.placement[4]*0.5;
+            let startOffSetY = start.placement[5]*0.5;
             let destination = getPlanet(getRoute(routes[j].name).destination);
+            let destOffSetX = destination.placement[4]*0.5;
+            let destOffSetY = destination.placement[5]*0.5;
             // Checking whether a planet is in the system or not
             if (destination.starsystem === currentSystem) {
                 ctx.beginPath();
-                ctx.moveTo(coords[i].x*cWidth, coords[i].y*cHeight);
+                ctx.moveTo(startOffSetX + coords[i].x*cWidth, startOffSetY + coords[i].y*cHeight);
                 let dIndex = planets.indexOf(destination.id);
-                console.log(dIndex);
-                console.log(planets[dIndex]);
-                console.log(destination);
-                ctx.lineTo(coords[dIndex].x*cWidth, coords[dIndex].y*cHeight);
+                ctx.lineTo(destOffSetX + coords[dIndex].x*cWidth, destOffSetY + coords[dIndex].y*cHeight);
                 ctx.stroke();
             }
         }

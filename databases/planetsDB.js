@@ -144,8 +144,8 @@ let PDB = {
             "percentualwatersurface": "",
             "standardmealcost": "",
             //"img": "images/frogstarWorldC.png"
-            "img": "",
-            "placement": ""
+            "img": "images/planet_earth.png",
+            "placement": [0, 0, 150, 137, 300, 274]
         }, {
             "id": "6",
             "name": "naboo",
@@ -167,8 +167,8 @@ let PDB = {
             "domesticanimals": "",
             "percentualwatersurface": "",
             "standardmealcost": "",
-            "img": "images/naboo.png",
-            "placement": [0, 0, 0, 0, 0, 0]
+            "img": "images/planet_mars.png",
+            "placement": [0, 0, 126, 113, 252, 226]
         }, {
             "id": "7",
             "name": "coruscant",
@@ -190,7 +190,8 @@ let PDB = {
             "domesticanimals": "",
             "percentualwatersurface": "",
             "standardmealcost": "",
-            "img": "images/coruscant.png"
+            "img": "images/planet_moon.png",
+            "placement": [0, 0, 50, 50, 50, 50]
         }, {
             "id": "8",
             "name": "kamino",
@@ -212,7 +213,8 @@ let PDB = {
             "domesticanimals": "",
             "percentualwatersurface": "100%",
             "standardmealcost": "",
-            "img": "images/kamino.png"
+            "img": "images/planet_blue.png",
+            "placement": [0, 0, 282, 267, 282, 267]
         }, {
             "id": "9",
             "name": "mustafar",
@@ -234,7 +236,8 @@ let PDB = {
             "domesticanimals": "",
             "percentualwatersurface": "",
             "standardmealcost": "",
-            "img": "images/mustafar.png"
+            "img": "images/planet_green.png",
+            "placement": [0, 0, 471, 357, 314, 238]
         }, {
             "id": "10",
             "name": "tatooine",
@@ -256,7 +259,8 @@ let PDB = {
             "domesticanimals": "",
             "percentualwatersurface": "",
             "standardmealcost": "",
-            "img": "images/tatooine.png"
+            "img": "images/planet_earth.png",
+            "placement": [0, 0, 150, 137, 300, 274]
         }, {
             "id": "11",
             "name": "shire",
@@ -278,7 +282,8 @@ let PDB = {
             "domesticanimals": "",
             "percentualwatersurface": "",
             "standardmealcost": "",
-            "img": "images/shire.png"
+            "img": "images/planet_mars.png",
+            "placement": [0, 0, 126, 113, 252, 226]
         }, {
             "id": "12",
             "name": "gondor",
@@ -300,7 +305,8 @@ let PDB = {
             "domesticanimals": "",
             "percentualwatersurface": "",
             "standardmealcost": "",
-            "img": "images/gondor.png"
+            "img": "images/planet_moon.png",
+            "placement": [0, 0, 50, 50, 50, 50]
         }, {
             "id": "13",
             "name": "rohan",
@@ -322,7 +328,8 @@ let PDB = {
             "domesticanimals": "",
             "percentualwatersurface": "",
             "standardmealcost": "",
-            "img": "images/rohan.png"
+            "img": "images/planet_blue.png",
+            "placement": [0, 0, 282, 267, 282, 267]
         }, {
             "id": "14",
             "name": "mordor",
@@ -344,7 +351,8 @@ let PDB = {
             "domesticanimals": "",
             "percentualwatersurface": "",
             "standardmealcost": "",
-            "img": "images/mordor.png"
+            "img": "images/planet_green.png",
+            "placement": [0, 0, 471, 357, 314, 238]
         }]
 };
 
