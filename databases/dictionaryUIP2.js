@@ -136,7 +136,7 @@ let dict = {
         // Government translations
         'selfcontrolled': "Self-controlled",
         // Currency translations
-        'spaceDollar': "Space Dollar",
+        'spaceDollar': "$",
         // Language translations
         'english': "English", 
         'marsianAndEnglish': "Marsian and English",
@@ -248,7 +248,7 @@ let dict = {
         // Government translations
         'selfcontrolled': "Självstyrt",
         // Currency translations
-        'spaceDollar': "Rymddollar",
+        'spaceDollar': "$",
         // Language translations
         'english': "Engelska", 
         'marsianAndEnglish': "Marsianska och engelska",
