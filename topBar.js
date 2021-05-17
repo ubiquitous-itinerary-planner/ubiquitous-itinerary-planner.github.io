@@ -1,7 +1,10 @@
 /**
  * Initializes the topBar element, and its children.
  */
-function topBarInit(){
+import {mapMove} from "./map.js";
+import {change_lang, get_string} from "./databases/dictionaryUIP2.js";
+
+export function topBarInit(){
     // Initialize children:
     let p = document.getElementById("topBar");
     p.textContent = "";
@@ -20,7 +23,9 @@ function homeBtnInit(parent){
     homeBtn.id = "homeButton";
     homeBtn.classList.add("topBarButton");
     parent.appendChild(homeBtn);
-    /* TODO: Add click event */
+    homeBtn.onclick = function (){
+        mapMove();
+    }
 }
 
 /**
@@ -49,7 +54,6 @@ function languageBtnInit(parent){
     let flag = document.createElement("img");
     flag.id = 'langPic';
     flag.setAttribute("alt", get_string("flagAltText"));
-    flag.setAttribute("height", "100%");
     languageBtn.classList.add("topBarButton");
     languageBtn.onclick=change_lang;
     // Add the parts to the button, and add the button to the parent

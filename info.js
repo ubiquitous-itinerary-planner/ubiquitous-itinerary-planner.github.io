@@ -5,8 +5,10 @@
  * it is used for the dictionary to convert the names in the table.
  * we want an input from the planet clicked upon which works as the index fetching info from database.
  */
+import {itPeek, itPushCommit, itUpdate} from "./sideMenu.js";
+import {update_dict_view} from "./databases/dictionaryUIP2.js";
 
-function infoUpdate(i){
+export function infoUpdate(i){
     let itemsTitle = document.getElementById('info_title');
     itemsTitle.innerHTML = '';
     itemsTitle.innerHTML +=
@@ -14,13 +16,33 @@ function infoUpdate(i){
     let itemsTable = document.getElementById('info_table');
     itemsTable.innerHTML = '';
     itemsTable.innerHTML +=
-        '<tr><td id="starsystem">' + '</td><td id="' + PDB.planets[i].starsystem + '">' + '</td></tr>' +
-        '<tr><td id="population">' + '</td><td>' + PDB.planets[i].population + '</td></tr>' +
-        '<tr><td id="climate">' + '</td><td id="' + PDB.planets[i].climate + '">' + '</td></tr>' +
-        '<tr><td id="infrastructure">' + '</td><td id="' + PDB.planets[i].infrastructure + '">' + '</td></tr>' +
-        '<tr><td id="breathable">' + '</td><td id="' + PDB.planets[i].breathable + '">' + '</td></tr>' +
-        '<tr><td id="meantemp">' + '</td><td>' + PDB.planets[i].meantemp + '</td></tr>';
-        
+        '<tr class="infoTable"><td id="starsystem">' + '</td><td id="' + PDB.planets[i].starsystem + '">' + '</td></tr>' +
+        '<tr class="infoTable"><td id="population">' + '</td><td>' + PDB.planets[i].population + '</td></tr>' +
+        '<tr class="infoTable"><td id="climate">' + '</td><td id="' + PDB.planets[i].climate + '">' + '</td></tr>' +
+        '<tr class="infoTable"><td id="infrastructure">' + '</td><td id="' + PDB.planets[i].infrastructure + '">' + '</td></tr>' +
+        '<tr class="infoTable"><td id="breathable">' + '</td><td id="' + PDB.planets[i].breathable + '">' + '</td></tr>' +
+        '<tr class="infoTable"><td id="meantemp">' + '</td><td>' + PDB.planets[i].meantemp + '</td></tr>';
+
+    // The "travel here" - button
+    // Remove previous buttons
+    $("#info_travel_button").remove();
+    $("#info_travel_button_here").remove();
+    // Create the new button
+    let travelButton = document.createElement("button");
+    // Check if we are in the system the button points to
+    if(i !== itPeek().id){
+        travelButton.id = "info_travel_button";
+        travelButton.disabled = false;
+    }
+    else{
+        travelButton.id = "info_travel_button_here";
+        travelButton.disabled = true;
+    }
+    travelButton.onclick = function (){
+        itPushCommit(getPlanet(i));
+        itUpdate();
+    };
+    document.getElementById("info").appendChild(travelButton);
     // Show the panel
     document.getElementById('info').style.display = 'initial';
     update_dict_view();

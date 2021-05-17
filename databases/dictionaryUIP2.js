@@ -1,12 +1,16 @@
 // ------------------------------------------------------------------------
 // Code written by Felix Lager
 // ------------------------------------------------------------------------
-let language = 'en';
+import {topBarInit} from "../topBar.js";
+import {itUpdate} from "../sideMenu.js";
+
+export let language = 'en';
 let dict = {
 
     //menu and common word translations
     'text' : ['homeButton', 'helpButton', 'activeLanguageButton', 'departure_title', 'itinerary_title', 'itinButton', 'addButton', 'removeButton', 'clearItin', 'planetView', 'systemJump',
-    'departurePreamble', 'depFrom', 'date', 'to', 'spaceline', 'duration', 'price', 'availDest', 'totalTravelTime', 'days', 'itinClearBtn', 'totalTravelCost', 'pageTitle', 'yes', 'no',
+    'departurePreamble', 'depFrom', 'date', 'to', 'spaceline', 'duration', 'price', 'availDest', 'totalTravelTime', 'days', 'itinClearBtn', 'totalTravelCost', 'pageTitle', 'info_travel_button',
+    'info_travel_button_here', 'yes', 'no',
     //Planet database variable translations
     'name', 'starsystem', 'size', 'population', 'climate', 'infrastructure', 'breathable', 'usp', 'meantemp', 'animalspecies', 'government', 'gravity', 
     'culturalusp', 'hoursperday', 'currency', 'language', 'domesticanimals', 'percentualwatersurface', 'standardmealcost', 
@@ -29,10 +33,10 @@ let dict = {
     // Language translations
     'english', 'marsianAndEnglish',
     // Accessibility labels
-    'xBtn', 'flagAltText', 'arrowAltText'],
+    'xBtn', 'flagAltText', 'arrowAltText', 'backgroundAltText', 'depArrowAltText'],
     
     //Pictures
-    'pics' : ['langPic'],
+    'pics' : ['langPic', 'departuresArrowPic'],
 
     // English translations visible on the applications view.
     'en' : {
@@ -61,6 +65,8 @@ let dict = {
         'itinClearBtn': "Clear itinerary",
         'totalTravelCost': "Total cost:",
         'pageTitle': "Itinerary Planner",
+        'info_travel_button': "Travel here",
+        'info_travel_button_here': "Travel here (already at destination)",
         'yes': "Yes",
         'no': "No",
         //Planet database variable translations
@@ -130,7 +136,7 @@ let dict = {
         // Government translations
         'selfcontrolled': "Self-controlled",
         // Currency translations
-        'spaceDollar': "Space Dollar",
+        'spaceDollar': "$",
         // Language translations
         'english': "English", 
         'marsianAndEnglish': "Marsian and English",
@@ -138,8 +144,11 @@ let dict = {
         'xBtn': "Remove the most recently added destination.",
         'flagAltText': "Picture of British flag.",
         'arrowAltText': "Arrow pointing down.",
+        'backgroundAltText': "A galaxy in the background",
+        'depArrowAltText': "An arrow",
         //Pictures
-        'langPic': "images/eng.png"
+        'langPic': "images/eng.png",
+        'departuresArrowPic': "images/expand_arrow.png",
     },
 
     'sv' : {
@@ -168,6 +177,8 @@ let dict = {
         'itinClearBtn': "Rensa resväg",
         'totalTravelCost': "Summa pris:",
         'pageTitle': "Resvägsplanerare",
+        'info_travel_button': "Res hit",
+        'info_travel_button_here': "Res hit (redan här)",
         'yes': "Ja",
         'no': "Nej",
         //Planet database variable translations
@@ -237,7 +248,7 @@ let dict = {
         // Government translations
         'selfcontrolled': "Självstyrt",
         // Currency translations
-        'spaceDollar': "Rymddollar",
+        'spaceDollar': "$",
         // Language translations
         'english': "Engelska", 
         'marsianAndEnglish': "Marsianska och engelska",
@@ -245,18 +256,21 @@ let dict = {
         'xBtn' : "Ta bort senaste resmålet.",
         'flagAltText': "Bild av svenska flaggan.",
         'arrowAltText': "Pil som pekar nedåt.",
+        'backgroundAltText': "En galax i bakgrunden",
+        'depArrowAltText': "En pil",
         //Bilder
-        'langPic': "images/se.png"
+        'langPic': "images/se.png",
+        'departuresArrowPic': "images/expand_arrow.png",
     }
 }
 
 // returns the string for each key 
-function get_string(key) {
+export function get_string(key) {
     return dict[language][key];
 }
 
 //handles change of language
-function change_lang() {
+export function change_lang() {
     if (language === 'en') {
         language = 'sv';
     } 
@@ -275,7 +289,7 @@ function change_lang() {
 // ------------------------------------------------------------------------
 // updates the view with correct strings - depending on selected language
 // using # for divname- and . for classname searching
-function update_dict_view() {
+export function update_dict_view() {
 
     // Update page title
     $(document).attr("title", get_string("pageTitle"));
