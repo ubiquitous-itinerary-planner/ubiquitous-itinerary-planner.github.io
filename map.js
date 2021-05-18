@@ -51,20 +51,32 @@ export function mapDraw(){
 
     // Checking if we are in the starsystem view
     if (currentSystem === undefined) {
+        // Hide the system jump location
         document.getElementById("systemJumpPic").style.display="none";
         // TODO: Insert star system view on canvas
         return;
     }
-    // Inserting system jump location with fixxed position
-    document.getElementById("systemJumpPic").style.display="initial";
+    // Display the system jump location
+    const jumpPic = document.getElementById("systemJumpPic");
+    jumpPic.style.display="initial";
+    const jqJumpPic = $("#systemJumpPic");
+    // Coordinates of the centre of the jump location
+    // Get the current/computed style - see https://stackoverflow.com/questions/14275304/how-to-get-margin-value-of-a-div-in-plain-javascript
+    let canvasStyle = canvas.currentStyle || window.getComputedStyle(canvas);
+    console.log(canvasStyle.marginTop);
+    const jumpLoc = {
+        "x": jqJumpPic.position().left + jqJumpPic.outerWidth(true) / 2.0,
+        "y": jqJumpPic.position().top + jqJumpPic.outerHeight(true) / 2.0 - parseInt(canvasStyle.marginTop)
+    };
+    console.log(jumpLoc);
     // Show the map objects corresponding to the current system
     for (let i = 0; i<planets.length; i++) {
         const img = new Image();
         img.src = getPlanet(planets[i]).img;
         planetImages = planetImages + img.src;
         img.onload = function() {
-            let p = getPlanet(planets[i]).placement;
-            let args = [img, p[0], p[1], p[2], p[3], coords[i].x*cWidth, coords[i].y*cHeight, p[4], p[5]];
+            const p = getPlanet(planets[i]).placement;
+            const args = [img, p[0], p[1], p[2], p[3], coords[i].x*cWidth, coords[i].y*cHeight, p[4], p[5]];
             ctx.drawImage(...args);
         }
         let routes = mapGetRoutes(planets[i]);
@@ -85,6 +97,18 @@ export function mapDraw(){
                 ctx.beginPath();
                 ctx.moveTo(startOffSetX + coords[sIndex].x*cWidth, startOffSetY + coords[sIndex].y*cHeight);
                 ctx.lineTo(destOffSetX + coords[dIndex].x*cWidth, destOffSetY + coords[dIndex].y*cHeight);
+                ctx.stroke();
+            }
+            else{
+                // If the route is to another system, draw the edge to the jump location
+                // Compute offsets and indices
+                const p = getPlanet(planets[i]).placement;
+                const startOffSetX = p[4]*0.5;
+                const startOffSetY = p[5]*0.5;
+                // Draw the path
+                ctx.beginPath();
+                ctx.moveTo(startOffSetX + coords[i].x*cWidth, startOffSetY + coords[i].y*cHeight);
+                ctx.lineTo(jumpLoc.x, jumpLoc.y);
                 ctx.stroke();
             }
         }
