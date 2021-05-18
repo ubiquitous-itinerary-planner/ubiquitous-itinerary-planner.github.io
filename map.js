@@ -151,7 +151,7 @@ function mapAddRoute(route){
  * Gets the routes of the map.
  * @param planet (optional) if given, only routes from planet will be returned
  * @param target (optional) if given, only routes from planet to target will be returned
- * @returns {[string]} array of the ids of all routes
+ * @returns {[string]} array of the route-objects
  */
 export function mapGetRoutes(planet, target){
     if(planet === undefined){
