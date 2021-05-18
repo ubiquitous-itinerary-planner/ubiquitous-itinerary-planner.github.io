@@ -63,12 +63,10 @@ export function mapDraw(){
     // Coordinates of the centre of the jump location
     // Get the current/computed style - see https://stackoverflow.com/questions/14275304/how-to-get-margin-value-of-a-div-in-plain-javascript
     let canvasStyle = canvas.currentStyle || window.getComputedStyle(canvas);
-    console.log(canvasStyle.marginTop);
     const jumpLoc = {
         "x": jqJumpPic.position().left + jqJumpPic.outerWidth(true) / 2.0,
         "y": jqJumpPic.position().top + jqJumpPic.outerHeight(true) / 2.0 - parseInt(canvasStyle.marginTop)
     };
-    console.log(jumpLoc);
     // Show the map objects corresponding to the current system
     for (let i = 0; i<planets.length; i++) {
         const img = new Image();
