@@ -7,6 +7,7 @@ import "./libraries/graphlib.js";
 import {coordinates} from "./databases/coordinatesDB.js";
 import {get_string} from "./databases/dictionaryUIP2.js";
 
+
 let currentSystem; // Which system we are browsing. undefined iff we are in the starsystem view.
 
 /**
@@ -24,16 +25,15 @@ export function mapInit(){
     // Initialize the view
     // Create the html-objects for showing all systems
     // Draw only the current system
-    /*const systemJump = document.getElementById("systemJump");
+    const systemJump = document.getElementById("systemJumpPic");
     systemJump.setAttribute("alt", get_string("systemJumpAltText"));
-*/
     mapDraw();
 }
 
 /**
  * Draws the map of the currently selected system.
  */
-function mapDraw(){
+export function mapDraw(){
 
     // https://www.nashvail.me/blog/canvas-image
     // https://www.samanthaming.com/tidbits/48-passing-arrays-as-function-arguments/
@@ -51,11 +51,12 @@ function mapDraw(){
 
     // Checking if we are in the starsystem view
     if (currentSystem === undefined) {
+        document.getElementById("systemJumpPic").style.display="none";
         // TODO: Insert star system view on canvas
         return;
     }
     // Inserting system jump location with fixxed position
-
+    document.getElementById("systemJumpPic").style.display="initial";
     // Show the map objects corresponding to the current system
     for (let i = 0; i<planets.length; i++) {
         const img = new Image();
