@@ -311,8 +311,9 @@ button:hover{
 }
 
 
-#systemJump{
+#systemJumpPic{
     height: 126px;
     width: 184px;
-
+    z-index: 1;
+    position: absolute;
 }

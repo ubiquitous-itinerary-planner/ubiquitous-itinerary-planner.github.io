@@ -39,6 +39,8 @@ function mapDraw(){
     // https://www.samanthaming.com/tidbits/48-passing-arrays-as-function-arguments/
     const canvas = document.getElementById("map");
     const ctx = canvas.getContext("2d")
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
     // Hide all map objects
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     const planets = mapGetPlanets(currentSystem)
