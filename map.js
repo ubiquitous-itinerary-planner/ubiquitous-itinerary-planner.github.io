@@ -5,6 +5,7 @@
 import {hyperjump} from "./hyperspace.js";
 import "./libraries/graphlib.js";
 import {coordinates} from "./databases/coordinatesDB.js";
+import {get_string} from "./databases/dictionaryUIP2.js";
 
 let currentSystem; // Which system we are browsing. undefined iff we are in the starsystem view.
 
@@ -23,6 +24,9 @@ export function mapInit(){
     // Initialize the view
     // Create the html-objects for showing all systems
     // Draw only the current system
+    /*const systemJump = document.getElementById("systemJump");
+    systemJump.setAttribute("alt", get_string("systemJumpAltText"));
+*/
     mapDraw();
 }
 
@@ -48,6 +52,8 @@ function mapDraw(){
         // TODO: Insert star system view on canvas
         return;
     }
+    // Inserting system jump location with fixxed position
+
     // Show the map objects corresponding to the current system
     for (let i = 0; i<planets.length; i++) {
         const img = new Image();
