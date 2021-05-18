@@ -15,6 +15,7 @@
     --color-error: #CF6679;
     --color-border: #D1D1D1;
     --color-map-background: #6B6D86;
+    --color-on-map-background: #FFFFFF;
 
     /* Fonts */
     --font-sideMenu-title: 'Roboto', sans-serif;
@@ -316,4 +317,5 @@ button:hover{
     width: 184px;
     z-index: 1;
     position: absolute;
+    color: var(--color-on-map-background);
 }
