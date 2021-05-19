@@ -64,6 +64,10 @@ function languageBtnInit(parent){
     parent.appendChild(languageBtn);
 }
 
+/**
+ * Initializing the play and pause button.
+ * @param parent the parent into which to add the button
+ */
 function playPauseBtnInit(parent){
     let playPauseBtn = document.createElement("button");
     // creating the picture of play and setting id, alt-text for dictionary
@@ -83,6 +87,10 @@ function playPauseBtnInit(parent){
     parent.appendChild(playPauseBtn);
 }
 
+/**
+ * Initializing the mute and unmute button.
+ * @param parent the parent into which to add the button
+ */
 function muteBtnInit(parent){
     let muteBtn = document.createElement("button");
     // creating the picture of mute and setting id, alt-text for dictionary
