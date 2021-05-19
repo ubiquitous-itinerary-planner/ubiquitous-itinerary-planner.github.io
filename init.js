@@ -3,7 +3,7 @@
  */
 
 import {depInit} from "./sideMenu.js";
-import {mapInit} from "./map.js";
+import {mapDraw, mapInit} from "./map.js";
 import {topBarInit} from "./topBar.js";
 import {update_dict_view} from "./databases/dictionaryUIP2.js";
 
@@ -25,6 +25,7 @@ $("document").ready(function() {
 // This is called whenever the screen is resized.
 $(window).resize(function(){
     updateSize();
+    mapDraw();
 });
 
 /**

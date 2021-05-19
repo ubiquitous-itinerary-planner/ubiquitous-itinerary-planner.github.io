@@ -33,10 +33,10 @@ let dict = {
     // Language translations
     'english', 'marsianAndEnglish',
     // Accessibility labels
-    'xBtn', 'flagAltText', 'arrowAltText', 'backgroundAltText', 'depArrowAltText'],
+    'xBtn', 'flagAltText', 'arrowAltText', 'backgroundAltText', 'depArrowAltText', 'systemJumpAltText'],
     
     //Pictures
-    'pics' : ['langPic', 'departuresArrowPic'],
+    'pics' : ['langPic', 'departuresArrowPic', 'systemJumpPic'],
 
     // English translations visible on the applications view.
     'en' : {
@@ -146,9 +146,11 @@ let dict = {
         'arrowAltText': "Arrow pointing down.",
         'backgroundAltText': "A galaxy in the background",
         'depArrowAltText': "An arrow",
+        'systemJumpAltText': "System jump location",
         //Pictures
         'langPic': "images/eng.png",
         'departuresArrowPic': "images/expand_arrow.png",
+        'systemJumpPic': "images/jump_location.png",
     },
 
     'sv' : {
@@ -258,9 +260,11 @@ let dict = {
         'arrowAltText': "Pil som pekar nedåt.",
         'backgroundAltText': "En galax i bakgrunden",
         'depArrowAltText': "En pil",
+        'systemJumpAltText': "Stjärnsystemshopp",
         //Bilder
         'langPic': "images/se.png",
         'departuresArrowPic': "images/expand_arrow.png",
+        'systemJumpPic': "images/jump_location.png",
     }
 }
 
