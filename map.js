@@ -4,6 +4,9 @@
 
 import {hyperjump} from "./hyperspace.js";
 import "./libraries/graphlib.js";
+import {coordinates} from "./databases/coordinatesDB.js";
+import {get_string} from "./databases/dictionaryUIP2.js";
+
 
 let currentSystem; // Which system we are browsing. undefined iff we are in the starsystem view.
 
@@ -18,18 +21,99 @@ export function mapInit(){
     for(let i = 0; i < RDB.routes.length; i++){
         mapAddRoute(RDB.routes[i]);
     }
+
     // Initialize the view
     // Create the html-objects for showing all systems
     // Draw only the current system
+    const systemJump = document.getElementById("systemJumpPic");
+    systemJump.setAttribute("alt", get_string("systemJumpAltText"));
     mapDraw();
 }
 
 /**
  * Draws the map of the currently selected system.
  */
-function mapDraw(){
+export function mapDraw(){
+
+    // https://www.nashvail.me/blog/canvas-image
+    // https://www.samanthaming.com/tidbits/48-passing-arrays-as-function-arguments/
+    const canvas = document.getElementById("map");
+    const ctx = canvas.getContext("2d")
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
     // Hide all map objects
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const planets = mapGetPlanets(currentSystem)
+    let planetImages = [];
+    const cWidth = canvas.width;
+    const cHeight = canvas.height;
+    const coords = coordinates[planets.length];
+
+    // Checking if we are in the starsystem view
+    if (currentSystem === undefined) {
+        // Hide the system jump location
+        document.getElementById("systemJumpPic").style.display="none";
+        // TODO: Insert star system view on canvas
+        return;
+    }
+    // Display the system jump location
+    const jumpPic = document.getElementById("systemJumpPic");
+    jumpPic.style.display="initial";
+    const jqJumpPic = $("#systemJumpPic");
+    // Coordinates of the centre of the jump location
+    // Get the current/computed style - see https://stackoverflow.com/questions/14275304/how-to-get-margin-value-of-a-div-in-plain-javascript
+    let canvasStyle = canvas.currentStyle || window.getComputedStyle(canvas);
+    const jumpLoc = {
+        "x": jqJumpPic.position().left + jqJumpPic.outerWidth(true) / 2.0,
+        "y": jqJumpPic.position().top + jqJumpPic.outerHeight(true) / 2.0 - parseInt(canvasStyle.marginTop)
+    };
     // Show the map objects corresponding to the current system
+    for (let i = 0; i<planets.length; i++) {
+        const img = new Image();
+        img.src = getPlanet(planets[i]).img;
+        planetImages = planetImages + img.src;
+        img.onload = function() {
+            const p = getPlanet(planets[i]).placement;
+            const args = [img, p[0], p[1], p[2], p[3], coords[i].x*cWidth, coords[i].y*cHeight, p[4], p[5]];
+            ctx.drawImage(...args);
+        }
+        let routes = mapGetRoutes(planets[i]);
+        // Using canvas to draw lines between planets where routes exist
+        for (let j = 0; j<routes.length; j++) {
+            const start = getPlanet(getRoute(routes[j].name).start);
+            const destination = getPlanet(getRoute(routes[j].name).destination);
+            // Checking whether a planet is in the system or not
+            if (destination.starsystem === start.starsystem) {
+                // Compute offsets and indices
+                const startOffSetX = start.placement[4]*0.5;
+                const startOffSetY = start.placement[5]*0.5;
+                const destOffSetX = destination.placement[4]*0.5;
+                const destOffSetY = destination.placement[5]*0.5;
+                const sIndex = planets.indexOf(start.id);
+                const dIndex = planets.indexOf(destination.id);
+                // Draw the path
+                ctx.beginPath();
+                ctx.moveTo(startOffSetX + coords[sIndex].x*cWidth, startOffSetY + coords[sIndex].y*cHeight);
+                ctx.lineTo(destOffSetX + coords[dIndex].x*cWidth, destOffSetY + coords[dIndex].y*cHeight);
+                ctx.strokeStyle = $("#systemJumpPic").css("color");
+                ctx.stroke();
+            }
+            else{
+                // If the route is to another system, draw the edge to the jump location
+                // Compute offsets and indices
+                const p = getPlanet(planets[i]).placement;
+                const startOffSetX = p[4]*0.5;
+                const startOffSetY = p[5]*0.5;
+                // Draw the path
+                ctx.beginPath();
+                ctx.moveTo(startOffSetX + coords[i].x*cWidth, startOffSetY + coords[i].y*cHeight);
+                ctx.lineTo(jumpLoc.x, jumpLoc.y);
+                ctx.strokeStyle = $("#systemJumpPic").css("color");
+                ctx.stroke();
+            }
+        }
+    }
+
 }
 
 /**
@@ -41,7 +125,6 @@ function mapDraw(){
 function sleep(ms){
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-
 
 /**
  * Move the current system to the passed system.
@@ -101,7 +184,7 @@ function mapAddRoute(route){
  * Gets the routes of the map.
  * @param planet (optional) if given, only routes from planet will be returned
  * @param target (optional) if given, only routes from planet to target will be returned
- * @returns {[string]} array of the ids of all routes
+ * @returns {[string]} array of the route-objects
  */
 export function mapGetRoutes(planet, target){
     if(planet === undefined){
@@ -205,3 +288,4 @@ function findPath(dijkstra, start, destination){
     }
     return path;
 }
+
