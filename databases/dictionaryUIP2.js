@@ -33,10 +33,11 @@ let dict = {
     // Language translations
     'english', 'marsianAndEnglish',
     // Accessibility labels
-    'xBtn', 'flagAltText', 'arrowAltText', 'backgroundAltText', 'depArrowAltText', 'systemJumpAltText'],
+    'xBtn', 'flagAltText', 'arrowAltText', 'backgroundAltText', 'depArrowAltText', 'systemJumpAltText', 'playAltText', 'pauseAltText',
+    'muteAltText', 'unmuteAltText'],
     
     //Pictures
-    'pics' : ['langPic', 'departuresArrowPic', 'systemJumpPic'],
+    'pics' : ['langPic', 'departuresArrowPic', 'systemJumpPic', 'playPic', 'pausePic', 'mutePic', 'unmutePic'],
 
     // English translations visible on the applications view.
     'en' : {
@@ -147,10 +148,19 @@ let dict = {
         'backgroundAltText': "A galaxy in the background",
         'depArrowAltText': "An arrow",
         'systemJumpAltText': "System jump location",
+        'playAltText': "Play",
+        'pauseAltText': "Pause",
+        'muteAltText': "Mute",
+        'unmuteAltText': "Unmute",
         //Pictures
         'langPic': "images/eng.png",
         'departuresArrowPic': "images/expand_arrow.png",
         'systemJumpPic': "images/jump_location.png",
+        'playPic': "images/icon_play.png",
+        'pausePic': "images/icon_pause.png",
+        'mutePic': "images/icon_soundoff.png",
+        'unmutePic': "images/icon_soundon.png",
+
     },
 
     'sv' : {
@@ -261,10 +271,18 @@ let dict = {
         'backgroundAltText': "En galax i bakgrunden",
         'depArrowAltText': "En pil",
         'systemJumpAltText': "Stjärnsystemshopp",
+        'playAltText': "Spela",
+        'pauseAltText': "Stoppa",
+        'muteAltText': "Stäng av ljud",
+        'unmuteAltText': "Sätt på ljud",
         //Bilder
         'langPic': "images/se.png",
         'departuresArrowPic': "images/expand_arrow.png",
         'systemJumpPic': "images/jump_location.png",
+        'playPic': "images/icon_play.png",
+        'pausePic': "images/icon_pause.png",
+        'mutePic': "images/icon_soundoff.png",
+        'unmutePic': "images/icon_soundon.png",
     }
 }
 

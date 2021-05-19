@@ -11,6 +11,8 @@ export function topBarInit(){
     homeBtnInit(p);
     helpBtnInit(p);
     languageBtnInit(p);
+    playPauseBtnInit(p);
+    muteBtnInit(p);
 }
 
 /**
@@ -60,4 +62,42 @@ function languageBtnInit(parent){
     languageBtn.appendChild(flag);
     languageBtn.appendChild(language);
     parent.appendChild(languageBtn);
+}
+
+function playPauseBtnInit(parent){
+    let playPauseBtn = document.createElement("button");
+    // creating the picture of play and setting id, alt-text for dictionary
+    let playPic = document.createElement("img");
+    playPic.id = 'playPic';
+    playPic.setAttribute("alt", get_string("playAltText"));
+    // creating the picture of pause and setting id, alt-text for dictionary
+    let pausePic = document.createElement("img");
+    pausePic.id = 'pausePic';
+    pausePic.setAttribute("alt", get_string("pauseAltText"));
+    // Assigning the whole button a class for css
+    playPauseBtn.classList.add("topBarButton");
+    // TODO pauseBtn.onclick=changePlayPic; Or are we keeping the double picture? (and ofc start/stop animation)
+    // Add the pictures to the button, and add the button to the parent
+    playPauseBtn.appendChild(playPic);
+    playPauseBtn.appendChild(pausePic);
+    parent.appendChild(playPauseBtn);
+}
+
+function muteBtnInit(parent){
+    let muteBtn = document.createElement("button");
+    // creating the picture of mute and setting id, alt-text for dictionary
+    let mutePic = document.createElement("img");
+    mutePic.id = "mutePic";
+    mutePic.setAttribute("alt", get_string("muteAltText"))
+    // creating the picture of unmute and setting id, alt-text for dictionary
+    let unmutePic = document.createElement("img");
+    unmutePic.id = "unmutePic";
+    unmutePic.setAttribute("alt", get_string("unmuteAltText"));
+    // Assigning the whole button a class for css
+    muteBtn.classList.add("topBarButton");
+    // TODO muteBtn.onclick=changeMute; (changing picture or only commando turning on/off sound?)
+    // Add the pictures to the button, and add the button to the parent
+    muteBtn.appendChild(mutePic);
+    muteBtn.appendChild(unmutePic);
+    parent.appendChild(muteBtn);
 }
