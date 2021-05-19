@@ -95,7 +95,7 @@ export function mapDraw(){
                 ctx.beginPath();
                 ctx.moveTo(startOffSetX + coords[sIndex].x*cWidth, startOffSetY + coords[sIndex].y*cHeight);
                 ctx.lineTo(destOffSetX + coords[dIndex].x*cWidth, destOffSetY + coords[dIndex].y*cHeight);
-                ctx.strokeStyle = $("#systemJumpPic").css("color");
+                ctx.strokeStyle = jqJumpPic.css("color");
                 ctx.stroke();
             }
             else{
@@ -108,12 +108,11 @@ export function mapDraw(){
                 ctx.beginPath();
                 ctx.moveTo(startOffSetX + coords[i].x*cWidth, startOffSetY + coords[i].y*cHeight);
                 ctx.lineTo(jumpLoc.x, jumpLoc.y);
-                ctx.strokeStyle = $("#systemJumpPic").css("color");
+                ctx.strokeStyle = jqJumpPic.css("color");
                 ctx.stroke();
             }
         }
     }
-
 }
 
 /**
