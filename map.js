@@ -6,6 +6,7 @@ import {hyperjump} from "./hyperspace.js";
 import "./libraries/graphlib.js";
 import {coordinates} from "./databases/coordinatesDB.js";
 import {get_string} from "./databases/dictionaryUIP2.js";
+import {infoUpdate} from "./info.js";
 
 
 let currentSystem; // Which system we are browsing. undefined iff we are in the starsystem view.
@@ -68,11 +69,29 @@ export function mapDraw(){
     const jqJumpPic = $("#systemJumpPic");
     // Coordinates of the centre of the jump location
     // Get the current/computed style - see https://stackoverflow.com/questions/14275304/how-to-get-margin-value-of-a-div-in-plain-javascript
-    let canvasStyle = canvas.currentStyle || window.getComputedStyle(canvas);
+    const canvasStyle = canvas.currentStyle || window.getComputedStyle(canvas);
     const jumpLoc = {
         "x": jqJumpPic.position().left + jqJumpPic.outerWidth(true) / 2.0,
         "y": jqJumpPic.position().top + jqJumpPic.outerHeight(true) / 2.0 - parseInt(canvasStyle.marginTop)
     };
+    // Add the click-box corresponding to the system jump location
+    const jumpBox = document.createElement("div");
+    jumpBox.style.borderRadius = "100%";
+    jumpBox.style.opacity = "0";
+    jumpBox.style.position = "fixed";
+    const jumpLocStyle = jumpPic.currentStyle || window.getComputedStyle(jumpPic);
+    const jumpLocLeft = jqJumpPic.position().left + parseInt(jumpLocStyle.marginLeft);
+    jumpBox.style.top = jqJumpPic.position().top.toString() + "px";
+    jumpBox.style.left = jumpLocLeft.toString() + "px";
+    jumpBox.style.width = jqJumpPic.outerWidth().toString() + "px";
+    jumpBox.style.height = jqJumpPic.outerHeight().toString() + "px";
+    jumpBox.style.zIndex = "1";
+    clickBoxesContainer.appendChild(jumpBox);
+    // Add click event to the click-box
+    jumpBox.onclick = function (){
+        mapMove();
+    };
+
     // Show the map objects corresponding to the current system
     for (let i = 0; i<planets.length; i++) {
         // Draw the planet
@@ -133,6 +152,10 @@ export function mapDraw(){
         clickBox.style.height = p[5] + "px";
         clickBox.style.zIndex = "1";
         clickBoxesContainer.appendChild(clickBox);
+        // Add click event to the click-box
+        clickBox.onclick = function (){
+            infoUpdate(planets[i]);
+        };
     }
 }
 
