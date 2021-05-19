@@ -52,7 +52,6 @@ export function infoUpdate(i){
             const next = route[i+1];
             const r = getCheapestRoute(current, next);
             itPushCommit({id: next, price: r.price, duration: r.duration, company: r.company});
-            console.log(r);
         }
         itUpdate();
         infoUpdate(i);
