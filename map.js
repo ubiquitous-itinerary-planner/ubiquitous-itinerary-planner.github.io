@@ -37,19 +37,25 @@ export function mapDraw(){
 
     // https://www.nashvail.me/blog/canvas-image
     // https://www.samanthaming.com/tidbits/48-passing-arrays-as-function-arguments/
+    // Get the canvas
     const canvas = document.getElementById("map");
     const ctx = canvas.getContext("2d")
     canvas.width = canvas.clientWidth;
     canvas.height = canvas.clientHeight;
+    const canvasOffsetTop = $("#map").css("margin-top");
+    // Get the container for the click-boxes
+    const clickBoxesContainer = document.getElementById("clickBoxes");
+    clickBoxesContainer.innerHTML = ""; // Clear the previous click-boxes
     // Hide all map objects
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Get the planets to display
     const planets = mapGetPlanets(currentSystem)
     let planetImages = [];
     const cWidth = canvas.width;
     const cHeight = canvas.height;
     const coords = coordinates[planets.length];
 
-    // Checking if we are in the starsystem view
+    // Checking if we are in the star system view
     if (currentSystem === undefined) {
         // Hide the system jump location
         document.getElementById("systemJumpPic").style.display="none";
@@ -69,14 +75,18 @@ export function mapDraw(){
     };
     // Show the map objects corresponding to the current system
     for (let i = 0; i<planets.length; i++) {
+        // Draw the planet
         const img = new Image();
         img.src = getPlanet(planets[i]).img;
         planetImages = planetImages + img.src;
+        const imLeft = coords[i].x*cWidth;
+        const imTop = coords[i].y*cHeight;
+        const p = getPlanet(planets[i]).placement;
         img.onload = function() {
-            const p = getPlanet(planets[i]).placement;
-            const args = [img, p[0], p[1], p[2], p[3], coords[i].x*cWidth, coords[i].y*cHeight, p[4], p[5]];
+            const args = [img, p[0], p[1], p[2], p[3], imLeft, imTop, p[4], p[5]];
             ctx.drawImage(...args);
         }
+        // Draw the outgoing routes from the planet
         let routes = mapGetRoutes(planets[i]);
         // Using canvas to draw lines between planets where routes exist
         for (let j = 0; j<routes.length; j++) {
@@ -112,6 +122,17 @@ export function mapDraw(){
                 ctx.stroke();
             }
         }
+        // Add the click-box corresponding to the planet
+        const clickBox = document.createElement("div");
+        clickBox.style.borderRadius = "100%";
+        clickBox.style.opacity = "0";
+        clickBox.style.position = "fixed";
+        clickBox.style.top = "calc(" + canvasOffsetTop + " + " + imTop.toString() + "px)";
+        clickBox.style.left = imLeft.toString() + "px";
+        clickBox.style.width = p[4] + "px";
+        clickBox.style.height = p[5] + "px";
+        clickBox.style.zIndex = "1";
+        clickBoxesContainer.appendChild(clickBox);
     }
 }
 
