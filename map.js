@@ -321,7 +321,6 @@ function findPath(dijkstra, start, destination){
     // Find the path
     let path = [];
     let target = destination;
-    let systems = mapGetSystems();
     for(let i = 0; i < 1000; i++){ // Set an upper bound on the loop.
         path.unshift(target);
         if(target === start){
