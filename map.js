@@ -45,16 +45,32 @@ export function mapDraw(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     const planets = mapGetPlanets(currentSystem)
     let planetImages = [];
+
     const cWidth = canvas.width;
     const cHeight = canvas.height;
     const coords = coordinates[planets.length];
 
+
     // Checking if we are in the starsystem view
     if (currentSystem === undefined) {
+        const systems = mapGetSystems();
+        const sysCoords = coordinates[systems.length];
         // Hide the system jump location
         document.getElementById("systemJumpPic").style.display="none";
         // TODO: Insert star system view on canvas
-        return;
+        for (let i = 0; i<systems.length; i++) {
+            const img = new Image();
+            const system = getSystem(systems[i])
+            img.src = system.img;
+            img.onload = function () {
+                const p = system.placement;
+
+                const args = [img, p[0], p[1], p[2], p[3], sysCoords[i].x * cWidth, sysCoords[i].y * cHeight, p[4], p[5]];
+                console.log(args);
+                ctx.drawImage(...args);
+            }
+        }
+            return;
     }
     // Display the system jump location
     const jumpPic = document.getElementById("systemJumpPic");
@@ -71,7 +87,6 @@ export function mapDraw(){
     for (let i = 0; i<planets.length; i++) {
         const img = new Image();
         img.src = getPlanet(planets[i]).img;
-        planetImages = planetImages + img.src;
         img.onload = function() {
             const p = getPlanet(planets[i]).placement;
             const args = [img, p[0], p[1], p[2], p[3], coords[i].x*cWidth, coords[i].y*cHeight, p[4], p[5]];
