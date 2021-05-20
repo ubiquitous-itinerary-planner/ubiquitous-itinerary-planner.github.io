@@ -69,7 +69,7 @@ export function mapDraw(){
     const cWidth = canvas.width;
     const cHeight = canvas.height;
     const coords = coordinates[planets.length];
-
+    const jqJumpPic = $("#systemJumpPic");
     // Checking if we are in the star system view
     if (currentSystem === undefined) {
         const systems = mapGetSystems();
@@ -83,17 +83,37 @@ export function mapDraw(){
             img.src = system.img;
             img.onload = function () {
                 const p = system.placement;
-
                 const args = [img, p[0], p[1], p[2], p[3], sysCoords[i].x * cWidth, sysCoords[i].y * cHeight, p[4], p[5]];
                 ctx.drawImage(...args);
             }
         }
-            return;
+        //v = start, w = end
+        const routes = mapGetRoutes();
+        for (let i = 0; i<routes.length; i++) {
+            const start = getPlanet(routes[i].v);
+            const dest = getPlanet(routes[i].w);
+            if (start.starsystem !== dest.starsystem) {
+                // Compute offsets and indices
+                const sIndex = systems.indexOf(start.starsystem);
+                const dIndex = systems.indexOf(dest.starsystem);
+                const startOffSetX = getSystem(systems[sIndex]).placement[4]*0.5;
+                const startOffSetY = getSystem(systems[sIndex]).placement[5]*0.5;
+                const destOffSetX = getSystem(systems[dIndex]).placement[4]*0.5;
+                const destOffSetY = getSystem(systems[dIndex]).placement[5]*0.5;
+                // Draw the path
+                ctx.beginPath();
+                ctx.moveTo(startOffSetX + sysCoords[sIndex].x*cWidth, startOffSetY + sysCoords[sIndex].y*cHeight);
+                ctx.lineTo(destOffSetX + sysCoords[dIndex].x*cWidth, destOffSetY + sysCoords[dIndex].y*cHeight);
+                ctx.strokeStyle = jqJumpPic.css("color");
+                ctx.stroke();
+            }
+        }
+
+        return;
     }
     // Display the system jump location
     const jumpPic = document.getElementById("systemJumpPic");
     jumpPic.style.display="initial";
-    const jqJumpPic = $("#systemJumpPic");
     // Coordinates of the centre of the jump location
     // Get the current/computed style - see https://stackoverflow.com/questions/14275304/how-to-get-margin-value-of-a-div-in-plain-javascript
     const canvasStyle = canvas.currentStyle || window.getComputedStyle(canvas);
