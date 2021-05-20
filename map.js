@@ -99,6 +99,15 @@ export function mapDraw(){
             clickBox.style.height = p[5] + "px";
             clickBox.classList.add("clickBox");
             clickBoxesContainer.appendChild(clickBox);
+            // Add the highlight effect
+            const lightBox = document.createElement("img");
+            lightBox.src = "./images/planetselection.png";
+            lightBox.style.top = "calc(-5vh + " + clickBox.style.top  +")";
+            lightBox.style.left = "calc(-5vh + " + clickBox.style.left + ")";
+            lightBox.style.width = "calc(10vh + " + clickBox.style.width + ")";
+            lightBox.style.height = "calc(10vh + " + clickBox.style.height + ")";
+            lightBox.classList.add("lightBox");
+            clickBoxesContainer.appendChild(lightBox);
             // Add click event to the click-box
             clickBox.onclick = function (){
                 mapMove(systems[i]);
