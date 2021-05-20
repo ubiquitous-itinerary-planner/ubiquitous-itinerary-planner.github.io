@@ -32,10 +32,6 @@ body{
     height: 6.25vh;
 }
 
-#map{
-    margin-top: 6.25%;
-}
-
 #systemJumpPic{
     /*bottom: calc(34.25% + 0.25em);*/
     /*margin-bottom: 2.5%;*/

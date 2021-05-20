@@ -50,13 +50,15 @@ export function mapDraw(){
         canvas.height = body.height() * 0.9375;
         canvas.style.width = canvas.width + "px";
         canvas.style.height = canvas.height + "px";
+        // because margin-top, if given as %, is based on the parent's WIDTH and not HEIGHT
+        canvas.style.marginTop = "calc(" + $("body").height() + "px - " + canvas.style.height + ")";
     }
     // TODO: If mobile css
     if(screenMediaSize === "mobile"){
 
     }
 
-    const canvasOffsetTop = $("#map").css("margin-top");
+    const canvasOffsetTop = "6.25vh"; //$("#map").css("margin-top");
     // Get the container for the click-boxes
     const clickBoxesContainer = document.getElementById("clickBoxes");
     clickBoxesContainer.innerHTML = ""; // Clear the previous click-boxes
@@ -90,6 +92,7 @@ export function mapDraw(){
             const clickBox = document.createElement("div");
             const imLeft = sysCoords[i].x*cWidth;
             const imTop = sysCoords[i].y*cHeight;
+            console.log(canvasOffsetTop);
             clickBox.style.top = "calc(" + canvasOffsetTop + " + " + imTop.toString() + "px)";
             clickBox.style.left = imLeft.toString() + "px";
             clickBox.style.width = p[4] + "px";
