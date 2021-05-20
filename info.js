@@ -31,7 +31,7 @@ export function infoUpdate(i){
     // Create the new button
     let travelButton = document.createElement("button");
     // Check if we are in the system the button points to
-    if(i !== itPeek().id){
+    if(itPeek() === undefined || i !== itPeek().id){
         travelButton.id = "info_travel_button";
         travelButton.disabled = false;
     }

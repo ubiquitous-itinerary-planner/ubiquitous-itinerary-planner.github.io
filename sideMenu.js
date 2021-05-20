@@ -93,6 +93,7 @@ export function itUpdate(){
     ctx.stroke();
     // Add click functionality
     xBtn.onclick = function (){
+        const current = itPeek().id;
         // If there is only one last element, return to departures
         if(itGet().length === 1){
             itClearCommit();
@@ -107,6 +108,8 @@ export function itUpdate(){
             itUpdate();
             update_dict_view();
         }
+        // Update the info panel
+        infoUpdate(parseInt(current));
     };
     // Accessibility
     xBtn.tabIndex = 0;
