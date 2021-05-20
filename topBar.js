@@ -3,6 +3,7 @@
  */
 import {mapMove} from "./map.js";
 import {change_lang, get_string, update_dict_view} from "./databases/dictionaryUIP2.js";
+import {hyperspaceToggleAnimate, hyperspaceToggleMute} from "./hyperspace.js";
 
 let animation;
 let sound;
@@ -100,6 +101,7 @@ function animationBtnInit(parent){
  */
 function animationOnOff(){
     animation = !animation;
+    hyperspaceToggleAnimate();
     update_dict_view();
 }
 
@@ -135,6 +137,7 @@ function soundBtnInit(parent){
  */
 function soundOnOff(){
     sound = !sound;
+    hyperspaceToggleMute();
     update_dict_view();
 }
 
