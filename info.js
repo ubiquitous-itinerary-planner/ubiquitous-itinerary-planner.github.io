@@ -5,7 +5,7 @@
  * it is used for the dictionary to convert the names in the table.
  * we want an input from the planet clicked upon which works as the index fetching info from database.
  */
-import {itPeek, itPushCommit, itUpdate} from "./sideMenu.js";
+import {itInit, itPeek, itPushCommit, itUpdate} from "./sideMenu.js";
 import {update_dict_view} from "./databases/dictionaryUIP2.js";
 import {mapRouteShortest} from "./map.js";
 
@@ -41,6 +41,11 @@ export function infoUpdate(i){
     }
     travelButton.onclick = function (){
         const destination = getPlanet(i);
+        if (itPeek() === undefined){
+            itInit(i);
+            infoUpdate(i);
+            update_dict_view();
+        }
         const start = getPlanet(itPeek().id)
         const route = mapRouteShortest(start.id, destination.id);
         if(route.length < 2){

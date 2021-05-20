@@ -29,7 +29,7 @@ export function depInit(){
  * Initializes the itinerary element, and its children.
  * @param start the planet which the itinerary starts from
  */
-function itInit(start){
+export function itInit(start){
     // Toggle visibility of the departure and the itinerary
     $("#departure").css("display", "none");
     $("#itinerary").css("display", "initial");
