@@ -16,6 +16,8 @@ let starSystem, uniforms;
 const numStars = 100000;
 const cameraStartPos = 300;
 
+let animate;
+let audioPlayer;
 
 /**
  * Sets up the hyperspace
@@ -24,6 +26,9 @@ function hyperspaceSetup(){
     // Initialise clocks
     clock = new THREE.Clock();
     clockJump = new THREE.Clock(false);
+    // Initialise vars
+    animate = true;
+    audioPlayer = new Audio("./audio/hyperjump.mp3");
     // Find the canvas
     const canvas = document.getElementById("background");
     // Label the canvas
@@ -164,13 +169,15 @@ function hyperspaceSetup(){
  */
 function hyperspaceAnimate(){
 
-    // Do things that happens at every frame
-    const dTime = clock.getDelta(); // Time since last call to hyperspaceAnimate
-    camera.position.z -= 0.1*dTime;
-    starSystem.rotateZ(0.1*dTime);
-    // If we are jumping, do move
-    if(clockJump.running){
-        hyperspaceMove(dTime);
+    if(animate) {
+        // Do things that happens at every frame
+        const dTime = clock.getDelta(); // Time since last call to hyperspaceAnimate
+        camera.position.z -= 0.1 * dTime;
+        starSystem.rotateZ(0.1 * dTime);
+        // If we are jumping, do move
+        if (clockJump.running) {
+            hyperspaceMove(dTime);
+        }
     }
     // Render scene
     composer.render();
@@ -185,7 +192,7 @@ export function hyperjump(){
     /* Play the hyperspace jump sound file */
     // Error handling based on example from https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play
     try{
-        const p = new Audio("./audio/hyperjump.mp3").play();
+        audioPlayer.play();
     }
     catch (err){
         console.log(err);
@@ -245,6 +252,20 @@ function hyperspaceMove(deltaTime){
     else {
         clockJump.stop();
     }
+}
+
+/**
+ * Toggles the mute of the hyperjump animation
+ */
+export function hyperspaceToggleMute(){
+    audioPlayer.muted = !audioPlayer.muted;
+}
+
+/**
+ * Toggles the animation of the hyperjump animation
+ */
+export function hyperspaceToggleAnimate(){
+    animate = !animate;
 }
 // Call setup and animate
 hyperspaceSetup();
