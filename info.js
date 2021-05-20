@@ -7,6 +7,7 @@
  */
 import {itPeek, itPushCommit, itUpdate} from "./sideMenu.js";
 import {update_dict_view} from "./databases/dictionaryUIP2.js";
+import {mapRouteShortest} from "./map.js";
 
 export function infoUpdate(i){
     let itemsTitle = document.getElementById('info_title');
@@ -30,7 +31,7 @@ export function infoUpdate(i){
     // Create the new button
     let travelButton = document.createElement("button");
     // Check if we are in the system the button points to
-    if(i !== itPeek().id){
+    if(itPeek() === undefined || i !== itPeek().id){
         travelButton.id = "info_travel_button";
         travelButton.disabled = false;
     }
@@ -39,8 +40,22 @@ export function infoUpdate(i){
         travelButton.disabled = true;
     }
     travelButton.onclick = function (){
-        itPushCommit(getPlanet(i));
+        const destination = getPlanet(i);
+        const start = getPlanet(itPeek().id)
+        const route = mapRouteShortest(start.id, destination.id);
+        if(route.length < 2){
+            return;
+        }
+        // For each planet to travel to, add the cheapest route
+        for(let i = 0; i < route.length-1; i++){
+            const current = route[i];
+            const next = route[i+1];
+            const r = getCheapestRoute(current, next);
+            itPushCommit({id: next, price: r.price, duration: r.duration, company: r.company});
+        }
         itUpdate();
+        infoUpdate(i);
+        update_dict_view();
     };
     document.getElementById("info").appendChild(travelButton);
     // Show the panel

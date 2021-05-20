@@ -6,6 +6,7 @@ import {hyperjump} from "./hyperspace.js";
 import "./libraries/graphlib.js";
 import {coordinates} from "./databases/coordinatesDB.js";
 import {get_string} from "./databases/dictionaryUIP2.js";
+import {infoUpdate} from "./info.js";
 
 
 let currentSystem; // Which system we are browsing. undefined iff we are in the starsystem view.
@@ -37,12 +38,18 @@ export function mapDraw(){
 
     // https://www.nashvail.me/blog/canvas-image
     // https://www.samanthaming.com/tidbits/48-passing-arrays-as-function-arguments/
+    // Get the canvas
     const canvas = document.getElementById("map");
     const ctx = canvas.getContext("2d")
     canvas.width = canvas.clientWidth;
     canvas.height = canvas.clientHeight;
+    const canvasOffsetTop = $("#map").css("margin-top");
+    // Get the container for the click-boxes
+    const clickBoxesContainer = document.getElementById("clickBoxes");
+    clickBoxesContainer.innerHTML = ""; // Clear the previous click-boxes
     // Hide all map objects
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Get the planets to display
     const planets = mapGetPlanets(currentSystem)
     let planetImages = [];
 
@@ -50,8 +57,7 @@ export function mapDraw(){
     const cHeight = canvas.height;
     const coords = coordinates[planets.length];
 
-
-    // Checking if we are in the starsystem view
+    // Checking if we are in the star system view
     if (currentSystem === undefined) {
         const systems = mapGetSystems();
         const sysCoords = coordinates[systems.length];
@@ -77,20 +83,49 @@ export function mapDraw(){
     const jqJumpPic = $("#systemJumpPic");
     // Coordinates of the centre of the jump location
     // Get the current/computed style - see https://stackoverflow.com/questions/14275304/how-to-get-margin-value-of-a-div-in-plain-javascript
-    let canvasStyle = canvas.currentStyle || window.getComputedStyle(canvas);
+    const canvasStyle = canvas.currentStyle || window.getComputedStyle(canvas);
     const jumpLoc = {
         "x": jqJumpPic.position().left + jqJumpPic.outerWidth(true) / 2.0,
         "y": jqJumpPic.position().top + jqJumpPic.outerHeight(true) / 2.0 - parseInt(canvasStyle.marginTop)
     };
+    // Add the click-box corresponding to the system jump location
+    const jumpBox = document.createElement("div");
+    const jumpLocStyle = jumpPic.currentStyle || window.getComputedStyle(jumpPic);
+    const jumpLocLeft = jqJumpPic.position().left + parseInt(jumpLocStyle.marginLeft);
+    jumpBox.style.top = jqJumpPic.position().top.toString() + "px";
+    jumpBox.style.left = jumpLocLeft.toString() + "px";
+    jumpBox.style.width = jqJumpPic.outerWidth().toString() + "px";
+    jumpBox.style.height = jqJumpPic.outerHeight().toString() + "px";
+    jumpBox.classList.add("clickBox");
+    clickBoxesContainer.appendChild(jumpBox);
+    // Add the box for the highlight effect
+    const lightBox = document.createElement("img");
+    lightBox.src = "./images/planetselection.png";
+    lightBox.style.top = "calc(-5vh + " + jumpBox.style.top  +")";
+    lightBox.style.left = "calc(-5vh + " + jumpBox.style.left + ")";
+    lightBox.style.width = "calc(10vh + " + jumpBox.style.width + ")";
+    lightBox.style.height = "calc(10vh + " + jumpBox.style.height + ")";
+    lightBox.classList.add("lightBox");
+    clickBoxesContainer.appendChild(lightBox);
+    // Add click event to the click-box
+    jumpBox.onclick = function (){
+        mapMove();
+    };
+
     // Show the map objects corresponding to the current system
     for (let i = 0; i<planets.length; i++) {
+        // Draw the planet
         const img = new Image();
         img.src = getPlanet(planets[i]).img;
+        planetImages = planetImages + img.src;
+        const imLeft = coords[i].x*cWidth;
+        const imTop = coords[i].y*cHeight;
+        const p = getPlanet(planets[i]).placement;
         img.onload = function() {
-            const p = getPlanet(planets[i]).placement;
-            const args = [img, p[0], p[1], p[2], p[3], coords[i].x*cWidth, coords[i].y*cHeight, p[4], p[5]];
+            const args = [img, p[0], p[1], p[2], p[3], imLeft, imTop, p[4], p[5]];
             ctx.drawImage(...args);
         }
+        // Draw the outgoing routes from the planet
         let routes = mapGetRoutes(planets[i]);
         // Using canvas to draw lines between planets where routes exist
         for (let j = 0; j<routes.length; j++) {
@@ -109,7 +144,7 @@ export function mapDraw(){
                 ctx.beginPath();
                 ctx.moveTo(startOffSetX + coords[sIndex].x*cWidth, startOffSetY + coords[sIndex].y*cHeight);
                 ctx.lineTo(destOffSetX + coords[dIndex].x*cWidth, destOffSetY + coords[dIndex].y*cHeight);
-                ctx.strokeStyle = $("#systemJumpPic").css("color");
+                ctx.strokeStyle = jqJumpPic.css("color");
                 ctx.stroke();
             }
             else{
@@ -122,12 +157,32 @@ export function mapDraw(){
                 ctx.beginPath();
                 ctx.moveTo(startOffSetX + coords[i].x*cWidth, startOffSetY + coords[i].y*cHeight);
                 ctx.lineTo(jumpLoc.x, jumpLoc.y);
-                ctx.strokeStyle = $("#systemJumpPic").css("color");
+                ctx.strokeStyle = jqJumpPic.css("color");
                 ctx.stroke();
             }
         }
+        // Add the click-box corresponding to the planet
+        const clickBox = document.createElement("div");
+        clickBox.style.top = "calc(" + canvasOffsetTop + " + " + imTop.toString() + "px)";
+        clickBox.style.left = imLeft.toString() + "px";
+        clickBox.style.width = p[4] + "px";
+        clickBox.style.height = p[5] + "px";
+        clickBox.classList.add("clickBox");
+        clickBoxesContainer.appendChild(clickBox);
+        // Add the highlight effect
+        const lightBox = document.createElement("img");
+        lightBox.src = "./images/planetselection.png";
+        lightBox.style.top = "calc(-5vh + " + clickBox.style.top  +")";
+        lightBox.style.left = "calc(-5vh + " + clickBox.style.left + ")";
+        lightBox.style.width = "calc(10vh + " + clickBox.style.width + ")";
+        lightBox.style.height = "calc(10vh + " + clickBox.style.height + ")";
+        lightBox.classList.add("lightBox");
+        clickBoxesContainer.appendChild(lightBox);
+        // Add click event to the click-box
+        clickBox.onclick = function (){
+            infoUpdate(planets[i]);
+        };
     }
-
 }
 
 /**
@@ -292,7 +347,6 @@ function findPath(dijkstra, start, destination){
     // Find the path
     let path = [];
     let target = destination;
-    let systems = mapGetSystems();
     for(let i = 0; i < 1000; i++){ // Set an upper bound on the loop.
         path.unshift(target);
         if(target === start){

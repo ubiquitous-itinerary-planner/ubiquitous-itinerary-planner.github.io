@@ -93,6 +93,7 @@ export function itUpdate(){
     ctx.stroke();
     // Add click functionality
     xBtn.onclick = function (){
+        const current = itPeek().id;
         // If there is only one last element, return to departures
         if(itGet().length === 1){
             itClearCommit();
@@ -107,6 +108,8 @@ export function itUpdate(){
             itUpdate();
             update_dict_view();
         }
+        // Update the info panel
+        infoUpdate(parseInt(current));
     };
     // Accessibility
     xBtn.tabIndex = 0;
@@ -229,6 +232,15 @@ function depCreateSystem(parent, system){
             arrow.style.transform = "rotate(90deg)";
         }
     };
+    // Activate the onclick when selected with tab and enter is pressed
+    title.addEventListener("keyup", function(event){
+        if(event.code === "Enter"){
+            event.preventDefault();
+            title.click();
+        }
+    })
+    title.setAttribute("role", "button");
+    title.tabIndex = 0;
     main.appendChild(title);
     // img arrow
     arrow.classList.add("departuresArrowPic");
@@ -254,6 +266,13 @@ function depCreateSystem(parent, system){
             infoUpdate(pid);
             update_dict_view();
         };
+        // Activate the onclick when selected with tab and enter is pressed
+        item.addEventListener("keyup", function(event){
+            if(event.code === "Enter"){
+                event.preventDefault();
+                item.click();
+            }
+        })
         item.setAttribute("role", "button");
         item.tabIndex = 0;
         list.appendChild(item);

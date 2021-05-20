@@ -17,7 +17,7 @@
   <script src="libraries/graphlib.js"></script>
 
   <!--Javascript code -->
-  <!-- You can comment this line, or test the server by running "python -m http.server" in the terminal/cmd prompt,
+  <!-- You can test the page by running "python -m http.server" in the terminal/cmd prompt,
     and access it through http://localhost:8000 -->
   <script type=module src="hyperspace.js"></script>
   <script type=module src="info.js"></script>
@@ -33,21 +33,27 @@
   <script type=module src="databases/dictionaryUIP2.js"></script>
   <script type="module" src="init.js"></script>
 
-  <!-- Scripts for testing modules, remove these before hand-in -->
+  <!-- Scripts for testing some code written early on -->
   <script type=module src="tests/itinerary.test.js"></script>
   <script type=module src="tests/undo.test.js"></script>
 
 </head>
 <body>
 
+<!-- Background -->
 <canvas id="background"></canvas>
+<!-- Topbar -->
 <div id="topBar" role="navigation"></div>
-  <canvas id="map"></canvas>
+<!-- Map -->
+<canvas id="map" class="mapOffset"></canvas>
 <img id="systemJumpPic">
+<div id="clickBoxes" class="mapOffset"></div>
+<!-- Infobox -->
 <div id="info" role="complementary">
   <table id="info_title" class="title"></table>
   <table id="info_table" class="centered-horizontal"></table>
 </div>
+<!--Itinerary -->
 <div id="itinerary" class="sideMenu" role="navigation">
   <h1 id="itinerary_title" class="title"></h1>
   <div id="itinerary_content">
@@ -58,11 +64,13 @@
   <div id="itinerary_footer" class="centered-horizontal">
   </div>
 </div>
+<!-- Departures -->
 <div id="departure" class="sideMenu" role="navigation">
   <h1 id="departure_title" class="title"></h1>
   <div id="departure_body" class="centered-horizontal hiddenScroll">
     <div id="departure_body_header"></div>
   </div>
 </div>
+
 </body>
 </html>
