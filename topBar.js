@@ -4,9 +4,10 @@
 import {mapMove} from "./map.js";
 import {change_lang, get_string, update_dict_view} from "./databases/dictionaryUIP2.js";
 
-let animation = 'on';
-let sound = 'on';
-
+let animation;
+let sound;
+sound = true;
+animation = true;
 export function topBarInit(){
     // Initialize children:
     let p = document.getElementById("topBar");
@@ -75,7 +76,7 @@ function animationBtnInit(parent){
     let animationBtn = document.createElement("button");
     // creating the picture of animation on and setting id, alt-text for dictionary if variable
     // animation is on, otherwise creating all above for animation off.
-    if (animation === 'on') {
+    if (animation) {
         let animationOnPic = document.createElement("img");
         animationOnPic.id = 'animationOnPic';
         animationOnPic.setAttribute("alt", get_string("animationOnAltText"));
@@ -98,12 +99,7 @@ function animationBtnInit(parent){
  * Checking if animation is on or off and switching.
  */
 function animationOnOff(){
-    if (animation === 'on') {
-        animation = 'off';
-    }
-    else {
-        animation = 'on'
-    }
+    animation = !animation;
     update_dict_view();
 }
 
@@ -115,7 +111,7 @@ function soundBtnInit(parent){
     let soundBtn = document.createElement("button");
     // creating the picture of sound on and setting id, alt-text for dictionary if variable
     // sound is on, otherwise creating all above for sound off.
-    if (sound === 'on') {
+    if (sound) {
         let soundOnPic = document.createElement("img");
         soundOnPic.id = "soundOnPic";
         soundOnPic.setAttribute("alt", get_string("soundOnAltText"));
@@ -138,12 +134,7 @@ function soundBtnInit(parent){
  * Checking if sound is on or off and switching.
  */
 function soundOnOff(){
-    if (sound === 'on') {
-        sound = 'off';
-    }
-    else {
-        sound = 'on'
-    }
+    sound = !sound;
     update_dict_view();
 }
 

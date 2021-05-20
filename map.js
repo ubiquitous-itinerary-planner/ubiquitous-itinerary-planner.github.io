@@ -66,7 +66,6 @@ export function mapDraw(){
                 const p = system.placement;
 
                 const args = [img, p[0], p[1], p[2], p[3], sysCoords[i].x * cWidth, sysCoords[i].y * cHeight, p[4], p[5]];
-                console.log(args);
                 ctx.drawImage(...args);
             }
         }
