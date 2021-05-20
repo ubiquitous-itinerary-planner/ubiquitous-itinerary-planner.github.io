@@ -76,16 +76,13 @@ export function mapDraw(){
     };
     // Add the click-box corresponding to the system jump location
     const jumpBox = document.createElement("div");
-    jumpBox.style.borderRadius = "100%";
-    jumpBox.style.opacity = "0";
-    jumpBox.style.position = "fixed";
     const jumpLocStyle = jumpPic.currentStyle || window.getComputedStyle(jumpPic);
     const jumpLocLeft = jqJumpPic.position().left + parseInt(jumpLocStyle.marginLeft);
     jumpBox.style.top = jqJumpPic.position().top.toString() + "px";
     jumpBox.style.left = jumpLocLeft.toString() + "px";
     jumpBox.style.width = jqJumpPic.outerWidth().toString() + "px";
     jumpBox.style.height = jqJumpPic.outerHeight().toString() + "px";
-    jumpBox.style.zIndex = "1";
+    jumpBox.classList.add("clickBox");
     clickBoxesContainer.appendChild(jumpBox);
     // Add click event to the click-box
     jumpBox.onclick = function (){
@@ -143,14 +140,11 @@ export function mapDraw(){
         }
         // Add the click-box corresponding to the planet
         const clickBox = document.createElement("div");
-        clickBox.style.borderRadius = "100%";
-        clickBox.style.opacity = "0";
-        clickBox.style.position = "fixed";
         clickBox.style.top = "calc(" + canvasOffsetTop + " + " + imTop.toString() + "px)";
         clickBox.style.left = imLeft.toString() + "px";
         clickBox.style.width = p[4] + "px";
         clickBox.style.height = p[5] + "px";
-        clickBox.style.zIndex = "1";
+        clickBox.classList.add("clickBox");
         clickBoxesContainer.appendChild(clickBox);
         // Add click event to the click-box
         clickBox.onclick = function (){
