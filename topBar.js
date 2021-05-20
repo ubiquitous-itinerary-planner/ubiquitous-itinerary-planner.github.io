@@ -2,8 +2,10 @@
  * Initializes the topBar element, and its children.
  */
 import {mapMove} from "./map.js";
-import {change_lang, get_string} from "./databases/dictionaryUIP2.js";
+import {change_lang, get_string, update_dict_view} from "./databases/dictionaryUIP2.js";
 
+let animation = 'on';
+let sound = 'on';
 export function topBarInit(){
     // Initialize children:
     let p = document.getElementById("topBar");
@@ -11,8 +13,8 @@ export function topBarInit(){
     homeBtnInit(p);
     helpBtnInit(p);
     languageBtnInit(p);
-    playPauseBtnInit(p);
-    muteBtnInit(p);
+    animationBtnInit(p);
+    soundBtnInit(p);
 }
 
 /**
@@ -65,47 +67,81 @@ function languageBtnInit(parent){
 }
 
 /**
- * Initializing the play and pause button.
+ * Initializing the animation on and animation off button.
  * @param parent the parent into which to add the button
  */
-function playPauseBtnInit(parent){
-    let playPauseBtn = document.createElement("button");
-    // creating the picture of play and setting id, alt-text for dictionary
-    let playPic = document.createElement("img");
-    playPic.id = 'playPic';
-    playPic.setAttribute("alt", get_string("playAltText"));
-    // creating the picture of pause and setting id, alt-text for dictionary
-    let pausePic = document.createElement("img");
-    pausePic.id = 'pausePic';
-    pausePic.setAttribute("alt", get_string("pauseAltText"));
+function animationBtnInit(parent){
+    let animationBtn = document.createElement("button");
+    // creating the picture of animation on and setting id, alt-text for dictionary if variable
+    // animation is on, otherwise creating all above for animation off.
+    if (animation === 'on') {
+        let animationOnPic = document.createElement("img");
+        animationOnPic.id = 'animationOnPic';
+        animationOnPic.setAttribute("alt", get_string("animationOnAltText"));
+        animationBtn.appendChild(animationOnPic);
+    } else {
+        let animationOffPic = document.createElement("img");
+        animationOffPic.id = 'animationOffPic';
+        animationOffPic.setAttribute("alt", get_string("animationOffAltText"));
+        animationBtn.appendChild(animationOffPic);
+    }
     // Assigning the whole button a class for css
-    playPauseBtn.classList.add("topBarButton");
-    // TODO pauseBtn.onclick=changePlayPic; Or are we keeping the double picture? (and ofc start/stop animation)
-    // Add the pictures to the button, and add the button to the parent
-    playPauseBtn.appendChild(playPic);
-    playPauseBtn.appendChild(pausePic);
-    parent.appendChild(playPauseBtn);
+    animationBtn.classList.add("topBarButton");
+    // TODO onclick=start/stop animation
+    animationBtn.onclick=animationOnOff;
+    // Add the animation on or off picture to the button, and add the button to the top bar.
+    parent.appendChild(animationBtn);
 }
 
 /**
- * Initializing the mute and unmute button.
+ * Checking if animation is on or off and switching.
+ */
+function animationOnOff(){
+    if (animation === 'on') {
+        animation = 'off';
+    }
+    else {
+        animation = 'on'
+    }
+    update_dict_view();
+}
+
+/**
+ * Initializing the sound on and sound off button.
  * @param parent the parent into which to add the button
  */
-function muteBtnInit(parent){
-    let muteBtn = document.createElement("button");
-    // creating the picture of mute and setting id, alt-text for dictionary
-    let mutePic = document.createElement("img");
-    mutePic.id = "mutePic";
-    mutePic.setAttribute("alt", get_string("muteAltText"))
-    // creating the picture of unmute and setting id, alt-text for dictionary
-    let unmutePic = document.createElement("img");
-    unmutePic.id = "unmutePic";
-    unmutePic.setAttribute("alt", get_string("unmuteAltText"));
+function soundBtnInit(parent){
+    let soundBtn = document.createElement("button");
+    // creating the picture of sound on and setting id, alt-text for dictionary if variable
+    // sound is on, otherwise creating all above for sound off.
+    if (sound === 'on') {
+        let soundOnPic = document.createElement("img");
+        soundOnPic.id = "soundOnPic";
+        soundOnPic.setAttribute("alt", get_string("soundOnAltText"));
+        soundBtn.appendChild(soundOnPic);
+    } else {
+        let soundOffPic = document.createElement("img");
+        soundOffPic.id = "soundOffPic";
+        soundOffPic.setAttribute("alt", get_string("soundOffAltText"));
+        soundBtn.appendChild(soundOffPic);
+    }
     // Assigning the whole button a class for css
-    muteBtn.classList.add("topBarButton");
-    // TODO muteBtn.onclick=changeMute; (changing picture or only commando turning on/off sound?)
-    // Add the pictures to the button, and add the button to the parent
-    muteBtn.appendChild(mutePic);
-    muteBtn.appendChild(unmutePic);
-    parent.appendChild(muteBtn);
+    soundBtn.classList.add("topBarButton");
+    // TODO onclick= turning on/off sound
+    soundBtn.onclick=soundOnOff;
+    // Add the sound on or off picture to the button, and add the button to the top bar.
+    parent.appendChild(soundBtn);
+}
+
+/**
+ * Checking if sound is on or off and switching.
+ */
+function soundOnOff(){
+    if (sound === 'on') {
+        sound = 'off';
+    }
+    else {
+        sound = 'on'
+    }
+    update_dict_view();
 }

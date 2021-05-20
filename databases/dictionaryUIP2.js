@@ -33,11 +33,11 @@ let dict = {
     // Language translations
     'english', 'marsianAndEnglish',
     // Accessibility labels
-    'xBtn', 'flagAltText', 'arrowAltText', 'backgroundAltText', 'depArrowAltText', 'systemJumpAltText', 'playAltText', 'pauseAltText',
-    'muteAltText', 'unmuteAltText'],
+    'xBtn', 'flagAltText', 'arrowAltText', 'backgroundAltText', 'depArrowAltText', 'systemJumpAltText', 'animationOnAltText', 'animationOffAltText',
+    'soundOnAltText', 'soundOffAltText'],
     
     //Pictures
-    'pics' : ['langPic', 'departuresArrowPic', 'systemJumpPic', 'playPic', 'pausePic', 'mutePic', 'unmutePic'],
+    'pics' : ['langPic', 'departuresArrowPic', 'systemJumpPic', 'animationOnPic', 'animationOffPic', 'soundOnPic', 'soundOffPic'],
 
     // English translations visible on the applications view.
     'en' : {
@@ -148,19 +148,18 @@ let dict = {
         'backgroundAltText': "A galaxy in the background",
         'depArrowAltText': "An arrow",
         'systemJumpAltText': "System jump location",
-        'playAltText': "Play",
-        'pauseAltText': "Pause",
-        'muteAltText': "Mute",
-        'unmuteAltText': "Unmute",
+        'animationOnAltText': "Animation on",
+        'animationOffAltText': "Animation off",
+        'soundOnAltText': "Sound on",
+        'soundOffAltText': "Sound off",
         //Pictures
         'langPic': "images/eng.png",
         'departuresArrowPic': "images/expand_arrow.png",
         'systemJumpPic': "images/jump_location.png",
-        'playPic': "images/icon_play.png",
-        'pausePic': "images/icon_pause.png",
-        'mutePic': "images/icon_soundoff.png",
-        'unmutePic': "images/icon_soundon.png",
-
+        'animationOnPic': "images/icon_play.png",
+        'animationOffPic': "images/icon_pause.png",
+        'soundOnPic': "images/icon_soundon.png",
+        'soundOffPic': "images/icon_soundoff.png",
     },
 
     'sv' : {
@@ -271,18 +270,18 @@ let dict = {
         'backgroundAltText': "En galax i bakgrunden",
         'depArrowAltText': "En pil",
         'systemJumpAltText': "Stjärnsystemshopp",
-        'playAltText': "Spela",
-        'pauseAltText': "Stoppa",
-        'muteAltText': "Stäng av ljud",
-        'unmuteAltText': "Sätt på ljud",
+        'animationOnAltText': "Animationer påslaget",
+        'animationOffAltText': "Animationer avslaget",
+        'soundOnAltText': "Ljud påslaget",
+        'soundOffAltText': "Ljud avslaget",
         //Bilder
         'langPic': "images/se.png",
         'departuresArrowPic': "images/expand_arrow.png",
         'systemJumpPic': "images/jump_location.png",
-        'playPic': "images/icon_play.png",
-        'pausePic': "images/icon_pause.png",
-        'mutePic': "images/icon_soundoff.png",
-        'unmutePic': "images/icon_soundon.png",
+        'animationOnPic': "images/icon_play.png",
+        'animationOffPic': "images/icon_pause.png",
+        'soundOnPic': "images/icon_soundon.png",
+        'soundOffPic': "images/icon_soundoff.png",
     }
 }
 
