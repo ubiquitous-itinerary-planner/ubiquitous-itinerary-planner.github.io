@@ -7,7 +7,7 @@
  */
 import {itInit, itPeek, itPushCommit, itUpdate} from "./sideMenu.js";
 import {update_dict_view} from "./databases/dictionaryUIP2.js";
-import {mapRouteShortest} from "./map.js";
+import {mapDraw, mapRouteShortest} from "./map.js";
 
 export function infoUpdate(i){
     let itemsTitle = document.getElementById('info_title');
@@ -44,6 +44,7 @@ export function infoUpdate(i){
         if (itPeek() === undefined){
             itInit(i);
             infoUpdate(i);
+            mapDraw();
             update_dict_view();
         }
         const start = getPlanet(itPeek().id)
@@ -60,6 +61,7 @@ export function infoUpdate(i){
         }
         itUpdate();
         infoUpdate(i);
+        mapDraw();
         update_dict_view();
     };
     document.getElementById("info").appendChild(travelButton);

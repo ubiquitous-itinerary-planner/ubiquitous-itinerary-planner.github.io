@@ -10,7 +10,7 @@ import {hyperjump} from "./hyperspace.js";
 import {commit} from "./undo.js";
 import {START_DATE} from "./init.js";
 import {infoUpdate} from "./info.js";
-import {mapGetPlanets, mapGetRoutes, mapGetSystems, mapMove} from "./map.js";
+import {mapDraw, mapGetPlanets, mapGetRoutes, mapGetSystems, mapMove} from "./map.js";
 import {get_string, language, update_dict_view} from "./databases/dictionaryUIP2.js";
 
 /**
@@ -97,6 +97,7 @@ export function itUpdate(){
         // If there is only one last element, return to departures
         if(itGet().length === 1){
             itClearCommit();
+            mapDraw();
             update_dict_view();
             // Toggle visibility of the departure and the itinerary
             $("#departure").css("display", "initial");
@@ -106,6 +107,7 @@ export function itUpdate(){
         else{
             itPopCommit();
             itUpdate();
+            mapDraw();
             update_dict_view();
         }
         // Update the info panel
@@ -160,6 +162,7 @@ export function itUpdate(){
     clearBtn.classList.add("centered-vertical");
     clearBtn.onclick = function (){
         itClearCommit();
+        mapDraw();
         update_dict_view();
         // Toggle visibility of the departure and the itinerary
         $("#departure").css("display", "initial");

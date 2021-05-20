@@ -8,7 +8,7 @@ import {coordinates} from "./databases/coordinatesDB.js";
 import {get_string} from "./databases/dictionaryUIP2.js";
 import {infoUpdate} from "./info.js";
 import {screenMediaSize} from "./init.js";
-
+import {itPeek} from "./sideMenu.js";
 
 let currentSystem; // Which system we are browsing. undefined iff we are in the starsystem view.
 
@@ -92,7 +92,6 @@ export function mapDraw(){
             const clickBox = document.createElement("div");
             const imLeft = sysCoords[i].x*cWidth;
             const imTop = sysCoords[i].y*cHeight;
-            console.log(canvasOffsetTop);
             clickBox.style.top = "calc(" + canvasOffsetTop + " + " + imTop.toString() + "px)";
             clickBox.style.left = imLeft.toString() + "px";
             clickBox.style.width = p[4] + "px";
@@ -235,6 +234,9 @@ export function mapDraw(){
         lightBox.style.left = "calc(-5vh + " + clickBox.style.left + ")";
         lightBox.style.width = "calc(10vh + " + clickBox.style.width + ")";
         lightBox.style.height = "calc(10vh + " + clickBox.style.height + ")";
+        if(itPeek() !== undefined && planets[i] === itPeek().id){
+            lightBox.style.opacity = "100%";
+        }
         lightBox.classList.add("lightBox");
         clickBoxesContainer.appendChild(lightBox);
         // Add click event to the click-box
