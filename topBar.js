@@ -6,6 +6,7 @@ import {change_lang, get_string, update_dict_view} from "./databases/dictionaryU
 
 let animation = 'on';
 let sound = 'on';
+
 export function topBarInit(){
     // Initialize children:
     let p = document.getElementById("topBar");
@@ -145,3 +146,7 @@ function soundOnOff(){
     }
     update_dict_view();
 }
+
+// ===========================================================================
+// END OF FILE
+// ===========================================================================
