@@ -9,6 +9,7 @@ import {update_dict_view} from "./databases/dictionaryUIP2.js";
 
 
 export const START_DATE = new Date();
+export let screenMediaSize;
 
 $("document").ready(function() {
 
@@ -35,10 +36,12 @@ $(window).resize(function(){
 function updateSize(){
     // https://www.w3schools.com/jsref/met_win_matchmedia.asp
     if(window.matchMedia("screen and (min-width: 800px)").matches){
+        screenMediaSize = "desktop";
         /* The following code is executed if we are on a desktop-sized screen */
         document.getElementById("mediaSize").href = "css/desktop.css";
     }
     else{
+        screenMediaSize = "mobile";
         /* The following code is executed if we are on a mobile-sized screen */
         document.getElementById("mediaSize").href = "css/mobile.css";
     }

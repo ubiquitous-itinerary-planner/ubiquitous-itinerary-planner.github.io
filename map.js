@@ -7,6 +7,7 @@ import "./libraries/graphlib.js";
 import {coordinates} from "./databases/coordinatesDB.js";
 import {get_string} from "./databases/dictionaryUIP2.js";
 import {infoUpdate} from "./info.js";
+import {screenMediaSize} from "./init.js";
 
 
 let currentSystem; // Which system we are browsing. undefined iff we are in the starsystem view.
@@ -41,8 +42,20 @@ export function mapDraw(){
     // Get the canvas
     const canvas = document.getElementById("map");
     const ctx = canvas.getContext("2d")
-    canvas.width = canvas.clientWidth;
-    canvas.height = canvas.clientHeight;
+    const body = $("body");
+    const stylesheet = document.getElementById("mediaSize");
+    // If desktop css
+    if(screenMediaSize === "desktop"){
+        canvas.width = body.width() * 0.67;
+        canvas.height = body.height() * 0.9375;
+        canvas.style.width = canvas.width + "px";
+        canvas.style.height = canvas.height + "px";
+    }
+    // TODO: If mobile css
+    if(screenMediaSize === "mobile"){
+
+    }
+
     const canvasOffsetTop = $("#map").css("margin-top");
     // Get the container for the click-boxes
     const clickBoxesContainer = document.getElementById("clickBoxes");
