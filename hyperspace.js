@@ -40,6 +40,7 @@ function hyperspaceSetup(){
     const sizes = [];
     const radius = 10000;
     const tunnelWidth = 10; // Tunnel has W = H
+    // Each star is a vertex of the particle system
     for(let i = 0; i < numStars; i+=4){
         // N wall
         // Star coordinates
@@ -91,6 +92,10 @@ function hyperspaceSetup(){
             value: new THREE.TextureLoader().load("images/star.png")
         }
     };
+    /* The shaders, written in GLSL, are part of the material of the star system.
+     * The vertex shader calculates the size and position of each vertex (=star)
+     * The fragment shader uses the passed texture and color to color the fragments of the vertex
+     */
     const shaderMaterial = new THREE.ShaderMaterial({
         uniforms: uniforms,
         vertexShader: `
@@ -126,10 +131,12 @@ function hyperspaceSetup(){
         transparent: true,
         vertexColors: true
     });
+    // Define the geometry of the star system
     const starGeometry = new THREE.BufferGeometry();
     starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
     starGeometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
     starGeometry.setAttribute('size', new THREE.Float32BufferAttribute(sizes, 1).setUsage(THREE.DynamicDrawUsage));
+    // Create and add the star system to the scene
     starSystem = new THREE.Points(starGeometry, shaderMaterial);
     scene.add(starSystem);
 
@@ -148,7 +155,7 @@ function hyperspaceSetup(){
     composer = new EffectComposer(renderer);
     composer.addPass(renderScene);
     composer.addPass(bloomPass);
-
+    // Configure the renderer
     renderer.setPixelRatio(window.devicePixelRatio);
 }
 
@@ -165,7 +172,9 @@ function hyperspaceAnimate(){
     if(clockJump.running){
         hyperspaceMove(dTime);
     }
+    // Render scene
     composer.render();
+    // Continue animating the scene on next frame
     requestAnimationFrame(hyperspaceAnimate);
 }
 
@@ -187,7 +196,7 @@ export function hyperjump(){
 }
 
 /**
- * Moves the camera along a trajectory, so simulate a hyperspace jump
+ * Moves the camera along a trajectory, to simulate a hyperspace jump
  */
 function hyperspaceMove(deltaTime){
     // Find for how long we have moved
@@ -231,10 +240,12 @@ function hyperspaceMove(deltaTime){
     else if(elapsedTime <= 3.0){
         camera.position.z -= 2 * deltaTime;
     }
+
+    // Stop the clock after jumping
     else {
         clockJump.stop();
     }
 }
-
+// Call setup and animate
 hyperspaceSetup();
 hyperspaceAnimate();
