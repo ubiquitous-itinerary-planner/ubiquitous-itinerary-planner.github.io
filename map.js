@@ -80,12 +80,26 @@ export function mapDraw(){
         for (let i = 0; i<systems.length; i++) {
             const img = new Image();
             const system = getSystem(systems[i])
+            const p = system.placement;
             img.src = system.img;
             img.onload = function () {
-                const p = system.placement;
                 const args = [img, p[0], p[1], p[2], p[3], sysCoords[i].x * cWidth, sysCoords[i].y * cHeight, p[4], p[5]];
                 ctx.drawImage(...args);
             }
+            // Add the click-box corresponding to the planet
+            const clickBox = document.createElement("div");
+            const imLeft = sysCoords[i].x*cWidth;
+            const imTop = sysCoords[i].y*cHeight;
+            clickBox.style.top = "calc(" + canvasOffsetTop + " + " + imTop.toString() + "px)";
+            clickBox.style.left = imLeft.toString() + "px";
+            clickBox.style.width = p[4] + "px";
+            clickBox.style.height = p[5] + "px";
+            clickBox.classList.add("clickBox");
+            clickBoxesContainer.appendChild(clickBox);
+            // Add click event to the click-box
+            clickBox.onclick = function (){
+                mapMove(systems[i]);
+            };
         }
         //v = start, w = end
         const routes = mapGetRoutes();
