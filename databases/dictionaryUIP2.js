@@ -33,10 +33,11 @@ let dict = {
     // Language translations
     'english', 'marsianAndEnglish',
     // Accessibility labels
-    'xBtn', 'flagAltText', 'arrowAltText', 'backgroundAltText', 'depArrowAltText', 'systemJumpAltText'],
+    'xBtn', 'flagAltText', 'arrowAltText', 'backgroundAltText', 'depArrowAltText', 'systemJumpAltText', 'animationOnAltText', 'animationOffAltText',
+    'soundOnAltText', 'soundOffAltText'],
     
     //Pictures
-    'pics' : ['langPic', 'departuresArrowPic', 'systemJumpPic'],
+    'pics' : ['langPic', 'departuresArrowPic', 'systemJumpPic', 'animationOnPic', 'animationOffPic', 'soundOnPic', 'soundOffPic'],
 
     // English translations visible on the applications view.
     'en' : {
@@ -147,10 +148,18 @@ let dict = {
         'backgroundAltText': "A galaxy in the background",
         'depArrowAltText': "An arrow",
         'systemJumpAltText': "System jump location",
+        'animationOnAltText': "Animation on",
+        'animationOffAltText': "Animation off",
+        'soundOnAltText': "Sound on",
+        'soundOffAltText': "Sound off",
         //Pictures
         'langPic': "images/eng.png",
         'departuresArrowPic': "images/expand_arrow.png",
         'systemJumpPic': "images/jump_location.png",
+        'animationOnPic': "images/icon_pause.png",
+        'animationOffPic': "images/icon_play.png",
+        'soundOnPic': "images/icon_soundon.png",
+        'soundOffPic': "images/icon_soundoff.png",
     },
 
     'sv' : {
@@ -261,10 +270,18 @@ let dict = {
         'backgroundAltText': "En galax i bakgrunden",
         'depArrowAltText': "En pil",
         'systemJumpAltText': "Stjärnsystemshopp",
+        'animationOnAltText': "Animationer påslaget",
+        'animationOffAltText': "Animationer avslaget",
+        'soundOnAltText': "Ljud påslaget",
+        'soundOffAltText': "Ljud avslaget",
         //Bilder
         'langPic': "images/se.png",
         'departuresArrowPic': "images/expand_arrow.png",
         'systemJumpPic': "images/jump_location.png",
+        'animationOnPic': "images/icon_pause.png",
+        'animationOffPic': "images/icon_play.png",
+        'soundOnPic': "images/icon_soundon.png",
+        'soundOffPic': "images/icon_soundoff.png",
     }
 }
 

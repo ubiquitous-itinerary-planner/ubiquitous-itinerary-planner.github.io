@@ -16,6 +16,8 @@ let starSystem, uniforms;
 const numStars = 100000;
 const cameraStartPos = 300;
 
+let animate;
+let audioPlayer;
 
 /**
  * Sets up the hyperspace
@@ -24,6 +26,9 @@ function hyperspaceSetup(){
     // Initialise clocks
     clock = new THREE.Clock();
     clockJump = new THREE.Clock(false);
+    // Initialise vars
+    animate = true;
+    audioPlayer = new Audio("./audio/hyperjump.mp3");
     // Find the canvas
     const canvas = document.getElementById("background");
     // Label the canvas
@@ -40,6 +45,7 @@ function hyperspaceSetup(){
     const sizes = [];
     const radius = 10000;
     const tunnelWidth = 10; // Tunnel has W = H
+    // Each star is a vertex of the particle system
     for(let i = 0; i < numStars; i+=4){
         // N wall
         // Star coordinates
@@ -91,6 +97,10 @@ function hyperspaceSetup(){
             value: new THREE.TextureLoader().load("images/star.png")
         }
     };
+    /* The shaders, written in GLSL, are part of the material of the star system.
+     * The vertex shader calculates the size and position of each vertex (=star)
+     * The fragment shader uses the passed texture and color to color the fragments of the vertex
+     */
     const shaderMaterial = new THREE.ShaderMaterial({
         uniforms: uniforms,
         vertexShader: `
@@ -126,10 +136,12 @@ function hyperspaceSetup(){
         transparent: true,
         vertexColors: true
     });
+    // Define the geometry of the star system
     const starGeometry = new THREE.BufferGeometry();
     starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
     starGeometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
     starGeometry.setAttribute('size', new THREE.Float32BufferAttribute(sizes, 1).setUsage(THREE.DynamicDrawUsage));
+    // Create and add the star system to the scene
     starSystem = new THREE.Points(starGeometry, shaderMaterial);
     scene.add(starSystem);
 
@@ -148,7 +160,7 @@ function hyperspaceSetup(){
     composer = new EffectComposer(renderer);
     composer.addPass(renderScene);
     composer.addPass(bloomPass);
-
+    // Configure the renderer
     renderer.setPixelRatio(window.devicePixelRatio);
 }
 
@@ -157,15 +169,19 @@ function hyperspaceSetup(){
  */
 function hyperspaceAnimate(){
 
-    // Do things that happens at every frame
-    const dTime = clock.getDelta(); // Time since last call to hyperspaceAnimate
-    camera.position.z -= 0.1*dTime;
-    starSystem.rotateZ(0.1*dTime);
-    // If we are jumping, do move
-    if(clockJump.running){
-        hyperspaceMove(dTime);
+    if(animate) {
+        // Do things that happens at every frame
+        const dTime = clock.getDelta(); // Time since last call to hyperspaceAnimate
+        camera.position.z -= 0.1 * dTime;
+        starSystem.rotateZ(0.1 * dTime);
+        // If we are jumping, do move
+        if (clockJump.running) {
+            hyperspaceMove(dTime);
+        }
     }
+    // Render scene
     composer.render();
+    // Continue animating the scene on next frame
     requestAnimationFrame(hyperspaceAnimate);
 }
 
@@ -176,7 +192,7 @@ export function hyperjump(){
     /* Play the hyperspace jump sound file */
     // Error handling based on example from https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play
     try{
-        const p = new Audio("./audio/hyperjump.mp3").play();
+        audioPlayer.play();
     }
     catch (err){
         console.log(err);
@@ -187,7 +203,7 @@ export function hyperjump(){
 }
 
 /**
- * Moves the camera along a trajectory, so simulate a hyperspace jump
+ * Moves the camera along a trajectory, to simulate a hyperspace jump
  */
 function hyperspaceMove(deltaTime){
     // Find for how long we have moved
@@ -231,10 +247,26 @@ function hyperspaceMove(deltaTime){
     else if(elapsedTime <= 3.0){
         camera.position.z -= 2 * deltaTime;
     }
+
+    // Stop the clock after jumping
     else {
         clockJump.stop();
     }
 }
 
+/**
+ * Toggles the mute of the hyperjump animation
+ */
+export function hyperspaceToggleMute(){
+    audioPlayer.muted = !audioPlayer.muted;
+}
+
+/**
+ * Toggles the animation of the hyperjump animation
+ */
+export function hyperspaceToggleAnimate(){
+    animate = !animate;
+}
+// Call setup and animate
 hyperspaceSetup();
 hyperspaceAnimate();
