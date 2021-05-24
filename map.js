@@ -105,6 +105,9 @@ export function mapDraw(){
             lightBox.style.left = "calc(-5vh + " + clickBox.style.left + ")";
             lightBox.style.width = "calc(10vh + " + clickBox.style.width + ")";
             lightBox.style.height = "calc(10vh + " + clickBox.style.height + ")";
+            if(itPeek() !== undefined && systems[i] === getPlanet(itPeek().id).starsystem){
+                lightBox.style.opacity = "100%";
+            }
             lightBox.classList.add("lightBox");
             clickBoxesContainer.appendChild(lightBox);
             // Add click event to the click-box
