@@ -306,12 +306,9 @@ function itAddAvailableDestination(parent, route, inReverse){
     let btn = document.createElement("button");
     btn.classList.add("addButton");
     btn.onclick = function (){
-        // Do a jump if we jump between systems
-        if(getPlanet(route.start).starsystem !== getPlanet(route.destination).starsystem){
-            mapMove(getPlanet(destination).starsystem);
-        }
         itPush({id: destination, price: route.price, duration: route.duration, company: route.company});
         itUpdate();
+        mapMove(getPlanet(destination).starsystem);
         infoUpdate(getPlanet(destination).id);
         update_dict_view();
     };

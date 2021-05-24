@@ -263,6 +263,7 @@ function sleep(ms){
 export async function mapMove(system){
     // No need to do anything if we're already there
     if(currentSystem === system){
+        mapDraw(); // Repaint, in case highlights etc have moved
         return;
     }
     // Update model
