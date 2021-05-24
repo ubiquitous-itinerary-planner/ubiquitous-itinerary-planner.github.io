@@ -179,6 +179,24 @@ button:hover{
     margin: 0 0.25em 0 0;
 }
 
+.clickBox{
+    position: fixed;
+    border-radius: 100%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.lightBox{
+    position: fixed;
+    border-radius: 100%;
+    opacity: 0;
+    z-index: -1;
+}
+
+/* Selects only adjacent siblings */
+.clickBox:hover + .lightBox{
+    opacity: 100%;
+}
 
 /*
  * ELEMENT LEVEL DEFINITIONS

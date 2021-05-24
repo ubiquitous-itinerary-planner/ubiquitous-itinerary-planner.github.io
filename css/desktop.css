@@ -31,20 +31,16 @@ body{
 #info_travel_button{
     height: 6.25vh;
 }
-#map{
-    width: 67%;
-    height: 93.75%;
-    margin-top: 6.25%;
 
-}
-#topBar{
-    position: absolute;
-    height: 6.25%;
-    width: 67%;
-}
 #systemJumpPic{
     /*bottom: calc(34.25% + 0.25em);*/
     /*margin-bottom: 2.5%;*/
     bottom: calc(50% - 63px);
     margin-left: 2.5%;
+}
+
+#topBar{
+    position: absolute;
+    height: 6.25%;
+    width: 67%;
 }

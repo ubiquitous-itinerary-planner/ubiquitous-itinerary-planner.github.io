@@ -9,3 +9,11 @@ function getPlanet(id){
         }
     }
 }
+
+function getSystem(name){
+    for(let i = 0; i < PDB2.systems.length; i++){
+        if(PDB2.systems[i].name === name){
+            return PDB2.systems[i];
+        }
+    }
+}
