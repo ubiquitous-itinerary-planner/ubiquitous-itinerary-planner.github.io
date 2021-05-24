@@ -267,6 +267,14 @@ export function hyperspaceToggleMute(){
 export function hyperspaceToggleAnimate(){
     animate = !animate;
 }
+
+/**
+ * Gets whether or not the animation is toggled on
+ * @return {*} True iff the animation is toggled to be on
+ */
+export function hyperspaceIsAnimated(){
+    return animate;
+}
 // Call setup and animate
 hyperspaceSetup();
 hyperspaceAnimate();

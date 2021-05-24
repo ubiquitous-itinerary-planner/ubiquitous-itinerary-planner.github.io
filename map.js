@@ -2,7 +2,7 @@
  * View/Controller code
  */
 
-import {hyperjump} from "./hyperspace.js";
+import {hyperjump, hyperspaceIsAnimated} from "./hyperspace.js";
 import "./libraries/graphlib.js";
 import {coordinates} from "./databases/coordinatesDB.js";
 import {get_string} from "./databases/dictionaryUIP2.js";
@@ -271,7 +271,9 @@ export async function mapMove(system){
     // Play animation
     hyperjump();
     // Wait for the animation to happen
-    await sleep(3000);
+    if(hyperspaceIsAnimated()) {
+        await sleep(3000);
+    }
     // After moving, redraw the screen:
     mapDraw();
 }
