@@ -43,7 +43,7 @@ export function mapDraw(){
     const canvas = document.getElementById("map");
     const ctx = canvas.getContext("2d")
     const body = $("body");
-    const stylesheet = document.getElementById("mediaSize");
+    
     // If desktop css
     if(screenMediaSize === "desktop"){
         canvas.width = body.width() * 0.67;
