@@ -20,7 +20,7 @@ let dict = {
     // Starsystem name translations
     'solarSystem', 'frogstarSystem', 'warstarSystem', 'ringlordSystem',
     // Climate translations
-    'earthBalanced', 'frozenDesert', 'indoors', 'frogstarAclim', 'frogBclim', 'frogCclim', 'earthSummerBalanced', 'duskyAndChilly', 'rainyAndStormy',
+    'earthBalanced', 'frozenDesert', 'indoors', 'soft', 'ruinsAndDirtyShoes', 'beautifulForFishing', 'earthSummerBalanced', 'duskyAndChilly', 'rainyAndStormy',
     'volcanicLavaStreams', 'hotDaysFrozenNightsDesert', 'dry', 'flourishing', 'dryAndHot',
     // Infrastructure translations
     'earthLike', 'thirdWorld', 'marsLike', 'futuristic',
@@ -113,13 +113,13 @@ let dict = {
         'warstarSystem': "Warstar System", 
         'ringlordSystem': "Ringlord System",
         // Climate translations
-        'earthBalanced': "Earth balanced", 
+        'earthBalanced': "Earth-like",
         'frozenDesert': "Frozen desert", 
         'indoors': "Indoors", 
         'soft': "Soft", 
-        'ruinsAndDirtyShoes': "Ruins and dirty shoes", 
+        'ruinsAndDirtyShoes': "Ruins and dirty shoes",
         'beautifulForFishing': "Beautiful for fishing", 
-        'earthSummerBalanced': "Earth summer balanced", 
+        'earthSummerBalanced': "Earth summer",
         'duskyAndChilly': "Dusky and chilly", 
         'rainyAndStormy': "Rainy and stormy", 
         'volcanicLavaStreams': "Volcanic lavastreams", 
@@ -236,7 +236,7 @@ let dict = {
         'warstarSystem': "Warstarsystemet", 
         'ringlordSystem': "Ringlordsystemet",
         // Climate translations
-        'earthBalanced': "Jorden-balanserat", 
+        'earthBalanced': "Jordlikt",
         'frozenDesert': "Fryst öken", 
         'indoors': "Inomhus", 
         'soft': "Mjukt", 

@@ -23,7 +23,6 @@ body{
  */
 #info{
     z-index: 1;
-    height: calc(34.25% + 0.25em);
     width: 27%;
     bottom: 0;
     left: 0;

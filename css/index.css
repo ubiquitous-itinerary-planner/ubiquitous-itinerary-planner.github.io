@@ -145,7 +145,7 @@ button:hover{
 .depMain{
     border-style: solid;
     border-color: var(--color-secondary);
-    border-width: thin;
+    border-width: medium;
     margin-top: 0.5em;
 }
 .departuresArrowPic{
@@ -216,6 +216,7 @@ button:hover{
 
 #info{
     display: none;
+    flex-direction: column;
     background: var(--color-main-transparent);
     position: absolute;
     border-color: var(--color-border);
@@ -234,12 +235,14 @@ button:hover{
     width: 100%;
     height: 27.4%;
     background-color: var(--color-main);
+    padding-top: var(--font-size-info-title);
+    padding-bottom: var(--font-size-info-title);
 }
 #info_table{
     color: var(--color-on-main-transparent);
     font-family: var(--font-info-text);
     font-size: var(--font-size-info-text);
-    width: 100%;
+    width: 90%;
     border-spacing: 0;
 }
 #info_travel_button{
