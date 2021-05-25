@@ -165,7 +165,7 @@ let dict = {
 
     'sv' : {
         //top bar menu
-        'homeButton' : "System- karta",
+        'homeButton' : "Systemkarta",
         'helpButton': "Hjälp",
         'activeLanguageButton': "Svenska",
         'activeLanguageButtonShort': "Sv",
