@@ -181,14 +181,14 @@ button:hover{
 }
 
 .clickBox{
-    position: fixed;
+    position: absolute;
     border-radius: 100%;
     opacity: 0;
     z-index: 1;
 }
 
 .lightBox{
-    position: fixed;
+    position: absolute;
     border-radius: 100%;
     opacity: 0;
     z-index: -1;
