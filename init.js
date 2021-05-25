@@ -3,7 +3,7 @@
  */
 
 import {depInit} from "./sideMenu.js";
-import {mapDraw, mapInit} from "./map.js";
+import {mapDraw, mapInit, sleep} from "./map.js";
 import {topBarInit} from "./topBar.js";
 import {update_dict_view} from "./databases/dictionaryUIP2.js";
 
@@ -24,8 +24,11 @@ $("document").ready(function() {
 });
 
 // This is called whenever the screen is resized.
-$(window).resize(function(){
+$(window).resize(async function(){
     updateSize();
+    // Ensure that resizing is done before drawing
+    // This does cause flickering if the screen is resized rapidly, there a better solution?
+    await sleep(20);
     mapDraw();
 });
 

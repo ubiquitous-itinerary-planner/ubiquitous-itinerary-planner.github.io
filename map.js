@@ -260,7 +260,7 @@ export function mapDraw(){
  * @param ms the time to sleep
  * @returns {Promise}
  */
-function sleep(ms){
+export function sleep(ms){
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
