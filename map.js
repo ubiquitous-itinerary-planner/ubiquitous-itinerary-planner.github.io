@@ -51,7 +51,7 @@ export function mapDraw(){
         canvas.style.width = canvas.width + "px";
         canvas.style.height = canvas.height + "px";
         // because margin-top, if given as %, is based on the parent's WIDTH and not HEIGHT
-        canvas.style.marginTop = "calc(" + $("body").height() + "px - " + canvas.style.height + ")";
+        canvas.style.marginTop = "calc(" + body.height() + "px - " + canvas.style.height + ")";
     }
     // TODO: If mobile css
     if(screenMediaSize === "mobile"){

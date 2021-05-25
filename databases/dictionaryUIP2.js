@@ -8,7 +8,7 @@ export let language = 'en';
 let dict = {
 
     //menu and common word translations
-    'text' : ['homeButton', 'helpButton', 'activeLanguageButton', 'departure_title', 'itinerary_title', 'itinButton', 'addButton', 'removeButton', 'clearItin', 'planetView', 'systemJump',
+    'text' : ['homeButton', 'helpButton', 'activeLanguageButton', 'activeLanguageButtonShort', 'departure_title', 'itinerary_title', 'itinButton', 'addButton', 'removeButton', 'clearItin', 'planetView', 'systemJump',
     'departurePreamble', 'depFrom', 'date', 'to', 'spaceline', 'duration', 'price', 'availDest', 'totalTravelTime', 'days', 'itinClearBtn', 'totalTravelCost', 'pageTitle', 'info_travel_button',
     'info_travel_button_here', 'yes', 'no',
     //Planet database variable translations
@@ -42,9 +42,10 @@ let dict = {
     // English translations visible on the applications view.
     'en' : {
         //menu and common word translations
-        'homeButton' : "Star system view",
+        'homeButton' : "Systems map",
         'helpButton': "Help",
         'activeLanguageButton': "English",
+        'activeLanguageButtonShort': "En",
         'departure_title' : "Departures",
         'itinerary_title': "Itinerary Planner",
         'itinButton': "Itinierary",
@@ -164,9 +165,10 @@ let dict = {
 
     'sv' : {
         //top bar menu
-        'homeButton' : "Stjärnsystemsvy",
+        'homeButton' : "System- karta",
         'helpButton': "Hjälp",
         'activeLanguageButton': "Svenska",
+        'activeLanguageButtonShort': "Sv",
         'departure_title' : "Avgångar",
         'itinerary_title': "Resvägsplanerare",
         'itinButton': "Reseplan",
@@ -261,7 +263,7 @@ let dict = {
         // Currency translations
         'spaceDollar': "$",
         // Language translations
-        'english': "Engelska", 
+        'english': "Engelska",
         'marsianAndEnglish': "Marsianska och engelska",
         // Tillgänglighets-text
         'xBtn' : "Ta bort senaste resmålet.",
