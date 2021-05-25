@@ -33,8 +33,6 @@ body{
 }
 
 #systemJumpPic{
-    /*bottom: calc(34.25% + 0.25em);*/
-    /*margin-bottom: 2.5%;*/
     bottom: calc(50% - 63px);
     margin-left: 2.5%;
 }

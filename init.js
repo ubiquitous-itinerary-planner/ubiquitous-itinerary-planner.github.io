@@ -35,8 +35,6 @@ $(window).resize(function(){
  */
 function updateSize(){
 
-    console.log(window.matchMedia("(min-device-width: 800px)"));
-
     // https://www.w3schools.com/jsref/met_win_matchmedia.asp
     if(window.matchMedia("screen and (min-device-width: 800px)").matches){
         screenMediaSize = "desktop";

@@ -22,6 +22,12 @@
 /*
  * ELEMENT LEVEL DEFINITIONS
  */
+
+#systemJumpPic{
+    top: calc(8.75% + 29.5% - 63px);
+    left: 63px;
+    margin-left: 2.5%;
+}
 #info{
     height: 33%;
     width: 100%;
