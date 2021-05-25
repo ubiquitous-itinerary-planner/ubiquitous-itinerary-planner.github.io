@@ -83,7 +83,7 @@ export function mapDraw(){
         const sysCoords = coordinates[systems.length];
         // Hide the system jump location
         document.getElementById("systemJumpPic").style.display="none";
-        // TODO: Insert star system view on canvas
+        // Insert star system view on canvas
         for (let i = 0; i<systems.length; i++) {
             const img = new Image();
             const system = getSystem(systems[i])
