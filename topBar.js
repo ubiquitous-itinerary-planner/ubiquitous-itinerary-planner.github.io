@@ -4,6 +4,7 @@
 import {mapMove} from "./map.js";
 import {change_lang, get_string, update_dict_view} from "./databases/dictionaryUIP2.js";
 import {hyperspaceToggleAnimate, hyperspaceToggleMute} from "./hyperspace.js";
+import {helpTutorial} from "./tutorial";
 
 let animation;
 let sound;
@@ -44,7 +45,7 @@ function helpBtnInit(parent){
     helpBtn.innerHTML = "Help Button"
     helpBtn.id = "helpButton";
     helpBtn.classList.add("topBarButton");
-    //helpBtn.onclick=helpTutorial;
+    helpBtn.onclick=helpTutorial;
     parent.appendChild(helpBtn);
 }
 
