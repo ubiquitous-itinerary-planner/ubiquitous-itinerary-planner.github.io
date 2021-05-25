@@ -34,15 +34,20 @@ $(window).resize(function(){
  * Updates the css, depending on which side of the breakpoint we are.
  */
 function updateSize(){
+
+    console.log(window.matchMedia("(min-device-width: 800px)"));
+
     // https://www.w3schools.com/jsref/met_win_matchmedia.asp
-    if(window.matchMedia("screen and (min-width: 800px)").matches){
+    if(window.matchMedia("screen and (min-device-width: 800px)").matches){
         screenMediaSize = "desktop";
         /* The following code is executed if we are on a desktop-sized screen */
         document.getElementById("mediaSize").href = "css/desktop.css";
+        update_dict_view();
     }
     else{
         screenMediaSize = "mobile";
         /* The following code is executed if we are on a mobile-sized screen */
         document.getElementById("mediaSize").href = "css/mobile.css";
+        update_dict_view();
     }
 }

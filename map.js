@@ -55,7 +55,12 @@ export function mapDraw(){
     }
     // TODO: If mobile css
     if(screenMediaSize === "mobile"){
-
+        canvas.width = body.width() * 1;
+        canvas.height = body.height() * 0.57;
+        canvas.style.width = canvas.width + "px";
+        canvas.style.height = canvas.height + "px";
+        // because margin-top, if given as %, is based on the parent's WIDTH and not HEIGHT
+        canvas.style.marginTop = "calc(0.0875 * " + body.height() + "px)";
     }
 
     const canvasOffsetTop = "6.25vh"; //$("#map").css("margin-top");
