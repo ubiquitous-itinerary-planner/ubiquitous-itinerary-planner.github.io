@@ -265,6 +265,12 @@ export function hyperspaceToggleMute(){
  * Toggles the animation of the hyperjump animation
  */
 export function hyperspaceToggleAnimate(){
+    if(clock.running){
+        clock.stop();
+    }
+    else{
+        clock.start();
+    }
     animate = !animate;
 }
 
