@@ -53,7 +53,7 @@ export function mapDraw(){
         // because margin-top, if given as %, is based on the parent's WIDTH and not HEIGHT
         canvas.style.marginTop = "calc(" + body.height() + "px - " + canvas.style.height + ")";
     }
-    // TODO: If mobile css
+    // If mobile css
     if(screenMediaSize === "mobile"){
         canvas.width = body.width() * 1;
         canvas.height = body.height() * 0.57;
@@ -63,7 +63,7 @@ export function mapDraw(){
         canvas.style.marginTop = "calc(0.0875 * " + body.height() + "px)";
     }
 
-    const canvasOffsetTop = "6.25vh"; //$("#map").css("margin-top");
+    const canvasOffsetTop = $("#map").css("margin-top");
     // Get the container for the click-boxes
     const clickBoxesContainer = document.getElementById("clickBoxes");
     clickBoxesContainer.innerHTML = ""; // Clear the previous click-boxes
