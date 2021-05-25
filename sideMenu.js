@@ -32,7 +32,7 @@ export function depInit(){
 export function itInit(start){
     // Toggle visibility of the departure and the itinerary
     $("#departure").css("display", "none");
-    $("#itinerary").css("display", "initial");
+    $("#itinerary").css("display", "inline-block");
     itClearCommit(); // Ensure that the itinerary is clear initially
     itPushCommit({id: start, price: 0, duration: 0, company: ""}); // Add the start planet to the itinerary
     itUpdate();
@@ -100,7 +100,7 @@ export function itUpdate(){
             mapDraw();
             update_dict_view();
             // Toggle visibility of the departure and the itinerary
-            $("#departure").css("display", "initial");
+            $("#departure").css("display", "inline-block");
             $("#itinerary").css("display", "none");
         }
         // Otherwise remove the last element
@@ -306,12 +306,9 @@ function itAddAvailableDestination(parent, route, inReverse){
     let btn = document.createElement("button");
     btn.classList.add("addButton");
     btn.onclick = function (){
-        // Do a jump if we jump between systems
-        if(getPlanet(route.start).starsystem !== getPlanet(route.destination).starsystem){
-            mapMove(getPlanet(destination).starsystem);
-        }
         itPush({id: destination, price: route.price, duration: route.duration, company: route.company});
         itUpdate();
+        mapMove(getPlanet(destination).starsystem);
         infoUpdate(getPlanet(destination).id);
         update_dict_view();
     };
