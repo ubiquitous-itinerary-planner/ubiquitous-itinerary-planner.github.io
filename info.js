@@ -69,8 +69,6 @@ export function infoUpdate(i){
     document.getElementById('info').style.display = 'flex';
     update_dict_view();
 
-    // Push the sideMenu down, if we are on mobile
-    $(".sideMenu").addClass("sideMenu_withInfo");
 }
 
 /**

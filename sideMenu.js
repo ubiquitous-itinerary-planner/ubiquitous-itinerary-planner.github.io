@@ -32,7 +32,7 @@ export function depInit(){
 export function itInit(start){
     // Toggle visibility of the departure and the itinerary
     $("#departure").css("display", "none");
-    $("#itinerary").css("display", "initial");
+    $("#itinerary").css("display", "inline-block");
     itClearCommit(); // Ensure that the itinerary is clear initially
     itPushCommit({id: start, price: 0, duration: 0, company: ""}); // Add the start planet to the itinerary
     itUpdate();
@@ -100,7 +100,7 @@ export function itUpdate(){
             mapDraw();
             update_dict_view();
             // Toggle visibility of the departure and the itinerary
-            $("#departure").css("display", "initial");
+            $("#departure").css("display", "inline-block");
             $("#itinerary").css("display", "none");
         }
         // Otherwise remove the last element
