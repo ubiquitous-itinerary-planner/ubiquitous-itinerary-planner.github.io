@@ -18,6 +18,9 @@ body{
     width: 20%;
 }
 
+.boxName{
+    max-width: 20vh;
+}
 /*
  * ELEMENT LEVEL DEFINITIONS
  */
