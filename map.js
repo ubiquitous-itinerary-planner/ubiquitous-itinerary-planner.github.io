@@ -5,7 +5,7 @@
 import {hyperjump, hyperspaceIsAnimated} from "./hyperspace.js";
 import "./libraries/graphlib.js";
 import {coordinates} from "./databases/coordinatesDB.js";
-import {get_string} from "./databases/dictionaryUIP2.js";
+import {get_string, update_dict_view} from "./databases/dictionaryUIP2.js";
 import {infoUpdate} from "./info.js";
 import {screenMediaSize} from "./init.js";
 import {itPeek} from "./sideMenu.js";
@@ -97,8 +97,10 @@ export function mapDraw(){
             const clickBox = document.createElement("div");
             const imLeft = sysCoords[i].x*cWidth;
             const imTop = sysCoords[i].y*cHeight;
+            const imRight = sysCoords[i].x*cWidth + p[2];
             clickBox.style.top = "calc(" + canvasOffsetTop + " + " + imTop.toString() + "px)";
             clickBox.style.left = imLeft.toString() + "px";
+            clickBox.style.right = imRight.toString() + "px";
             clickBox.style.width = p[4] + "px";
             clickBox.style.height = p[5] + "px";
             clickBox.classList.add("clickBox");
@@ -120,16 +122,16 @@ export function mapDraw(){
                 mapMove(systems[i]);
             };
             const nameDiv = document.createElement("div");
-            const names = PDB2.systems[i].name;
-            const planetName = document.createTextNode(names);
-            nameDiv.style.top = "calc(10vh + " + clickBox.style.top + ")";
-            nameDiv.style.left = clickBox.style.left;
-            //nameDiv.style.left = "calc(2vh + " + clickBox.style.left + ")";
-            nameDiv.style.width = clickBox.style.width;
-            nameDiv.style.height = clickBox.style.height;
+            const tLeft = imLeft + p[4];
+            const tLeft2 = tLeft.toString() + "px";
+            const textOffset = "-7vh";
+            nameDiv.classList.add(systems[i]);
+            nameDiv.style.top = "calc(-1vh + " + clickBox.style.top + ")";
+            console.log("calc(" + textOffset + " + " + tLeft2 + ")");
+            nameDiv.style.left = "calc(" + textOffset + " + " + tLeft2 + ")";
             nameDiv.classList.add("boxName");
-            nameDiv.appendChild(planetName);
             clickBoxesContainer.appendChild(nameDiv);
+            update_dict_view();
         }
         //v = start, w = end
         const routes = mapGetRoutes();
@@ -195,9 +197,10 @@ export function mapDraw(){
         const img = new Image();
         img.src = getPlanet(planets[i]).img;
         planetImages = planetImages + img.src;
-        const imLeft = coords[i].x*cWidth;
-        const imTop = coords[i].y*cHeight;
         const p = getPlanet(planets[i]).placement;
+        const imLeft = coords[i].x*cWidth;
+        //const imRight = coords[i].x*cWidth + p[2];
+        const imTop = coords[i].y*cHeight;
         img.onload = function() {
             const args = [img, p[0], p[1], p[2], p[3], imLeft, imTop, p[4], p[5]];
             ctx.drawImage(...args);
@@ -242,6 +245,7 @@ export function mapDraw(){
         const clickBox = document.createElement("div");
         clickBox.style.top = "calc(" + canvasOffsetTop + " + " + imTop.toString() + "px)";
         clickBox.style.left = imLeft.toString() + "px";
+        //clickBox.style.right = imRight.toString() + "px";
         clickBox.style.width = p[4] + "px";
         clickBox.style.height = p[5] + "px";
         clickBox.classList.add("clickBox");
@@ -263,15 +267,14 @@ export function mapDraw(){
             infoUpdate(planets[i]);
         };
         const nameDiv = document.createElement("div");
-        const names = getPlanet(planets[i]).name;
-        const planetName = document.createTextNode(names);
-        nameDiv.style.top = "calc(10vh + " + clickBox.style.top + ")";
-        nameDiv.style.left = "calc(-5vh + " + clickBox.style.left + ")";
-        nameDiv.style.width = clickBox.style.width;
-        nameDiv.style.height = clickBox.style.height;
+        nameDiv.classList.add(getPlanet(planets[i]).name);
+        const tLeft = imLeft + p[4];
+        const tLeft2 = tLeft.toString() + "px";
+        nameDiv.style.top = "calc(-1vh + " + clickBox.style.top + ")";
+        nameDiv.style.left = "calc(1vh + " + tLeft2 + ")";
         nameDiv.classList.add("boxName");
-        nameDiv.appendChild(planetName);
         clickBoxesContainer.appendChild(nameDiv);
+        update_dict_view();
     }
 }
 

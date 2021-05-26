@@ -196,7 +196,11 @@ button:hover{
 
 .boxName{
     position: absolute;
-    color: #9f9cff;
+    color: var(--color-on-map-background);
+    -webkit-text-fill-color: var(--color-on-map-background);
+    -webkit-text-stroke: 1px var(--color-map-background);
+    font-family: var(--font-info-text);
+    font-size: var(--font-size-info-text);
 }
 
 /* Selects only adjacent siblings */
