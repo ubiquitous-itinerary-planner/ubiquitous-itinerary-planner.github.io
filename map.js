@@ -119,6 +119,17 @@ export function mapDraw(){
             clickBox.onclick = function (){
                 mapMove(systems[i]);
             };
+            const nameDiv = document.createElement("div");
+            const names = PDB2.systems[i].name;
+            const planetName = document.createTextNode(names);
+            nameDiv.style.top = "calc(10vh + " + clickBox.style.top + ")";
+            nameDiv.style.left = clickBox.style.left;
+            //nameDiv.style.left = "calc(2vh + " + clickBox.style.left + ")";
+            nameDiv.style.width = clickBox.style.width;
+            nameDiv.style.height = clickBox.style.height;
+            nameDiv.classList.add("boxName");
+            nameDiv.appendChild(planetName);
+            clickBoxesContainer.appendChild(nameDiv);
         }
         //v = start, w = end
         const routes = mapGetRoutes();
@@ -251,6 +262,16 @@ export function mapDraw(){
         clickBox.onclick = function (){
             infoUpdate(planets[i]);
         };
+        const nameDiv = document.createElement("div");
+        const names = getPlanet(planets[i]).name;
+        const planetName = document.createTextNode(names);
+        nameDiv.style.top = "calc(10vh + " + clickBox.style.top + ")";
+        nameDiv.style.left = "calc(-5vh + " + clickBox.style.left + ")";
+        nameDiv.style.width = clickBox.style.width;
+        nameDiv.style.height = clickBox.style.height;
+        nameDiv.classList.add("boxName");
+        nameDiv.appendChild(planetName);
+        clickBoxesContainer.appendChild(nameDiv);
     }
 }
 
