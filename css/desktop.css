@@ -23,7 +23,7 @@ body{
  */
 #info{
     z-index: 1;
-    height: calc(34.25% + 0.25em);
+    position: absolute;
     width: 27%;
     bottom: 0;
     left: 0;
@@ -31,10 +31,10 @@ body{
 #info_travel_button{
     height: 6.25vh;
 }
-
+#itinerary{
+    position: relative;
+}
 #systemJumpPic{
-    /*bottom: calc(34.25% + 0.25em);*/
-    /*margin-bottom: 2.5%;*/
     bottom: calc(50% - 63px);
     margin-left: 2.5%;
 }

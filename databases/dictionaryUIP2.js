@@ -8,7 +8,7 @@ export let language = 'en';
 let dict = {
 
     //menu and common word translations
-    'text' : ['homeButton', 'helpButton', 'activeLanguageButton', 'departure_title', 'itinerary_title', 'itinButton', 'addButton', 'removeButton', 'clearItin', 'planetView', 'systemJump',
+    'text' : ['homeButton', 'helpButton', 'activeLanguageButton', 'activeLanguageButtonShort', 'departure_title', 'itinerary_title', 'itinButton', 'addButton', 'removeButton', 'clearItin', 'planetView', 'systemJump',
     'departurePreamble', 'depFrom', 'date', 'to', 'spaceline', 'duration', 'price', 'availDest', 'totalTravelTime', 'days', 'itinClearBtn', 'totalTravelCost', 'pageTitle', 'info_travel_button',
     'info_travel_button_here', 'yes', 'no',
     //Planet database variable translations
@@ -20,7 +20,7 @@ let dict = {
     // Starsystem name translations
     'solarSystem', 'frogstarSystem', 'warstarSystem', 'ringlordSystem',
     // Climate translations
-    'earthBalanced', 'frozenDesert', 'indoors', 'frogstarAclim', 'frogBclim', 'frogCclim', 'earthSummerBalanced', 'duskyAndChilly', 'rainyAndStormy',
+    'earthBalanced', 'frozenDesert', 'indoors', 'soft', 'ruinsAndDirtyShoes', 'beautifulForFishing', 'earthSummerBalanced', 'duskyAndChilly', 'rainyAndStormy',
     'volcanicLavaStreams', 'hotDaysFrozenNightsDesert', 'dry', 'flourishing', 'dryAndHot',
     // Infrastructure translations
     'earthLike', 'thirdWorld', 'marsLike', 'futuristic',
@@ -42,9 +42,10 @@ let dict = {
     // English translations visible on the applications view.
     'en' : {
         //menu and common word translations
-        'homeButton' : "Star system view",
+        'homeButton' : "Systems map",
         'helpButton': "Help",
         'activeLanguageButton': "English",
+        'activeLanguageButtonShort': "En",
         'departure_title' : "Departures",
         'itinerary_title': "Itinerary Planner",
         'itinButton': "Itinierary",
@@ -112,13 +113,13 @@ let dict = {
         'warstarSystem': "Warstar System", 
         'ringlordSystem': "Ringlord System",
         // Climate translations
-        'earthBalanced': "Earth balanced", 
+        'earthBalanced': "Earth-like",
         'frozenDesert': "Frozen desert", 
         'indoors': "Indoors", 
         'soft': "Soft", 
-        'ruinsAndDirtyShoes': "Ruins and dirty shoes", 
+        'ruinsAndDirtyShoes': "Ruins and dirty shoes",
         'beautifulForFishing': "Beautiful for fishing", 
-        'earthSummerBalanced': "Earth summer balanced", 
+        'earthSummerBalanced': "Earth summer",
         'duskyAndChilly': "Dusky and chilly", 
         'rainyAndStormy': "Rainy and stormy", 
         'volcanicLavaStreams': "Volcanic lavastreams", 
@@ -164,9 +165,10 @@ let dict = {
 
     'sv' : {
         //top bar menu
-        'homeButton' : "Stjärnsystemsvy",
+        'homeButton' : "Systemkarta",
         'helpButton': "Hjälp",
         'activeLanguageButton': "Svenska",
+        'activeLanguageButtonShort': "Sv",
         'departure_title' : "Avgångar",
         'itinerary_title': "Resvägsplanerare",
         'itinButton': "Reseplan",
@@ -234,7 +236,7 @@ let dict = {
         'warstarSystem': "Warstarsystemet", 
         'ringlordSystem': "Ringlordsystemet",
         // Climate translations
-        'earthBalanced': "Jorden-balanserat", 
+        'earthBalanced': "Jordlikt",
         'frozenDesert': "Fryst öken", 
         'indoors': "Inomhus", 
         'soft': "Mjukt", 
@@ -261,7 +263,7 @@ let dict = {
         // Currency translations
         'spaceDollar': "$",
         // Language translations
-        'english': "Engelska", 
+        'english': "Engelska",
         'marsianAndEnglish': "Marsianska och engelska",
         // Tillgänglighets-text
         'xBtn' : "Ta bort senaste resmålet.",
