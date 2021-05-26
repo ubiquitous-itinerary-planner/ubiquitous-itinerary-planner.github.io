@@ -5,7 +5,7 @@
 import {hyperjump, hyperspaceIsAnimated} from "./hyperspace.js";
 import "./libraries/graphlib.js";
 import {coordinates} from "./databases/coordinatesDB.js";
-import {get_string} from "./databases/dictionaryUIP2.js";
+import {get_string, update_dict_view} from "./databases/dictionaryUIP2.js";
 import {infoUpdate} from "./info.js";
 import {screenMediaSize} from "./init.js";
 import {itPeek} from "./sideMenu.js";
@@ -119,6 +119,18 @@ export function mapDraw(){
             clickBox.onclick = function (){
                 mapMove(systems[i]);
             };
+            const nameDiv = document.createElement("div");
+            const nameLeft = imLeft + p[4];
+            const nameLeftOffset = nameLeft.toString() + "px";
+            const textOffset = (-p[4] / 2).toString() + "px";
+            const nameTop = imTop + p[5]*1.1;
+            const nameTopOffset = nameTop.toString() + "px";
+            nameDiv.classList.add(systems[i]);
+            nameDiv.style.top = "calc(" + nameTopOffset + " + " + canvasOffsetTop + ")";
+            nameDiv.style.left = "calc(" + textOffset + " + " + nameLeftOffset + ")";
+            nameDiv.classList.add("boxName");
+            clickBoxesContainer.appendChild(nameDiv);
+            update_dict_view();
         }
         //v = start, w = end
         const routes = mapGetRoutes();
@@ -184,9 +196,10 @@ export function mapDraw(){
         const img = new Image();
         img.src = getPlanet(planets[i]).img;
         planetImages = planetImages + img.src;
-        const imLeft = coords[i].x*cWidth;
-        const imTop = coords[i].y*cHeight;
         const p = getPlanet(planets[i]).placement;
+        const imLeft = coords[i].x*cWidth;
+        //const imRight = coords[i].x*cWidth + p[2];
+        const imTop = coords[i].y*cHeight;
         img.onload = function() {
             const args = [img, p[0], p[1], p[2], p[3], imLeft, imTop, p[4], p[5]];
             ctx.drawImage(...args);
@@ -231,6 +244,7 @@ export function mapDraw(){
         const clickBox = document.createElement("div");
         clickBox.style.top = "calc(" + canvasOffsetTop + " + " + imTop.toString() + "px)";
         clickBox.style.left = imLeft.toString() + "px";
+        //clickBox.style.right = imRight.toString() + "px";
         clickBox.style.width = p[4] + "px";
         clickBox.style.height = p[5] + "px";
         clickBox.classList.add("clickBox");
@@ -251,6 +265,18 @@ export function mapDraw(){
         clickBox.onclick = function (){
             infoUpdate(planets[i]);
         };
+        const nameDiv = document.createElement("div");
+        const nameLeft = imLeft + p[4];
+        const nameLeftOffset = nameLeft.toString() + "px";
+        const textOffset = (-p[4] / 2).toString() + "px";
+        const nameTop = imTop + p[5]*1.1;
+        const nameTopOffset = nameTop.toString() + "px";
+        nameDiv.classList.add(getPlanet(planets[i]).name);
+        nameDiv.style.top = "calc(" + nameTopOffset + " + " + canvasOffsetTop + ")";
+        nameDiv.style.left = "calc(" + textOffset + " + " + nameLeftOffset + ")";
+        nameDiv.classList.add("boxName");
+        clickBoxesContainer.appendChild(nameDiv);
+        update_dict_view();
     }
 }
 

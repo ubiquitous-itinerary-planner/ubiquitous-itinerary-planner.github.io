@@ -194,6 +194,15 @@ button:hover{
     z-index: -1;
 }
 
+.boxName{
+    position: absolute;
+    color: var(--color-on-map-background);
+    -webkit-text-fill-color: var(--color-on-map-background);
+    -webkit-text-stroke: 1px var(--color-map-background);
+    font-family: var(--font-info-text);
+    font-size: var(--font-size-info-text);
+}
+
 /* Selects only adjacent siblings */
 .clickBox:hover + .lightBox{
     opacity: 100%;
