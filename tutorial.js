@@ -10,17 +10,17 @@ export function helpTutorial () {
     help.style.opacity = "50%";
     help.style.boxShadow = "0px 0px 1px 2000px black";
 
-    //var home = document.createElement('div');
-    //home.style.position = "absolute";
-    //home.style.left = "0px";
-    //home.style.top = "0px";
-    //home.style.height = "50px";
-    //home.style.width = "200px";
-    //home.style.zIndex = "3";
-    //home.style.backgroundColor = "";
-    //home.style.opacity = "20%";
-    //home.style.boxShadow = "0px 0px 1px 2000px black";
+    var home = document.createElement('div');
+    home.style.position = "absolute";
+    home.style.left = "0px";
+    home.style.top = "0px";
+    home.style.height = "50px";
+    home.style.width = "200px";
+    home.style.zIndex = "4";
+    home.style.backgroundColor = "";
+    home.style.opacity = "50%";
+    home.style.boxShadow = "0px 0px 1px 2000px black";
 
     document.getElementsByTagName('body')[0].appendChild(help);
-    //document.getElementsByTagName('body')[0].appendChild(home);
+    document.getElementsByTagName('body')[0].appendChild(home);
 }
