@@ -2,32 +2,37 @@
  * Create div over help button with a box shadow that darken the entire rest of the screen and starts tutorial mode.
  */
 export function helpTutorial () {
-    //Create individual divs and applies non-general style
     const parent = document.getElementById("tutorial");
-    createTutorialDiv(parent, "helpDiv", "186px", "0px", "50px", "200px");
-    createTutorialDiv(parent, "homeDiv", "0px", "0px", "50px", "200px");
+    // Create individual divs and applies non-general style
+    createTutorialDiv(parent, "helpDiv", "helpButton");
+    createTutorialDiv(parent, "homeDiv", "homeButton");
+    // TODO: Add the other tutorial areas here...
+
+    // Add the click event to the home div, in order to exit the tutorial
+    document.getElementById("helpDiv").onclick = function () {
+        parent.innerHTML = "";
+    };
 }
 
 /**
  * Creates tutorial divs based on style values from helpTutorial
  * @param parent - Where we place the div
  * @param id - The individual ids of tutorial "areas"
- * @param left - div position left
- * @param top - div position top
- * @param height - div height
- * @param width - div width
+ * @param templateId - The id of the element to overlap with the tutorial element
  */
-function createTutorialDiv (parent, id, left, top, height, width){
-    //Create div element
+function createTutorialDiv (parent, id, templateId){
+    // Create div element
     const tutorialDiv = document.createElement('div');
-    //Assign id and class to div
+    // Assign id and class to div
     tutorialDiv.id = id;
     tutorialDiv.classList.add("help");
-    //Style div
-    tutorialDiv.style.left = left;
-    tutorialDiv.style.top = top;
-    tutorialDiv.style.height = height;
-    tutorialDiv.style.width = width;
-    //Add div to parent
+    // Style div based on template
+    const jqTemplate = $("#" + templateId);
+    const pos = jqTemplate.position();
+    tutorialDiv.style.left = pos.left + "px";
+    tutorialDiv.style.top = pos.top + "px";
+    tutorialDiv.style.height = jqTemplate.height() + "px";
+    tutorialDiv.style.width = jqTemplate.width() + "px";
+    // Add div to parent
     parent.appendChild(tutorialDiv);
 }
