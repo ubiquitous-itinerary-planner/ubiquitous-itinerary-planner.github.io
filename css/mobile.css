@@ -9,33 +9,35 @@
     width: 100%;
     height: 100%;
 }
-.sideMenu_withInfo{
-    /* Make space for the info panel */
-    /* Note that margin-top is based on the parent container's WIDTH, thus the following code: */
-    position: relative;
-    top: 33%;
-}
 .topBarButton{
     width: 33.3%;
+}
+
+.boxName{
+    max-width: 10vh;
 }
 
 /*
  * ELEMENT LEVEL DEFINITIONS
  */
+
+#systemJumpPic{
+    top: calc(8.75% + 29.5% - 63px);
+    left: 63px;
+    margin-left: 2.5%;
+}
 #info{
-    height: 33%;
     width: 100%;
-    bottom: 10%;
 }
 #info_travel_button{
     height: 8.75%;
-}
-#map{
-    width: 100%;
-    height: 57%;
 }
 #topBar{
     position: fixed;
     height: 8.75%;
     width: 100%;
+}
+
+#langPic{
+    height: 50%;
 }

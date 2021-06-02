@@ -106,6 +106,7 @@ button:hover{
     border-color: var(--color-border);
     border-style: solid;
     border-width: medium;
+    padding-bottom: 1%;
     font-family: var(--font-itinerary-text);
     font-size: var(--font-size-itinerary-text);
     /* Places border on inside */
@@ -156,7 +157,7 @@ button:hover{
 .depMain{
     border-style: solid;
     border-color: var(--color-secondary);
-    border-width: thin;
+    border-width: medium;
     margin-top: 0.5em;
 }
 .departuresArrowPic{
@@ -191,17 +192,26 @@ button:hover{
 }
 
 .clickBox{
-    position: fixed;
+    position: absolute;
     border-radius: 100%;
     opacity: 0;
     z-index: 1;
 }
 
 .lightBox{
-    position: fixed;
+    position: absolute;
     border-radius: 100%;
     opacity: 0;
     z-index: -1;
+}
+
+.boxName{
+    position: absolute;
+    color: var(--color-on-map-background);
+    -webkit-text-fill-color: var(--color-on-map-background);
+    -webkit-text-stroke: 1px var(--color-map-background);
+    font-family: var(--font-info-text);
+    font-size: var(--font-size-info-text);
 }
 
 /* Selects only adjacent siblings */
@@ -214,21 +224,23 @@ button:hover{
  */
 
 #background{
-    position: absolute;
+    position: fixed;
     height: 100%;
     width: 100%;
     z-index: -1;
 }
-
+#departure{
+    display: inline-block;
+}
 #departure_body{
-    height: 90%;
+    height: calc(90% - 0.5em);
     color: var(--color-on-main-transparent);
 }
 
 #info{
     display: none;
+    flex-direction: column;
     background: var(--color-main-transparent);
-    position: absolute;
     border-color: var(--color-border);
     border-style: solid;
     border-width: medium;
@@ -245,12 +257,14 @@ button:hover{
     width: 100%;
     height: 27.4%;
     background-color: var(--color-main);
+    padding-top: var(--font-size-info-title);
+    padding-bottom: var(--font-size-info-title);
 }
 #info_table{
     color: var(--color-on-main-transparent);
     font-family: var(--font-info-text);
     font-size: var(--font-size-info-text);
-    width: 100%;
+    width: 90%;
     border-spacing: 0;
 }
 #info_travel_button{
@@ -265,8 +279,6 @@ button:hover{
 
 #itinerary{
     display: none;
-    position: relative;
-    padding-bottom: 1%;
 }
 #itinerary_body{
     max-height: 50%;
@@ -278,7 +290,7 @@ button:hover{
     position: relative;
     border-style: solid;
     border-color: var(--color-secondary);
-    border-width: thin;
+    border-width: medium;
     padding: 2.5%;
     margin-left: 2.5%;
     margin-right: 2.5%;
@@ -298,7 +310,7 @@ button:hover{
 }
 
 #itinerary_footer{
-    height: 12.5%;
+    height: calc(12.5% - 0.5em);
     width: 90%;
     display: flex;
     justify-content: space-between;

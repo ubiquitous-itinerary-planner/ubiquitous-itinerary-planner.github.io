@@ -2,10 +2,10 @@
  * View/Controller code
  */
 
-import {hyperjump} from "./hyperspace.js";
+import {hyperjump, hyperspaceIsAnimated} from "./hyperspace.js";
 import "./libraries/graphlib.js";
 import {coordinates} from "./databases/coordinatesDB.js";
-import {get_string} from "./databases/dictionaryUIP2.js";
+import {get_string, update_dict_view} from "./databases/dictionaryUIP2.js";
 import {infoUpdate} from "./info.js";
 import {screenMediaSize} from "./init.js";
 import {itPeek} from "./sideMenu.js";
@@ -43,7 +43,7 @@ export function mapDraw(){
     const canvas = document.getElementById("map");
     const ctx = canvas.getContext("2d")
     const body = $("body");
-    const stylesheet = document.getElementById("mediaSize");
+    
     // If desktop css
     if(screenMediaSize === "desktop"){
         canvas.width = body.width() * 0.67;
@@ -51,14 +51,19 @@ export function mapDraw(){
         canvas.style.width = canvas.width + "px";
         canvas.style.height = canvas.height + "px";
         // because margin-top, if given as %, is based on the parent's WIDTH and not HEIGHT
-        canvas.style.marginTop = "calc(" + $("body").height() + "px - " + canvas.style.height + ")";
+        canvas.style.marginTop = "calc(" + body.height() + "px - " + canvas.style.height + ")";
     }
-    // TODO: If mobile css
+    // If mobile css
     if(screenMediaSize === "mobile"){
-
+        canvas.width = body.width() * 1;
+        canvas.height = body.height() * 0.57;
+        canvas.style.width = canvas.width + "px";
+        canvas.style.height = canvas.height + "px";
+        // because margin-top, if given as %, is based on the parent's WIDTH and not HEIGHT
+        canvas.style.marginTop = "calc(0.0875 * " + body.height() + "px)";
     }
 
-    const canvasOffsetTop = "6.25vh"; //$("#map").css("margin-top");
+    const canvasOffsetTop = $("#map").css("margin-top");
     // Get the container for the click-boxes
     const clickBoxesContainer = document.getElementById("clickBoxes");
     clickBoxesContainer.innerHTML = ""; // Clear the previous click-boxes
@@ -78,7 +83,7 @@ export function mapDraw(){
         const sysCoords = coordinates[systems.length];
         // Hide the system jump location
         document.getElementById("systemJumpPic").style.display="none";
-        // TODO: Insert star system view on canvas
+        // Insert star system view on canvas
         for (let i = 0; i<systems.length; i++) {
             const img = new Image();
             const system = getSystem(systems[i])
@@ -105,12 +110,27 @@ export function mapDraw(){
             lightBox.style.left = "calc(-5vh + " + clickBox.style.left + ")";
             lightBox.style.width = "calc(10vh + " + clickBox.style.width + ")";
             lightBox.style.height = "calc(10vh + " + clickBox.style.height + ")";
+            if(itPeek() !== undefined && systems[i] === getPlanet(itPeek().id).starsystem){
+                lightBox.style.opacity = "100%";
+            }
             lightBox.classList.add("lightBox");
             clickBoxesContainer.appendChild(lightBox);
             // Add click event to the click-box
             clickBox.onclick = function (){
                 mapMove(systems[i]);
             };
+            const nameDiv = document.createElement("div");
+            const nameLeft = imLeft + p[4];
+            const nameLeftOffset = nameLeft.toString() + "px";
+            const textOffset = (-p[4] / 2).toString() + "px";
+            const nameTop = imTop + p[5]*1.1;
+            const nameTopOffset = nameTop.toString() + "px";
+            nameDiv.classList.add(systems[i]);
+            nameDiv.style.top = "calc(" + nameTopOffset + " + " + canvasOffsetTop + ")";
+            nameDiv.style.left = "calc(" + textOffset + " + " + nameLeftOffset + ")";
+            nameDiv.classList.add("boxName");
+            clickBoxesContainer.appendChild(nameDiv);
+            update_dict_view();
         }
         //v = start, w = end
         const routes = mapGetRoutes();
@@ -176,9 +196,10 @@ export function mapDraw(){
         const img = new Image();
         img.src = getPlanet(planets[i]).img;
         planetImages = planetImages + img.src;
-        const imLeft = coords[i].x*cWidth;
-        const imTop = coords[i].y*cHeight;
         const p = getPlanet(planets[i]).placement;
+        const imLeft = coords[i].x*cWidth;
+        //const imRight = coords[i].x*cWidth + p[2];
+        const imTop = coords[i].y*cHeight;
         img.onload = function() {
             const args = [img, p[0], p[1], p[2], p[3], imLeft, imTop, p[4], p[5]];
             ctx.drawImage(...args);
@@ -223,6 +244,7 @@ export function mapDraw(){
         const clickBox = document.createElement("div");
         clickBox.style.top = "calc(" + canvasOffsetTop + " + " + imTop.toString() + "px)";
         clickBox.style.left = imLeft.toString() + "px";
+        //clickBox.style.right = imRight.toString() + "px";
         clickBox.style.width = p[4] + "px";
         clickBox.style.height = p[5] + "px";
         clickBox.classList.add("clickBox");
@@ -243,6 +265,18 @@ export function mapDraw(){
         clickBox.onclick = function (){
             infoUpdate(planets[i]);
         };
+        const nameDiv = document.createElement("div");
+        const nameLeft = imLeft + p[4];
+        const nameLeftOffset = nameLeft.toString() + "px";
+        const textOffset = (-p[4] / 2).toString() + "px";
+        const nameTop = imTop + p[5]*1.1;
+        const nameTopOffset = nameTop.toString() + "px";
+        nameDiv.classList.add(getPlanet(planets[i]).name);
+        nameDiv.style.top = "calc(" + nameTopOffset + " + " + canvasOffsetTop + ")";
+        nameDiv.style.left = "calc(" + textOffset + " + " + nameLeftOffset + ")";
+        nameDiv.classList.add("boxName");
+        clickBoxesContainer.appendChild(nameDiv);
+        update_dict_view();
     }
 }
 
@@ -252,7 +286,7 @@ export function mapDraw(){
  * @param ms the time to sleep
  * @returns {Promise}
  */
-function sleep(ms){
+export function sleep(ms){
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
@@ -263,6 +297,7 @@ function sleep(ms){
 export async function mapMove(system){
     // No need to do anything if we're already there
     if(currentSystem === system){
+        mapDraw(); // Repaint, in case highlights etc have moved
         return;
     }
     // Update model
@@ -270,7 +305,9 @@ export async function mapMove(system){
     // Play animation
     hyperjump();
     // Wait for the animation to happen
-    await sleep(3000);
+    if(hyperspaceIsAnimated()) {
+        await sleep(3000);
+    }
     // After moving, redraw the screen:
     mapDraw();
 }

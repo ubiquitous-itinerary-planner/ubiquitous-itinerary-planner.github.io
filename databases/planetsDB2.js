@@ -7,23 +7,23 @@ let PDB2 = {
         [{
             "id": "0",
             "name": "solarSystem",
-            "img": "images/planet_green.png",
-            "placement": [0, 0, 398, 176, 298, 132]
+            "img": "images/solarSystem.png",
+            "placement": [0, 0, 253, 74, 316.25, 92.5]
         }, {
             "id": "1",
             "name": "frogstarSystem",
-            "img": "images/planet_mars.png",
-            "placement": [0, 0, 98, 98, 196, 196]
+            "img": "images/frogstarSystem.png",
+            "placement": [0, 0, 146, 96, 219, 144]
         }, {
             "id": "2",
             "name": "warstarSystem",
-            "img": "images/planet_blue.png",
-            "placement": [0, 0, 251, 251, 251, 251]
+            "img": "images/warstarSystem.png",
+            "placement": [0, 0, 260, 109, 260, 109]
         }, {
             "id": "3",
             "name": "ringlordSystem",
-            "img": "images/planet_earth.png",
-            "placement": [0, 0, 126, 126, 189, 189]
+            "img": "images/ringlordSystem.png",
+            "placement": [0, 0, 197, 139, 197, 139]
         }]
 };
 

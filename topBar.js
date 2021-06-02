@@ -5,6 +5,7 @@ import {mapMove} from "./map.js";
 import {change_lang, get_string, update_dict_view} from "./databases/dictionaryUIP2.js";
 import {hyperspaceToggleAnimate, hyperspaceToggleMute} from "./hyperspace.js";
 import {helpTutorial} from "./tutorial.js";
+import {screenMediaSize} from "./init.js";
 
 let animation;
 let sound;
@@ -57,7 +58,12 @@ function languageBtnInit(parent){
     let languageBtn = document.createElement("button");
     // Create the text part
     let language = document.createElement("div");
-    language.id = "activeLanguageButton";
+    if(screenMediaSize === "mobile") {
+        language.id = "activeLanguageButtonShort";
+    }
+    else{
+        language.id = "activeLanguageButton";
+    }
     // Create the flag part
     let flag = document.createElement("img");
     flag.id = 'langPic';
