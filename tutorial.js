@@ -2,7 +2,7 @@
  * Create div over help button with a box shadow that darken the entire rest of the screen and starts tutorial mode.
  */
 import {itPeek} from "./sideMenu.js";
-import {update_dict_view} from "./databases/dictionaryUIP2.js";
+import {get_string, update_dict_view} from "./databases/dictionaryUIP2.js";
 
 let helpClass;
 let textDiv;
@@ -12,6 +12,7 @@ function setHelpClass(newClass){
     helpClass=newClass;
     textDiv.classList.add(helpClass);
     update_dict_view();
+    textDiv.innerHTML += "<div>" + get_string("exitDivText" ) + "</div>";
 }
 
 export function helpTutorial () {
@@ -38,8 +39,8 @@ export function helpTutorial () {
 
     textDiv = document.createElement('div');
     textDiv.id = "helpText";
-    setHelpClass("helpDivText");
     parent.appendChild(textDiv);
+    setHelpClass("helpDivText");
 }
 
 /**

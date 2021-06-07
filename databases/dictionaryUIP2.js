@@ -36,7 +36,7 @@ let dict = {
     'xBtn', 'flagAltText', 'arrowAltText', 'backgroundAltText', 'depArrowAltText', 'systemJumpAltText', 'animationOnAltText', 'animationOffAltText',
     'soundOnAltText', 'soundOffAltText',
     // Tutorial strings
-    'homeDivText', 'helpDivText', 'languageDivText', 'animationDivText', 'soundDivText', 'infoDivText', 'departureDivText', 'itineraryDivText', 'mapDivText',],
+    'homeDivText', 'helpDivText', 'languageDivText', 'animationDivText', 'soundDivText', 'infoDivText', 'departureDivText', 'itineraryDivText', 'mapDivText', 'exitDivText'],
     
     //Pictures
     'pics' : ['langPic', 'departuresArrowPic', 'systemJumpPic', 'animationOnPic', 'animationOffPic', 'soundOnPic', 'soundOffPic'],
@@ -165,6 +165,7 @@ let dict = {
         'departureDivText': "This window displays information from your departure planet, destination planet and visiting planets in between.",
         'itineraryDivText': "This window displays information from your departure planet, destination planet and visiting planets in between.",
         'mapDivText': "This space displays different star systems and planets which you can choose to start from and travel to.",
+        'exitDivText': "Press the Help button again to exit the tutorial.",
         //Pictures
         'langPic': "images/eng.png",
         'departuresArrowPic': "images/expand_arrow.png",
@@ -298,6 +299,7 @@ let dict = {
         'departureDivText': "Detta fönster visar information om din avreseplanet din destinationsplanet och mellanresorna.",
         'itineraryDivText': "Detta fönster visar information om din avreseplanet din destinationsplanet och mellanresorna.",
         'mapDivText': "Detta utrymme visar olika stjärnsystem samt planet vilka du kan välja avreseplanet och destinationsplaneter ifrån.",
+        'exitDivText': "Klicka på Hjälp-knappen igen för att avsluta handledningen.",
         //Bilder
         'langPic': "images/se.png",
         'departuresArrowPic': "images/expand_arrow.png",
