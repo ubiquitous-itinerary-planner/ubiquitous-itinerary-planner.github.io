@@ -1,6 +1,8 @@
 /**
  * Create div over help button with a box shadow that darken the entire rest of the screen and starts tutorial mode.
  */
+import {itPeek} from "./sideMenu.js";
+
 export function helpTutorial () {
     const parent = document.getElementById("tutorial");
     // Create individual divs and applies non-general style
@@ -9,10 +11,19 @@ export function helpTutorial () {
     createTutorialDiv(parent, "languageDiv", "languageButton");
     createTutorialDiv(parent, "animationDiv", "animationButton");
     createTutorialDiv(parent, "soundDiv", "soundButton");
-    createTutorialDiv(parent, "itineraryDiv", "itineraryBody");
-    createTutorialDiv(parent, "mapDiv", "mapButton");
-    createTutorialDiv(parent, "planetinfoDiv", "planetinfoButton");
-    // TODO: Add the other tutorial areas here...
+    createTutorialDiv(parent, "mapDiv", "map");
+
+    if (itPeek()!== undefined){
+        createTutorialDiv(parent, "itineraryDiv", "itinerary");
+    }
+    else {
+        createTutorialDiv(parent, "departureDiv", "departure");
+    }
+
+    if ($("#info").css("display") !== "none"){
+        createTutorialDiv(parent, "infoDiv", "info");
+    }
+
 
     // Add the click event to the home div, in order to exit the tutorial
     document.getElementById("helpDiv").onclick = function () {
@@ -37,8 +48,11 @@ function createTutorialDiv (parent, id, templateId){
     const pos = jqTemplate.position();
     tutorialDiv.style.left = pos.left + "px";
     tutorialDiv.style.top = pos.top + "px";
-    tutorialDiv.style.height = jqTemplate.height() + "px";
-    tutorialDiv.style.width = jqTemplate.width() + "px";
+    tutorialDiv.style.marginTop = jqTemplate.css('marginTop');
+    tutorialDiv.style.height = jqTemplate.outerHeight() + "px";
+    tutorialDiv.style.width = jqTemplate.outerWidth() + "px";
+    tutorialDiv.style.backgroundImage = "url('./images/planetselection.png')";
+    tutorialDiv.style.backgroundRepeat = "no-repeat";
     // Add div to parent
     parent.appendChild(tutorialDiv);
 }
