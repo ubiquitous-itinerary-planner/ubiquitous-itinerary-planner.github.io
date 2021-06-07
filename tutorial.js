@@ -51,8 +51,6 @@ function createTutorialDiv (parent, id, templateId){
     tutorialDiv.style.marginTop = jqTemplate.css('marginTop');
     tutorialDiv.style.height = jqTemplate.outerHeight() + "px";
     tutorialDiv.style.width = jqTemplate.outerWidth() + "px";
-    tutorialDiv.style.backgroundImage = "url('./images/planetselection.png')";
-    tutorialDiv.style.backgroundRepeat = "no-repeat";
     // Add div to parent
     parent.appendChild(tutorialDiv);
 }
