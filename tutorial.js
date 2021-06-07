@@ -7,6 +7,10 @@ import {get_string, update_dict_view} from "./databases/dictionaryUIP2.js";
 let helpClass;
 let textDiv;
 
+/**
+ * Changes the class name of the text div to the passed class name.
+ * @param newClass
+ */
 function setHelpClass(newClass){
     textDiv.classList.remove(helpClass);
     helpClass=newClass;
@@ -15,6 +19,9 @@ function setHelpClass(newClass){
     textDiv.innerHTML += "<div>" + get_string("exitDivText" ) + "</div>";
 }
 
+/**
+ * Creates the tutorial view/overlay
+ */
 export function helpTutorial () {
     const parent = document.getElementById("tutorial");
     // Create individual divs and applies non-general style
@@ -37,9 +44,10 @@ export function helpTutorial () {
         parent.innerHTML = "";
     };
 
+    // Create the div showing the help text
     textDiv = document.createElement('div');
     textDiv.id = "helpText";
-    parent.appendChild(textDiv);
+    parent.appendChild(textDiv); // Add the div before setting its class, to update its text properly
     setHelpClass("helpDivText");
 }
 
@@ -64,7 +72,7 @@ function createTutorialDiv (parent, id, templateId){
     tutorialDiv.style.height = jqTemplate.outerHeight() + "px";
     tutorialDiv.style.width = jqTemplate.outerWidth() + "px";
     tutorialDiv.tabIndex = 0;
-
+    // Change the explanatory text showing when focus is changed
     tutorialDiv.onfocus = function(){
         setHelpClass(id + "Text");
     }
