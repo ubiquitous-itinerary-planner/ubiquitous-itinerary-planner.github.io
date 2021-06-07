@@ -97,7 +97,7 @@ button:hover{
     background-image: url('../images/planetselection.png');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain;
+    background-size: 80% 80%;
 }
 
 .help:focus{
