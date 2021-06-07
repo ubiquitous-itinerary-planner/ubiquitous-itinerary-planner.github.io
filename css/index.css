@@ -106,10 +106,6 @@ button:hover{
     z-index: 3;
 }
 
-.helpText {
-    display: none;
-}
-
 .sideMenu{
     background: var(--color-main-transparent);
     border-color: var(--color-border);
@@ -368,4 +364,18 @@ button:hover{
     z-index: 1;
     position: absolute;
     color: var(--color-on-map-background);
+}
+
+#helpText {
+    position: fixed;
+    z-index: 6;
+    /*https://css-tricks.com/quick-css-trick-how-to-center-an-object-exactly-in-the-center/*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-info-text);
+    font-size: var(--font-size-info-text);
+    color: var(--color-on-secondary);
+    background-color: var(--color-secondary);
+    padding: calc(0.5 * var(--font-size-info-text));
 }
