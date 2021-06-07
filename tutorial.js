@@ -6,6 +6,12 @@ export function helpTutorial () {
     // Create individual divs and applies non-general style
     createTutorialDiv(parent, "helpDiv", "helpButton");
     createTutorialDiv(parent, "homeDiv", "homeButton");
+    createTutorialDiv(parent, "languageDiv", "languageButton");
+    createTutorialDiv(parent, "animationDiv", "animationButton");
+    createTutorialDiv(parent, "soundDiv", "soundButton");
+    createTutorialDiv(parent, "itineraryDiv", "itineraryBody");
+    createTutorialDiv(parent, "mapDiv", "mapButton");
+    createTutorialDiv(parent, "planetinfoDiv", "planetinfoButton");
     // TODO: Add the other tutorial areas here...
 
     // Add the click event to the home div, in order to exit the tutorial
