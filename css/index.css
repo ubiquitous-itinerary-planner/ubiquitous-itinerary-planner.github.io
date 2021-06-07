@@ -100,9 +100,14 @@ button:hover{
     background-size: contain;
 }
 
-.help:hover{
+.help:focus{
     box-shadow: 0px 0px 1px 2000px #00000080;
     background-size: 0 0;
+    z-index: 3;
+}
+
+.helpText {
+    display: none;
 }
 
 .sideMenu{

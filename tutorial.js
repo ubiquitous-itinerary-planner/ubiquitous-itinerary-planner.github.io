@@ -3,6 +3,15 @@
  */
 import {itPeek} from "./sideMenu.js";
 
+let helpClass;
+let textDiv;
+
+function setHelpClass(newClass){
+    textDiv.classList.remove(helpClass);
+    helpClass=newClass;
+    textDiv.classList.add(helpClass);
+}
+
 export function helpTutorial () {
     const parent = document.getElementById("tutorial");
     // Create individual divs and applies non-general style
@@ -20,15 +29,15 @@ export function helpTutorial () {
         createTutorialDiv(parent, "departureDiv", "departure");
     }
 
-    if ($("#info").css("display") !== "none"){
-        createTutorialDiv(parent, "infoDiv", "info");
-    }
-
-
     // Add the click event to the home div, in order to exit the tutorial
     document.getElementById("helpDiv").onclick = function () {
         parent.innerHTML = "";
     };
+
+    textDiv = document.createElement('div');
+    textDiv.id = "helpText";
+    setHelpClass("helpDivText");
+    parent.appendChild(textDiv);
 }
 
 /**
@@ -51,6 +60,13 @@ function createTutorialDiv (parent, id, templateId){
     tutorialDiv.style.marginTop = jqTemplate.css('marginTop');
     tutorialDiv.style.height = jqTemplate.outerHeight() + "px";
     tutorialDiv.style.width = jqTemplate.outerWidth() + "px";
+    tutorialDiv.tabIndex = 0;
+
+    tutorialDiv.onfocus = function(){
+        const textDiv=document.getElementById("helpText");
+        setHelpClass(id + "Text");
+    }
+
     // Add div to parent
     parent.appendChild(tutorialDiv);
 }
