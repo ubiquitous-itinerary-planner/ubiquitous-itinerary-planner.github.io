@@ -34,7 +34,9 @@ let dict = {
     'english', 'marsianAndEnglish',
     // Accessibility labels
     'xBtn', 'flagAltText', 'arrowAltText', 'backgroundAltText', 'depArrowAltText', 'systemJumpAltText', 'animationOnAltText', 'animationOffAltText',
-    'soundOnAltText', 'soundOffAltText'],
+    'soundOnAltText', 'soundOffAltText',
+    // Tutorial strings
+    'mapStringTut', 'helpStringTut', 'langStringTut', 'animOnOffStringTut', 'soundOnOffStringTut', 'infoStringTut', 'departStringTut', 'starMapStringTut',],
     
     //Pictures
     'pics' : ['langPic', 'departuresArrowPic', 'systemJumpPic', 'animationOnPic', 'animationOffPic', 'soundOnPic', 'soundOffPic'],
@@ -153,6 +155,15 @@ let dict = {
         'animationOffAltText': "Animation off",
         'soundOnAltText': "Sound on",
         'soundOffAltText': "Sound off",
+        // Tutorial strings
+        'mapStringTut': "This is a home button where you can click to view the star systems.",
+        'helpStringTut': "This button introduces a tutorial to demonstrate all functions on this website.",
+        'langStringTut': "This button displays a flag and text of the current chosen language. A click initiates a change of language",
+        'animOnOffStringTut': "This button toggles animations with hyper drive and the rotating stars.",
+        'soundOnOffStringTut': "This button toggles the sound from hyper drive.",
+        'infoStringTut': "This displays information about current targeted planet.",
+        'departStringTut': "This window displays information from your departure planet, destination planet and visiting planets in between.",
+        'starMapStringTut': "This space displays different star systems and planets which you can choose to start from and travel to.",
         //Pictures
         'langPic': "images/eng.png",
         'departuresArrowPic': "images/expand_arrow.png",
@@ -276,6 +287,15 @@ let dict = {
         'animationOffAltText': "Animationer avslaget",
         'soundOnAltText': "Ljud påslaget",
         'soundOffAltText': "Ljud avslaget",
+        // Hjälp-strängar
+        'mapStringTut': "Denna knapp tar dig tillbaka till stjärnkartan.",
+        'helpStringTut': "Denna knapp introducerar en handledning av funktionerna på denna hemsida.",
+        'langStringTut': "Denna knapp visar flaggan och text av nuvarande valt språk. Vid klick ändras språk.",
+        'animOnOffStringTut': "Denna knapp växlar animationerna att vara av eller på.",
+        'soundOnOffStringTut': "Denna knapp växlar ljudet att vara av eller på.",
+        'infoStringTut': "Detta fönster visar information om för tillfället vald planet.",
+        'departStringTut': "Detta fönster visar information om din avreseplanet din destinationsplanet och mellanresorna.",
+        'starMapStringTut': "Detta utrymme visar olika stjärnsystem samt planet vilka du kan välja avreseplanet och destinationsplaneter ifrån.",
         //Bilder
         'langPic': "images/se.png",
         'departuresArrowPic': "images/expand_arrow.png",
