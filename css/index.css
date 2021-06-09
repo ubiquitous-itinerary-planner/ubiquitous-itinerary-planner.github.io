@@ -90,6 +90,22 @@ button:hover{
     background-color: #0000000D;
 }
 
+.help{
+    position: absolute;
+    z-index: 4;
+    box-shadow: 0px 0px 1px 2000px #00000000;
+    background-image: url('../images/planetselection.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80% 80%;
+}
+
+.help:focus{
+    box-shadow: 0px 0px 1px 2000px #00000080;
+    background-size: 0 0;
+    z-index: 3;
+}
+
 .sideMenu{
     background: var(--color-main-transparent);
     border-color: var(--color-border);
@@ -348,4 +364,18 @@ button:hover{
     z-index: 1;
     position: absolute;
     color: var(--color-on-map-background);
+}
+
+#helpText {
+    position: fixed;
+    z-index: 6;
+    /*https://css-tricks.com/quick-css-trick-how-to-center-an-object-exactly-in-the-center/*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-info-text);
+    font-size: var(--font-size-info-text);
+    color: var(--color-on-secondary);
+    background-color: var(--color-secondary);
+    padding: calc(0.5 * var(--font-size-info-text));
 }

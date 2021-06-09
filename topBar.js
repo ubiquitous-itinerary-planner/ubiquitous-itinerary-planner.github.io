@@ -4,6 +4,7 @@
 import {mapMove} from "./map.js";
 import {change_lang, get_string, update_dict_view} from "./databases/dictionaryUIP2.js";
 import {hyperspaceToggleAnimate, hyperspaceToggleMute} from "./hyperspace.js";
+import {helpTutorial} from "./tutorial.js";
 import {screenMediaSize} from "./init.js";
 
 let animation;
@@ -45,7 +46,7 @@ function helpBtnInit(parent){
     helpBtn.innerHTML = "Help Button"
     helpBtn.id = "helpButton";
     helpBtn.classList.add("topBarButton");
-    //helpBtn.onclick=helpTutorial;
+    helpBtn.onclick=helpTutorial;
     parent.appendChild(helpBtn);
 }
 
@@ -55,6 +56,7 @@ function helpBtnInit(parent){
  */
 function languageBtnInit(parent){
     let languageBtn = document.createElement("button");
+    languageBtn.id = "languageButton";
     // Create the text part
     let language = document.createElement("div");
     if(screenMediaSize === "mobile") {
@@ -81,6 +83,7 @@ function languageBtnInit(parent){
  */
 function animationBtnInit(parent){
     let animationBtn = document.createElement("button");
+    animationBtn.id = "animationButton";
     // creating the picture of animation on and setting id, alt-text for dictionary if variable
     // animation is on, otherwise creating all above for animation off.
     if (animation) {
@@ -117,6 +120,7 @@ function animationOnOff(){
  */
 function soundBtnInit(parent){
     let soundBtn = document.createElement("button");
+    soundBtn.id = "soundButton";
     // creating the picture of sound on and setting id, alt-text for dictionary if variable
     // sound is on, otherwise creating all above for sound off.
     if (sound) {
