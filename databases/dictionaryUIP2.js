@@ -1,6 +1,3 @@
-// ------------------------------------------------------------------------
-// Code written by Felix Lager
-// ------------------------------------------------------------------------
 import {topBarInit} from "../topBar.js";
 import {itUpdate} from "../sideMenu.js";
 
@@ -34,7 +31,9 @@ let dict = {
     'english', 'marsianAndEnglish',
     // Accessibility labels
     'xBtn', 'flagAltText', 'arrowAltText', 'backgroundAltText', 'depArrowAltText', 'systemJumpAltText', 'animationOnAltText', 'animationOffAltText',
-    'soundOnAltText', 'soundOffAltText'],
+    'soundOnAltText', 'soundOffAltText',
+    // Tutorial strings
+    'homeDivText', 'helpDivText', 'languageDivText', 'animationDivText', 'soundDivText', 'infoDivText', 'departureDivText', 'itineraryDivText', 'mapDivText', 'exitDivText'],
     
     //Pictures
     'pics' : ['langPic', 'departuresArrowPic', 'systemJumpPic', 'animationOnPic', 'animationOffPic', 'soundOnPic', 'soundOffPic'],
@@ -153,6 +152,17 @@ let dict = {
         'animationOffAltText': "Animation off",
         'soundOnAltText': "Sound on",
         'soundOffAltText': "Sound off",
+        // Tutorial strings
+        'homeDivText': "This is a home button where you can click to view the star systems.",
+        'helpDivText': "This button introduces a tutorial to demonstrate all functions on this website.",
+        'languageDivText': "This button displays a flag and text of the current chosen language. A click initiates a change of language",
+        'animationDivText': "This button toggles animations with hyper drive and the rotating stars.",
+        'soundDivText': "This button toggles the sound from hyper drive.",
+        'infoDivText': "This displays information about current targeted planet.",
+        'departureDivText': "This window displays information from your departure planet, destination planet and visiting planets in between.",
+        'itineraryDivText': "This window displays information from your departure planet, destination planet and visiting planets in between.",
+        'mapDivText': "This space displays different star systems and planets which you can choose to start from and travel to.",
+        'exitDivText': "Press the Help button again to exit the tutorial.",
         //Pictures
         'langPic': "images/eng.png",
         'departuresArrowPic': "images/expand_arrow.png",
@@ -276,6 +286,17 @@ let dict = {
         'animationOffAltText': "Animationer avslaget",
         'soundOnAltText': "Ljud påslaget",
         'soundOffAltText': "Ljud avslaget",
+        // Hjälp-strängar
+        'homeDivText': "Denna knapp tar dig tillbaka till stjärnkartan.",
+        'helpDivText': "Denna knapp introducerar en handledning av funktionerna på denna hemsida.",
+        'languageDivText': "Denna knapp visar flaggan och text av nuvarande valt språk. Vid klick ändras språk.",
+        'animationDivText': "Denna knapp växlar animationerna att vara av eller på.",
+        'soundDivText': "Denna knapp växlar ljudet att vara av eller på.",
+        'infoDivText': "Detta fönster visar information om för tillfället vald planet.",
+        'departureDivText': "Detta fönster visar information om din avreseplanet din destinationsplanet och mellanresorna.",
+        'itineraryDivText': "Detta fönster visar information om din avreseplanet din destinationsplanet och mellanresorna.",
+        'mapDivText': "Detta utrymme visar olika stjärnsystem samt planet vilka du kan välja avreseplanet och destinationsplaneter ifrån.",
+        'exitDivText': "Klicka på Hjälp-knappen igen för att avsluta handledningen.",
         //Bilder
         'langPic': "images/se.png",
         'departuresArrowPic': "images/expand_arrow.png",
@@ -307,9 +328,6 @@ export function change_lang() {
     update_dict_view();
 }
 
-// ------------------------------------------------------------------------
-// ska nog lägga denna kod i controllern istället
-// ------------------------------------------------------------------------
 // updates the view with correct strings - depending on selected language
 // using # for divname- and . for classname searching
 export function update_dict_view() {
@@ -341,6 +359,3 @@ export function update_dict_view() {
         })
     }
 }
-// ===========================================================================
-// END OF FILE
-// ===========================================================================
