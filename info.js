@@ -70,7 +70,3 @@ export function infoUpdate(i){
     update_dict_view();
 
 }
-
-/**
- * ================================== END OF FILE ========================================= *
- */

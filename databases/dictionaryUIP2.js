@@ -1,6 +1,3 @@
-// ------------------------------------------------------------------------
-// Code written by Felix Lager
-// ------------------------------------------------------------------------
 import {topBarInit} from "../topBar.js";
 import {itUpdate} from "../sideMenu.js";
 
@@ -331,9 +328,6 @@ export function change_lang() {
     update_dict_view();
 }
 
-// ------------------------------------------------------------------------
-// ska nog lägga denna kod i controllern istället
-// ------------------------------------------------------------------------
 // updates the view with correct strings - depending on selected language
 // using # for divname- and . for classname searching
 export function update_dict_view() {
@@ -365,6 +359,3 @@ export function update_dict_view() {
         })
     }
 }
-// ===========================================================================
-// END OF FILE
-// ===========================================================================
