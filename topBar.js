@@ -99,7 +99,6 @@ function animationBtnInit(parent){
     }
     // Assigning the whole button a class for css
     animationBtn.classList.add("topBarButton");
-    // TODO onclick=start/stop animation
     animationBtn.onclick=animationOnOff;
     // Add the animation on or off picture to the button, and add the button to the top bar.
     parent.appendChild(animationBtn);
@@ -136,7 +135,6 @@ function soundBtnInit(parent){
     }
     // Assigning the whole button a class for css
     soundBtn.classList.add("topBarButton");
-    // TODO onclick= turning on/off sound
     soundBtn.onclick=soundOnOff;
     // Add the sound on or off picture to the button, and add the button to the top bar.
     parent.appendChild(soundBtn);
@@ -150,7 +148,3 @@ function soundOnOff(){
     hyperspaceToggleMute();
     update_dict_view();
 }
-
-// ===========================================================================
-// END OF FILE
-// ===========================================================================
